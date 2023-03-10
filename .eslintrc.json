@@ -30,6 +30,7 @@
     "react/react-in-jsx-scope": "off",
     "no-console": "warn",
     "spaced-comment": "error",
+    "semi": "warn",
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error",
     "@typescript-eslint/camelcase": "off",

@@ -12,8 +12,9 @@ export const mazeUtils = (maze: Maze) => {
   const getY = (flatIndex: number): number =>
     flatIndex % maze.height;
 
-  const setAreaType = (point: Point, type: AreaType) =>
-    (maze.areas[getFlatIndex(point.x, point.y)].type = type);
+  const setAreaType = (point: Point, type: AreaType) => {
+    getAreaType(point).rewritable && (maze.areas[getFlatIndex(point.x, point.y)].type = type);
+  };
 
   const getAreaType = (point: Point) =>
     maze.areas[getFlatIndex(point.x, point.y)].type;

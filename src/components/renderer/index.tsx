@@ -5,7 +5,11 @@ import { areaFillStyles } from './const';
 
 const Renderer: React.FC<RendererProps> = ({ maze, size }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
+  // todo extract context to the memo
 
+  // todo func draw areas
+  // todo func draw ui
+  // todo func draw gameplay
   React.useEffect(() => {
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
@@ -14,6 +18,7 @@ const Renderer: React.FC<RendererProps> = ({ maze, size }) => {
       return;
     }
 
+    // todo gameplay window frame like 5x5
     maze.areas.map((area) => {
       context.fillStyle = areaFillStyles[area.type.name];
       context.fillRect(area.x * size, area.y * size, size, size);

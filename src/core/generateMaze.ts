@@ -29,12 +29,30 @@ export const generateMaze = (maze: Maze) => {
   }
 
   function generateMainPath() {
+    const c2 = {
+      x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
+      y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
+    };
+    setAreaType(c2, AreaTypes.Center);
     generatePath(enterPort, center, AreaTypes.Thread, calcMinMoves(enterPort, center));
     generatePath(center, exitPort, AreaTypes.Thread, calcMinMoves(center, exitPort));
   }
 
   function generateLeftPaths() {
-    generatePath(enterPort, center, AreaTypes.Way, random((maze.width * maze.height) / 3));
+    // todo write random points with cycle
+    // todo from: enter, center and some random
+    const c2 = {
+      x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
+      y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
+    };
+    const c3 = {
+      x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
+      y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
+    };
+
+    generatePath(enterPort, c2, AreaTypes.Way, random((maze.width * maze.height) / 3));
+    generatePath(enterPort, c3, AreaTypes.Exit, random((maze.width * maze.height) / 3));
+    generatePath(center, c2, AreaTypes.Way, random((maze.width * maze.height) / 3));
   }
 
   function buildPortPoint(point: Point): Point {
@@ -56,21 +74,38 @@ export const generateMaze = (maze: Maze) => {
     return maze.width * additionalMultiplier + minMoves;
   }
 
-  function generatePath(current: Point, end: Point, type: AreaType, stepsCount: number) {
-    const distance = Math.abs(end.y - current.y) + Math.abs(end.x - current.x);
+  function generatePath(from: Point, end: Point, type: AreaType, stepsCount: number) {
+    const current = { ...from };
+    const maxChance = maze.width / 2;
+    for (let step = stepsCount; ; step--) {
+      const distance = Math.abs(end.y - current.y) + Math.abs(end.x - current.x);
+      const chanceToEnd = random(maxChance) === 1;
 
-    if (stepsCount > distance) {
-      const chance = random(100);
+      if (step <= distance) {
+        break;
+      }
 
-      chance >= 0 && chance < 25 && initBottomArea(current, type);
-      chance >= 25 && chance < 50 && initTopArea(current, type);
-      chance >= 50 && chance < 75 && initLeftArea(current, type);
-      chance >= 75 && initRightArea(current, type);
-    } else {
-      initNextArea(current, end, type);
+      if (chanceToEnd) {
+        initNextArea(current, end, type);
+      } else {
+        const chance = random(100);
+
+        chance >= 0 && chance < 25 && initBottomArea(current, type);
+        chance >= 25 && chance < 50 && initTopArea(current, type);
+        chance >= 50 && chance < 75 && initLeftArea(current, type);
+        chance >= 75 && initRightArea(current, type);
+      }
     }
 
-    stepsCount > 0 && generatePath(current, end, type, stepsCount - 1);
+    const checkDone = (a: number, b: number) => Math.abs(a - b) < 2;
+
+    for (let a = 500; a > 0; a--) {
+      initNextArea(current, end, type);
+
+      if (!checkDone(current.x, end.x) || !checkDone(current.y, end.y)) {
+        return;
+      }
+    }
   }
 
   function initBottomArea(current: Point, type: AreaType) {

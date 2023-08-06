@@ -11,6 +11,7 @@ export interface Area {
   x: number;
   y: number;
   type: AreaType;
+  // todo passed: boolean
 }
 
 export interface AreaType {
@@ -20,12 +21,13 @@ export interface AreaType {
   rewritable: boolean;
 }
 
+// todo redo keys
 export const AreaTypes: { [key: string]: AreaType } = {
   Way: {
     name: 'Way',
     short: ' ',
     passable: true,
-    rewritable: true,
+    rewritable: false,
   },
   Thread: {
     name: 'Thread',
@@ -51,6 +53,7 @@ export const AreaTypes: { [key: string]: AreaType } = {
     passable: true,
     rewritable: false,
   },
+  // todo delete
   Pass: {
     name: 'Pass',
     short: '◦',

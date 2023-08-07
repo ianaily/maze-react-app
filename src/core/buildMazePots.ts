@@ -55,13 +55,13 @@ export const buildMazePots = (width: number, height: number, name?: string): Maz
 
       return {
         x: isRight ? 0 : width - 1,
-        y: random(height - 3) + 2,
+        y: random(height - 3, 0) + 1,
       };
     } else {
       const isTop = randomBoolean();
 
       return {
-        x: random(width - 3) + 2,
+        x: random(width - 3, 0) + 1,
         y: isTop ? 0 : height - 1,
       };
     }

@@ -29,30 +29,29 @@ export const generateMaze = (maze: Maze) => {
   }
 
   function generateMainPath() {
-    const c2 = {
+    const center2 = {
       x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
       y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
     };
-    setAreaType(c2, AreaTypes.Center);
+    setAreaType(center2, AreaTypes.Center);
     generatePath(enterPort, center, AreaTypes.Thread, calcMinMoves(enterPort, center));
-    generatePath(center, exitPort, AreaTypes.Thread, calcMinMoves(center, exitPort));
+    generatePath(center, center2, AreaTypes.Thread, calcMinMoves(center, center2));
+    generatePath(center2, exitPort, AreaTypes.Thread, calcMinMoves(center, exitPort));
   }
 
   function generateLeftPaths() {
-    // todo write random points with cycle
-    // todo from: enter, center and some random
-    const c2 = {
+    const point1 = {
       x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
       y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
     };
-    const c3 = {
+    const point2 = {
       x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
       y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
     };
 
-    generatePath(enterPort, c2, AreaTypes.Way, random((maze.width * maze.height) / 3));
-    generatePath(enterPort, c3, AreaTypes.Way, random((maze.width * maze.height) / 3));
-    generatePath(center, c2, AreaTypes.Way, random((maze.width * maze.height) / 3));
+    generatePath(enterPort, point1, AreaTypes.Way, random((maze.width * maze.height) / 3));
+    generatePath(enterPort, point2, AreaTypes.Way, random((maze.width * maze.height) / 3));
+    generatePath(point1, point2, AreaTypes.Way, random((maze.width * maze.height) / 3));
   }
 
   function buildPortPoint(point: Point): Point {
@@ -69,14 +68,16 @@ export const generateMaze = (maze: Maze) => {
 
   function calcMinMoves(fromPoint: Point, toPoint: Point): number {
     const minMoves = Math.abs(fromPoint.x - toPoint.x) + Math.abs(fromPoint.y - toPoint.y);
-    const additionalMultiplier = random(maze.height / 2) + 1;
+    const additionalMultiplierByWidth = random(maze.width / 5) + 1;
+    const additionalMultiplierByHeight = random(maze.height / 5) + 1;
 
-    return maze.width * additionalMultiplier + minMoves;
+    return additionalMultiplierByWidth * additionalMultiplierByHeight + minMoves;
   }
 
   function generatePath(from: Point, end: Point, type: AreaType, stepsCount: number) {
     const current = { ...from };
     const maxChance = maze.width / 2;
+
     for (let step = stepsCount; ; step--) {
       const distance = Math.abs(end.y - current.y) + Math.abs(end.x - current.x);
       const chanceToEnd = random(maxChance) === 1;
@@ -99,12 +100,8 @@ export const generateMaze = (maze: Maze) => {
 
     const checkDone = (a: number, b: number) => Math.abs(a - b) < 2;
 
-    for (let a = 500; a > 0; a--) {
+    while (!checkDone(current.x, end.x) || !checkDone(current.y, end.y)) {
       initNextArea(current, end, type);
-
-      if (!checkDone(current.x, end.x) || !checkDone(current.y, end.y)) {
-        return;
-      }
     }
   }
 

@@ -28,7 +28,7 @@ export const AreaTypes: { [key: string]: AreaType } = {
     name: 'Way',
     short: ' ',
     passable: true,
-    rewritable: false,
+    rewritable: true,
   },
   Thread: {
     name: 'Thread',

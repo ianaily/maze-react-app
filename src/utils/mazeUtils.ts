@@ -1,4 +1,5 @@
-import { AreaType, AreaTypes, Maze } from 'src/types/maze';
+import { areaTypeByShort } from 'src/utils/areaUtils';
+import { Area, AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 
 // prettier-ignore
@@ -12,8 +13,11 @@ export const mazeUtils = (maze: Maze) => {
   const getY = (flatIndex: number): number =>
     flatIndex % maze.height;
 
-  const setAreaType = (point: Point, type: AreaType) => {
-    getAreaType(point).rewritable && (maze.areas[getFlatIndex(point.x, point.y)].type = type);
+  const setAreaType = (point: Point, type: AreaType, ignoreRewritable?: boolean) => {
+    const ableToChange = ignoreRewritable || getAreaType(point).rewritable;
+    ableToChange && (maze.areas[getFlatIndex(point.x, point.y)].type = type);
+
+    return maze;
   };
 
   const getAreaType = (point: Point) =>

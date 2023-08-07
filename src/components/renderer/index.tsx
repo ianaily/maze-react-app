@@ -16,47 +16,38 @@ const Renderer: React.FC<RendererProps> = ({ maze, cursor, canvasWidth, canvasHe
     const smallerCanvasSize = Math.min(canvasWidth, canvasHeight);
 
     return smallerCanvasSize / largerMazeSide;
-  }, [maze]);
+  }, [maze, canvasWidth, canvasHeight]);
 
-  const drawArea = React.useCallback(
-    ({ x, y, type }: Area) => {
-      if (!context) {
-        return;
-      }
+  const drawArea = ({ x, y, type }: Area) => {
+    if (!context) {
+      return;
+    }
 
-      context.fillStyle = areaFillStyles[type.name];
-      context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
-    },
-    [context, areaSize],
-  );
+    context.fillStyle = areaFillStyles[type.name];
+    context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
+  };
 
-  const drawCoords = React.useCallback(
-    ({ x, y }: Point) => {
-      if (!context) {
-        return;
-      }
+  const drawCoords = ({ x, y }: Point) => {
+    if (!context) {
+      return;
+    }
 
-      const offset = areaSize / 2;
-      context.fillStyle = coordsFillStyle;
-      context.fillText(`${x}:${y}`, x * areaSize, y * areaSize + offset, areaSize);
-    },
-    [context, areaSize],
-  );
+    const offset = areaSize / 2;
+    context.fillStyle = coordsFillStyle;
+    context.fillText(`${x}:${y}`, x * areaSize, y * areaSize + offset, areaSize);
+  };
 
-  const drawCursor = React.useCallback(
-    ({ x, y }: Point) => {
-      if (!context) {
-        return;
-      }
+  const drawCursor = ({ x, y }: Point) => {
+    if (!context) {
+      return;
+    }
 
-      context.fillStyle = cursorStyle.fill;
-      context.strokeStyle = cursorStyle.stroke;
-      context.lineWidth = cursorStyle.lineWidth;
-      context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
-      context.strokeRect(x * areaSize + 2, y * areaSize + 2, areaSize - 4, areaSize - 4);
-    },
-    [context, areaSize],
-  );
+    context.fillStyle = cursorStyle.fill;
+    context.strokeStyle = cursorStyle.stroke;
+    context.lineWidth = cursorStyle.lineWidth;
+    context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
+    context.strokeRect(x * areaSize + 2, y * areaSize + 2, areaSize - 4, areaSize - 4);
+  };
 
   React.useEffect(() => {
     if (!context) {

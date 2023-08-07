@@ -1,23 +1,43 @@
-import { makeAutoObservable } from 'mobx';
+import { action, computed, makeObservable, observable } from 'mobx';
 import localforage from 'localforage';
 import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
+import { mazeUtils } from 'src/utils/mazeUtils';
+import { getNextAreaType } from 'src/utils/areaUtils';
 import { Maze } from 'src/types/maze';
+import { Point } from 'src/types/point';
 
 class MazeStore {
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      maze: observable,
+      _utils: computed,
+      generate: action,
+      changeAreaTypeToNext: action,
+      load: action,
+    });
   }
 
   width = 64;
   height = 32;
   maze: Maze = buildMazePots(this.width, this.height);
 
+  get _utils() {
+    return mazeUtils({ ...this.maze });
+  }
+
   generate = (width: number, height: number) => {
-    const initial = buildMazePots(width, height);
-    this.maze = generateMaze(initial);
     this.width = width;
     this.height = height;
+    const initial = buildMazePots(width, height);
+    this.maze = generateMaze(initial);
+  };
+
+  changeAreaTypeToNext = (point: Point) => {
+    const currentType = this._utils.getAreaType(point);
+    const nextType = getNextAreaType(currentType.name);
+
+    this.maze = this._utils.setAreaType(point, nextType, true);
   };
 
   load = (id: string) => {
@@ -33,7 +53,7 @@ class MazeStore {
   };
 
   save = (id: string) => {
-    localforage.setItem(`maze-${id}`, this.maze);
+    return localforage.setItem(`maze-${id}`, this.maze);
   };
 }
 

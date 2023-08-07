@@ -10,9 +10,9 @@ export const generateMaze = (maze: Maze) => {
   let exitPort: Point;
   let center: Area;
 
-  generateMaze();
+  generate();
 
-  function generateMaze() {
+  function generate() {
     fillEmpty();
     generatePorts();
     generateLeftPaths();

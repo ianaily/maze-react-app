@@ -3,13 +3,22 @@ import { toJS } from 'mobx';
 import { MobXProviderContext, observer } from 'mobx-react';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import Renderer from 'src/components/renderer';
+import { StoresType } from './types';
 
 const size = { width: 32, height: 24 };
+
 export const MazeRedactor: React.FC = observer(() => {
-  const { mazeStore, cursorStore } = React.useContext(MobXProviderContext);
+  const { mazeStore, cursorStore } = React.useContext(MobXProviderContext) as StoresType;
+  const keyActionMap: { [key: string]: VoidFunction } = {
+    r() {
+      mazeStore.generate(size.width, size.height);
+      cursorStore.reset();
+    },
+    e: () => mazeStore.changeAreaTypeToNext(cursorStore.cursor.point),
+  };
 
   const handleKeyDown = (key: string) => {
-    key === 'r' && mazeStore.generate(size.width, size.height);
+    keyActionMap[key]?.();
 
     if (cursorStore.enabled) {
       ['ArrowUp', 'w'].includes(key) && cursorStore.toUp();
@@ -24,6 +33,7 @@ export const MazeRedactor: React.FC = observer(() => {
   React.useEffect(() => {
     React.startTransition(() => {
       mazeStore.generate(size.width, size.height);
+      cursorStore.setBoxSize(size.width, size.height);
       cursorStore.setEnable(true);
     });
   }, []);

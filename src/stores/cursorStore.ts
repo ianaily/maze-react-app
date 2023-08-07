@@ -6,8 +6,11 @@ export default class CursorStore {
   constructor() {
     makeObservable(this, {
       cursor: observable,
+      width: observable,
+      height: observable,
       enabled: computed,
       setEnable: action,
+      setBoxSize: action,
       reset: action,
       toUp: action,
       toRight: action,
@@ -22,13 +25,21 @@ export default class CursorStore {
     prevPoint: { x: 0, y: 0 },
   };
 
-  get enabled(): boolean {
-    return this.cursor.enable;
-  }
+  width = 0;
+  height = 0;
 
   setEnable = (isEnable: boolean) => {
     this.cursor.enable = isEnable;
   };
+
+  setBoxSize = (width: number, height: number) => {
+    this.width = width;
+    this.height = height;
+  };
+
+  get enabled(): boolean {
+    return this.cursor.enable;
+  }
 
   reset = () => {
     this.cursor.point = { x: 0, y: 0 };
@@ -36,22 +47,30 @@ export default class CursorStore {
   };
 
   toUp = () => {
-    this.cursor.prevPoint = { ...this.cursor.point };
-    this.cursor.point = utils.toTop(this.cursor.point);
+    if (this.cursor.point.y - 1 >= 0) {
+      this.cursor.prevPoint = { ...this.cursor.point };
+      this.cursor.point = utils.toTop(this.cursor.point);
+    }
   };
 
   toRight = () => {
-    this.cursor.prevPoint = { ...this.cursor.point };
-    this.cursor.point = utils.toRight(this.cursor.point);
+    if (this.cursor.point.x + 1 < this.width) {
+      this.cursor.prevPoint = { ...this.cursor.point };
+      this.cursor.point = utils.toRight(this.cursor.point);
+    }
   };
 
   toDown = () => {
-    this.cursor.prevPoint = { ...this.cursor.point };
-    this.cursor.point = utils.toBottom(this.cursor.point);
+    if (this.cursor.point.y + 1 < this.height) {
+      this.cursor.prevPoint = { ...this.cursor.point };
+      this.cursor.point = utils.toBottom(this.cursor.point);
+    }
   };
 
   toLeft = () => {
-    this.cursor.prevPoint = { ...this.cursor.point };
-    this.cursor.point = utils.toLeft(this.cursor.point);
+    if (this.cursor.point.x - 1 >= 0) {
+      this.cursor.prevPoint = { ...this.cursor.point };
+      this.cursor.point = utils.toLeft(this.cursor.point);
+    }
   };
 }

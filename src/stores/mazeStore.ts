@@ -36,4 +36,4 @@ class MazeStore {
   };
 }
 
-export const mazeStore = new MazeStore();
+export default MazeStore;

@@ -2,7 +2,7 @@ import { makeObservable, action, computed, observable } from 'mobx';
 import * as utils from 'src/utils/pointUtils';
 import { Cursor } from 'src/types/cursor';
 
-class CursorStore {
+export default class CursorStore {
   constructor() {
     makeObservable(this, {
       cursor: observable,
@@ -55,5 +55,3 @@ class CursorStore {
     this.cursor.point = utils.toLeft(this.cursor.point);
   };
 }
-
-export const cursorStore = new CursorStore();

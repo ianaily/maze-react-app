@@ -2,7 +2,7 @@ import React from 'react';
 import { Area } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { mazeUtils } from 'src/utils/mazeUtils';
-import { areaFillStyles, coordsFillStyle, cursorFillStyle } from './const';
+import { areaFillStyles, coordsFillStyle, cursorStyle } from './const';
 import { RendererProps } from './types';
 import { Canvas } from './styled';
 
@@ -49,11 +49,23 @@ const Renderer: React.FC<RendererProps> = ({ maze, cursor, canvasWidth, canvasHe
         return;
       }
 
-      context.fillStyle = cursorFillStyle;
+      context.fillStyle = cursorStyle.fill;
+      context.strokeStyle = cursorStyle.stroke;
+      context.lineWidth = cursorStyle.lineWidth;
       context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
+      context.strokeRect(x * areaSize + 2, y * areaSize + 2, areaSize - 4, areaSize - 4);
     },
     [context, areaSize],
   );
+
+  React.useEffect(() => {
+    if (!context) {
+      return;
+    }
+
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = 'high';
+  }, [context]);
 
   // todo func draw ui
   // todo func draw gameplay

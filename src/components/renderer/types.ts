@@ -1,6 +1,9 @@
 import { Maze } from 'src/types/maze';
+import { Cursor } from 'src/types/cursor';
 
 export interface RendererProps {
   maze: Maze;
-  size: number;
+  cursor: Cursor;
+  canvasWidth: number;
+  canvasHeight: number;
 }

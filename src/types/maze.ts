@@ -1,4 +1,5 @@
 export interface Maze {
+  name: string;
   areas: Area[];
   enter: Area;
   exit: Area;
@@ -37,19 +38,19 @@ export const AreaTypes: { [key: string]: AreaType } = {
   },
   Enter: {
     name: 'Enter',
-    short: '✦',
+    short: '>',
     passable: false,
     rewritable: false,
   },
   Exit: {
     name: 'Exit',
-    short: '⚹',
+    short: '<',
     passable: false,
     rewritable: false,
   },
   Center: {
     name: 'Center',
-    short: '❂',
+    short: 'o',
     passable: true,
     rewritable: false,
   },

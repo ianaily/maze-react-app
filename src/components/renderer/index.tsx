@@ -1,35 +1,82 @@
 import React from 'react';
-import { Canvas } from './styled';
+import { Area } from 'src/types/maze';
+import { Point } from 'src/types/point';
+import { mazeUtils } from 'src/utils/mazeUtils';
+import { areaFillStyles, coordsFillStyle, cursorFillStyle } from './const';
 import { RendererProps } from './types';
-import { areaFillStyles } from './const';
+import { Canvas } from './styled';
 
-const Renderer: React.FC<RendererProps> = ({ maze, size }) => {
+const Renderer: React.FC<RendererProps> = ({ maze, cursor, canvasWidth, canvasHeight }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
-  // todo extract context to the memo
+  const context = React.useMemo(() => canvasRef.current?.getContext('2d'), [canvasRef.current]);
 
-  // todo func draw areas
+  const { getAreaType } = React.useMemo(() => mazeUtils(maze), [maze]);
+  const areaSize = React.useMemo(() => {
+    const largerMazeSide = Math.max(maze.width, maze.height);
+    const smallerCanvasSize = Math.min(canvasWidth, canvasHeight);
+
+    return smallerCanvasSize / largerMazeSide;
+  }, [maze]);
+
+  const drawArea = React.useCallback(
+    ({ x, y, type }: Area) => {
+      if (!context) {
+        return;
+      }
+
+      context.fillStyle = areaFillStyles[type.name];
+      context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
+    },
+    [context, areaSize],
+  );
+
+  const drawCoords = React.useCallback(
+    ({ x, y }: Point) => {
+      if (!context) {
+        return;
+      }
+
+      const offset = areaSize / 2;
+      context.fillStyle = coordsFillStyle;
+      context.fillText(`${x}:${y}`, x * areaSize, y * areaSize + offset, areaSize);
+    },
+    [context, areaSize],
+  );
+
+  const drawCursor = React.useCallback(
+    ({ x, y }: Point) => {
+      if (!context) {
+        return;
+      }
+
+      context.fillStyle = cursorFillStyle;
+      context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
+    },
+    [context, areaSize],
+  );
+
   // todo func draw ui
   // todo func draw gameplay
   React.useEffect(() => {
-    const canvas = canvasRef.current;
-    const context = canvas?.getContext('2d');
-
-    if (!context) {
-      return;
-    }
-
-    // todo gameplay window frame like 5x5
+    context?.clearRect(0, 0, canvasWidth, canvasHeight);
     maze.areas.map((area) => {
-      context.fillStyle = areaFillStyles[area.type.name];
-      context.fillRect(area.x * size, area.y * size, size, size);
-
-      // todo coords
-      context.fillStyle = 'black';
-      context.fillText(`${area.x}:${area.y}`, area.x * size, area.y * size + 10, size);
+      drawArea(area);
+      drawCoords(area);
     });
-  }, []);
+  }, [maze, context]);
 
-  return <Canvas ref={canvasRef} width={window.innerWidth} height={window.innerHeight} />;
+  React.useEffect(() => {
+    if (cursor.enable && maze.areas.length) {
+      const { point, prevPoint } = cursor;
+      const type = getAreaType(prevPoint);
+
+      drawCursor(point);
+      drawArea({ ...prevPoint, type });
+      drawCoords({ ...prevPoint });
+    }
+  }, [cursor, maze]);
+
+  return <Canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />;
 };
 
 export default Renderer;

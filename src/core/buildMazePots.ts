@@ -2,8 +2,9 @@ import { Point } from 'src/types/point';
 import { Area, AreaTypes, Maze } from 'src/types/maze';
 import { random, randomBoolean } from 'src/utils/random';
 
-export const buildMazePots = (width: number, height: number): Maze => {
+export const buildMazePots = (width: number, height: number, name?: string): Maze => {
   return {
+    name: name || '_',
     width,
     height,
     areas: [],

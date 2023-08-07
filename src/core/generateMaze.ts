@@ -51,7 +51,7 @@ export const generateMaze = (maze: Maze) => {
     };
 
     generatePath(enterPort, c2, AreaTypes.Way, random((maze.width * maze.height) / 3));
-    generatePath(enterPort, c3, AreaTypes.Exit, random((maze.width * maze.height) / 3));
+    generatePath(enterPort, c3, AreaTypes.Way, random((maze.width * maze.height) / 3));
     generatePath(center, c2, AreaTypes.Way, random((maze.width * maze.height) / 3));
   }
 

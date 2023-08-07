@@ -9,3 +9,6 @@ export const areaFillStyles: { [key in keyof typeof AreaTypes]: string } = {
   Exit: '#af0',
   Wall: '#456',
 };
+
+export const coordsFillStyle = 'black';
+export const cursorFillStyle = '#f1c';

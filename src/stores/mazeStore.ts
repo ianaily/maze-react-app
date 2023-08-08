@@ -3,17 +3,17 @@ import localforage from 'localforage';
 import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
 import { mazeUtils } from 'src/utils/mazeUtils';
-import { getNextAreaType } from 'src/utils/areaUtils';
-import { Maze } from 'src/types/maze';
+import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 
 class MazeStore {
   constructor() {
     makeObservable(this, {
       maze: observable,
-      _utils: computed,
+      fillAreaType: observable,
+      utils: computed,
       generate: action,
-      changeAreaTypeToNext: action,
+      changeAreaType: action,
       load: action,
     });
   }
@@ -21,8 +21,9 @@ class MazeStore {
   width = 64;
   height = 32;
   maze: Maze = buildMazePots(this.width, this.height);
+  fillAreaType: AreaType = AreaTypes.Wall;
 
-  get _utils() {
+  get utils() {
     return mazeUtils({ ...this.maze });
   }
 
@@ -33,11 +34,9 @@ class MazeStore {
     this.maze = generateMaze(initial);
   };
 
-  changeAreaTypeToNext = (point: Point) => {
-    const currentType = this._utils.getAreaType(point);
-    const nextType = getNextAreaType(currentType.name);
-
-    this.maze = this._utils.setAreaType(point, nextType, true);
+  changeAreaType = (point: Point, type: AreaType = this.fillAreaType) => {
+    this.maze = this.utils.setAreaType(point, type, true);
+    this.fillAreaType = type;
   };
 
   load = (id: string) => {

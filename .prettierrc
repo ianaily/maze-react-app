@@ -2,7 +2,9 @@
   "tabWidth": 2,
   "printWidth": 100,
   "singleQuote": true,
+  "quoteProps": "consistent",
   "trailingComma": "all",
+  "endOfLine": "auto",
   "jsxSingleQuote": false,
   "bracketSpacing": true,
   "semi": true

@@ -2,6 +2,8 @@ import React from 'react';
 import { toJS } from 'mobx';
 import { MobXProviderContext, observer } from 'mobx-react';
 import { useKeyboard } from 'src/hooks/useKeyboard';
+import { getNextAreaType } from 'src/utils/areaUtils';
+import { AreaTypes } from 'src/types/maze';
 import Renderer from 'src/components/renderer';
 import { StoresType } from './types';
 
@@ -9,12 +11,31 @@ const size = { width: 32, height: 24 };
 
 export const MazeRedactor: React.FC = observer(() => {
   const { mazeStore, cursorStore } = React.useContext(MobXProviderContext) as StoresType;
+
   const keyActionMap: { [key: string]: VoidFunction } = {
-    r() {
-      mazeStore.generate(size.width, size.height);
-      cursorStore.reset();
-    },
-    e: () => mazeStore.changeAreaTypeToNext(cursorStore.cursor.point),
+    'r': () => initMaze(),
+    'e': () => fillWithNextType(),
+    'f': () => mazeStore.changeAreaType(cursorStore.cursor.point),
+    '1': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Wall),
+    '2': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Way),
+    '3': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Thread),
+    '4': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Center),
+    '5': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Enter),
+    '6': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Exit),
+  };
+
+  const fillWithNextType = () => {
+    const type = mazeStore.utils.getAreaType(cursorStore.cursor.point);
+    const nextType = getNextAreaType(type);
+
+    mazeStore.changeAreaType(cursorStore.cursor.point, nextType);
+  };
+
+  const initMaze = () => {
+    mazeStore.generate(size.width, size.height);
+    cursorStore.setBoxSize(size.width, size.height);
+    cursorStore.setEnable(true);
+    cursorStore.reset();
   };
 
   const handleKeyDown = (key: string) => {
@@ -31,11 +52,7 @@ export const MazeRedactor: React.FC = observer(() => {
   useKeyboard(handleKeyDown);
 
   React.useEffect(() => {
-    React.startTransition(() => {
-      mazeStore.generate(size.width, size.height);
-      cursorStore.setBoxSize(size.width, size.height);
-      cursorStore.setEnable(true);
-    });
+    React.startTransition(() => initMaze());
   }, []);
 
   return (

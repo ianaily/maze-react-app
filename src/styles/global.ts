@@ -1,8 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
-import { colors } from './colors';
-
+import { styles } from './styles';
 import './reset.css';
 
 export const GlobalStyle = createGlobalStyle`
@@ -11,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    background-color: ${colors.background.grey0};
+    background-color: ${styles.colors.background.dark};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
@@ -25,5 +24,24 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+  }
+
+  button {
+    padding: ${styles.offsets.button};
+    border: none;
+    border-radius: ${styles.borderRadius.m};
+    box-shadow: none;
+    color: ${styles.colors.font.black};
+    transition: background-color ${styles.transition.ease};
+  
+    &:disabled {
+      background-color: ${styles.colors.disabled.button};
+      color: ${styles.colors.font.white};
+    }
+  
+    &:disabled:hover {
+      background-color: ${styles.colors.disabled.button};
+      color: ${styles.colors.font.white};
+    }
   }
 `;

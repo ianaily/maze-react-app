@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'mobx-react';
-import { GlobalStyle } from 'src/styles/global';
 import MazeStore from 'src/stores/mazeStore';
 import CursorStore from 'src/stores/cursorStore';
+import { GlobalStyle } from 'src/styles/global';
 import { MazeRedactor } from 'src/views/mazeRedactor';
 
 export default function App() {

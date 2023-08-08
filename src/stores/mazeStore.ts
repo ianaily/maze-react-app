@@ -1,4 +1,4 @@
-import { action, computed, makeObservable, observable } from 'mobx';
+import { action, computed, makeObservable, observable, toJS } from 'mobx';
 import localforage from 'localforage';
 import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
@@ -11,9 +11,11 @@ class MazeStore {
     makeObservable(this, {
       maze: observable,
       fillAreaType: observable,
+      mazeList: observable,
       utils: computed,
       generate: action,
       changeAreaType: action,
+      loadMazeList: action,
       load: action,
     });
   }
@@ -22,6 +24,8 @@ class MazeStore {
   height = 32;
   maze: Maze = buildMazePots(this.width, this.height);
   fillAreaType: AreaType = AreaTypes.Wall;
+  mazeId: string | null = null;
+  mazeList: string[] = [];
 
   get utils() {
     return mazeUtils({ ...this.maze });
@@ -39,20 +43,43 @@ class MazeStore {
     this.fillAreaType = type;
   };
 
-  load = (id: string) => {
-    localforage.getItem<Maze>(`maze-${id}`).then((maze) => {
-      if (maze) {
-        this.maze = maze;
-        this.width = maze.width;
-        this.height = maze.height;
-      } else {
-        this.maze = buildMazePots(this.width, this.height);
-      }
+  loadMazeList = (): Promise<void> => {
+    return localforage.getItem<string[]>('mazeList').then((list) => {
+      this.mazeList = list || [];
     });
   };
 
-  save = (id: string) => {
-    return localforage.setItem(`maze-${id}`, this.maze);
+  load = async (id: string): Promise<void> => {
+    const maze = await localforage.getItem<Maze>(id);
+
+    if (maze) {
+      this.maze = maze;
+      this.width = maze.width;
+      this.height = maze.height;
+    } else {
+      this.maze = buildMazePots(this.width, this.height);
+    }
+  };
+
+  saveMazeList = async (): Promise<void> => {
+    const uniqArray = [...new Set(toJS(this.mazeList))];
+    await localforage.setItem<string[]>('mazeList', uniqArray);
+
+    return;
+  };
+
+  save = async (): Promise<void> => {
+    this.mazeId = `maze-${this.mazeList.length}`;
+    await this.loadMazeList();
+    this.mazeList.push(this.mazeId);
+    await this.saveMazeList();
+    await localforage.setItem(this.mazeId, toJS(this.maze));
+
+    return;
+  };
+
+  update = () => {
+    return localforage.setItem(`maze-${this.mazeId}`, toJS(this.maze));
   };
 }
 

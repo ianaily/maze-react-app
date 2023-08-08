@@ -4,13 +4,16 @@ import { MobXProviderContext, observer } from 'mobx-react';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { getNextAreaType } from 'src/utils/areaUtils';
 import { AreaTypes } from 'src/types/maze';
-import Renderer from 'src/components/renderer';
+import { Renderer } from 'src/components/renderer';
+import { ControlPanel } from 'src/components/controlPanel';
 import { StoresType } from './types';
+import { LoadMazeModal } from './loadMazeModal';
 
 const size = { width: 32, height: 24 };
 
 export const MazeRedactor: React.FC = observer(() => {
   const { mazeStore, cursorStore } = React.useContext(MobXProviderContext) as StoresType;
+  const [showLoadModal, setShowLoadModal] = React.useState(false);
 
   const keyActionMap: { [key: string]: VoidFunction } = {
     'r': () => initMaze(),
@@ -39,6 +42,10 @@ export const MazeRedactor: React.FC = observer(() => {
   };
 
   const handleKeyDown = (key: string) => {
+    if (showLoadModal) {
+      return;
+    }
+
     keyActionMap[key]?.();
 
     if (cursorStore.enabled) {
@@ -49,9 +56,26 @@ export const MazeRedactor: React.FC = observer(() => {
     }
   };
 
+  const handleSave = () => {
+    mazeStore.save().then(() => console.log('saved!'));
+  };
+
+  const handleUpdate = () => {
+    mazeStore.update().then(() => console.log('updated!'));
+  };
+
+  const handleLoad = (mazeId: string) => {
+    mazeStore.load(mazeId).then(() => {
+      cursorStore.setBoxSize(mazeStore.width, mazeStore.height);
+      cursorStore.reset();
+      console.log('loaded!');
+    });
+  };
+
   useKeyboard(handleKeyDown);
 
   React.useEffect(() => {
+    mazeStore.loadMazeList();
     React.startTransition(() => initMaze());
   }, []);
 
@@ -63,6 +87,20 @@ export const MazeRedactor: React.FC = observer(() => {
         canvasWidth={1280}
         canvasHeight={1024}
       />
+      <ControlPanel
+        onSave={handleSave}
+        onUpdate={handleUpdate}
+        enableUpdate={!!mazeStore.mazeId}
+        enableLoad={!!mazeStore.mazeList.length}
+        onLoad={() => setShowLoadModal(true)}
+      />
+      {showLoadModal && (
+        <LoadMazeModal
+          mazeList={mazeStore.mazeList}
+          onLoad={handleLoad}
+          onCancel={() => setShowLoadModal(false)}
+        />
+      )}
     </React.Fragment>
   );
 });

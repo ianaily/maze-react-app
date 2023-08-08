@@ -2,11 +2,12 @@ import React from 'react';
 import { Area } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { mazeUtils } from 'src/utils/mazeUtils';
-import { areaFillStyles, coordsFillStyle, cursorStyle } from './const';
+import { Loading } from 'src/components/loading/styled';
 import { RendererProps } from './types';
-import { Canvas } from './styled';
+import { areaFillStyles, coordsFillStyle, cursorStyle } from './const';
+import { Canvas, Container } from './styled';
 
-const Renderer: React.FC<RendererProps> = ({ maze, cursor, canvasWidth, canvasHeight }) => {
+export const Renderer: React.FC<RendererProps> = ({ maze, cursor, canvasWidth, canvasHeight }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const context = React.useMemo(() => canvasRef.current?.getContext('2d'), [canvasRef.current]);
 
@@ -58,13 +59,13 @@ const Renderer: React.FC<RendererProps> = ({ maze, cursor, canvasWidth, canvasHe
     context.imageSmoothingQuality = 'high';
   }, [context]);
 
-  // todo func draw ui
-  // todo func draw gameplay
   React.useEffect(() => {
-    context?.clearRect(0, 0, canvasWidth, canvasHeight);
-    maze.areas.map((area) => {
-      drawArea(area);
-      drawCoords(area);
+    React.startTransition(() => {
+      context?.clearRect(0, 0, canvasWidth, canvasHeight);
+      maze.areas.map((area) => {
+        drawArea(area);
+        drawCoords(area);
+      });
     });
   }, [maze, context]);
 
@@ -79,7 +80,10 @@ const Renderer: React.FC<RendererProps> = ({ maze, cursor, canvasWidth, canvasHe
     }
   }, [cursor, maze]);
 
-  return <Canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />;
+  return (
+    <Container>
+      {!context && <Loading width="48px" height="48px" />}
+      <Canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />
+    </Container>
+  );
 };
-
-export default Renderer;

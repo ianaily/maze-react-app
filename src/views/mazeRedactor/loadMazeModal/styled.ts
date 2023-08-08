@@ -17,9 +17,14 @@ export const MazeItem = styled.div<{ selected: boolean }>`
       background-color: ${styles.colors.background.darkBlue};
     `}
   cursor: pointer;
-  transition: ${styles.transition.background};
+  transition: ${styles.transition.background}, ${styles.transition.boxShadow};
 
   &:hover {
     background-color: ${styles.colors.background.darkBlue};
+    ${({ selected }) =>
+      !selected &&
+      css`
+        box-shadow: ${styles.boxShadow.likeButton};
+      `}
   }
 `;

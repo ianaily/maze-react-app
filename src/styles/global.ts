@@ -30,13 +30,18 @@ export const GlobalStyle = createGlobalStyle`
     padding: ${styles.offsets.button};
     border: none;
     border-radius: ${styles.borderRadius.m};
-    box-shadow: none;
+    box-shadow: ${styles.boxShadow.likeButton};
     color: ${styles.colors.font.black};
-    transition: background-color ${styles.transition.ease};
-  
+    transition: ${styles.transition.background}, ${styles.transition.boxShadow};
+
+    &:hover {
+      box-shadow: none;
+    }
+
     &:disabled {
       background-color: ${styles.colors.disabled.button};
       color: ${styles.colors.font.white};
+      box-shadow: none;
     }
   
     &:disabled:hover {

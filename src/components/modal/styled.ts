@@ -10,7 +10,7 @@ export const ModalBackdrop = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: ${styles.colors.background.darkTransparent};
+  background-color: ${styles.colors.transparent.dark1};
   backdrop-filter: blur(8px);
   transition: ${styles.transition.background};
 `;
@@ -26,7 +26,7 @@ export const ModalContent = styled.div`
   border-radius: ${styles.borderRadius.m};
   background-color: ${styles.colors.background.grey1};
   color: ${styles.colors.font.white};
-  box-shadow: 0 4px 16px rgba(0, 20, 40, 0.2);
+  box-shadow: ${styles.boxShadow.regular};
 `;
 
 export const ModalHeader = styled.div`

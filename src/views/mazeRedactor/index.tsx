@@ -60,10 +60,6 @@ export const MazeRedactor: React.FC = observer(() => {
     mazeStore.save().then(() => console.log('saved!'));
   };
 
-  const handleUpdate = () => {
-    mazeStore.update().then(() => console.log('updated!'));
-  };
-
   const handleLoad = (mazeId: string) => {
     mazeStore.load(mazeId).then(() => {
       cursorStore.setBoxSize(mazeStore.width, mazeStore.height);
@@ -89,8 +85,6 @@ export const MazeRedactor: React.FC = observer(() => {
       />
       <ControlPanel
         onSave={handleSave}
-        onUpdate={handleUpdate}
-        enableUpdate={!!mazeStore.mazeId}
         enableLoad={!!mazeStore.mazeList.length}
         onLoad={() => setShowLoadModal(true)}
       />

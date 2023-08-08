@@ -69,17 +69,15 @@ class MazeStore {
   };
 
   save = async (): Promise<void> => {
-    this.mazeId = `maze-${this.mazeList.length}`;
-    await this.loadMazeList();
-    this.mazeList.push(this.mazeId);
-    await this.saveMazeList();
-    await localforage.setItem(this.mazeId, toJS(this.maze));
-
-    return;
-  };
-
-  update = () => {
-    return localforage.setItem(`maze-${this.mazeId}`, toJS(this.maze));
+    if (this.mazeId) {
+      await localforage.setItem(`maze-${this.mazeId}`, toJS(this.maze));
+    } else {
+      this.mazeId = `maze-${this.mazeList.length}`;
+      await this.loadMazeList();
+      this.mazeList.push(this.mazeId);
+      await this.saveMazeList();
+      await localforage.setItem(this.mazeId, toJS(this.maze));
+    }
   };
 }
 

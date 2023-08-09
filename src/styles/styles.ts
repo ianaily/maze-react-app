@@ -15,7 +15,7 @@ export const styles = {
     l: '12px',
   },
   boxShadow: {
-    likeButton: `inset 0 -4px 0 0 ${colors.transparent.dark3}`,
+    likeButton: `inset 0 -4px 0 0 ${colors.transparent.dark4}`,
     besideBlue: `inset -24px 0 0px -18px ${colors.general.blue}`,
     besideRed: `inset 24px 0 0px -18px ${colors.general.red}`,
     underlineRed: `inset 0 -4px 0 0 ${colors.general.red}`,

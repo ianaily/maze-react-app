@@ -1,14 +1,11 @@
 import styled, { css } from 'styled-components';
 import { styles } from 'src/styles/styles';
+import { Panel } from 'src/components/containers/styled';
 
-export const GenerateContainer = styled.div`
+export const GenerateContainer = styled(Panel)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: ${styles.offsets.l};
-  padding: ${styles.offsets.s};
-  border-radius: ${styles.borderRadius.m};
-  background-color: ${styles.colors.general.grey1};
 `;
 
 export const SizeContainer = styled.div`

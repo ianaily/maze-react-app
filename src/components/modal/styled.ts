@@ -22,7 +22,6 @@ export const ModalContent = styled.div`
   align-items: center;
   position: absolute;
   min-width: 385px;
-  min-height: 256px;
   border-radius: ${styles.borderRadius.m};
   background-color: ${styles.colors.transparent.light3};
   color: ${styles.colors.font.white};
@@ -43,6 +42,7 @@ export const ModalHeader = styled.div`
 
 export const ModalBody = styled.div`
   width: 100%;
+  min-height: 96px;
   padding: ${styles.offsets.m};
   background-color: ${styles.colors.transparent.light6};
 `;

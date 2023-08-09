@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-import { styles } from 'src/styles/styles';
+import { Panel } from 'src/components/containers/styled';
 
-export const Container = styled.div`
+export const Container = styled(Panel)`
   position: relative;
-  margin: ${styles.offsets.l};
-  padding: ${styles.offsets.s};
-  border-radius: ${styles.borderRadius.m};
-  background-color: ${styles.colors.general.grey1};
 `;
 
 export const Canvas = styled.canvas``;

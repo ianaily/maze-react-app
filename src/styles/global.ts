@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     border-radius: ${styles.borderRadius.m};
     box-shadow: ${styles.boxShadow.likeButton};
-    color: ${styles.colors.font.black};
+    color: ${styles.colors.font.white};
     transition: ${styles.transition.background}, ${styles.transition.boxShadow};
 
     &:hover {

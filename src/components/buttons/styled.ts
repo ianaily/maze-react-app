@@ -2,18 +2,18 @@ import styled from 'styled-components';
 import { styles } from 'src/styles/styles';
 
 export const SaveButton = styled.button`
-  background-color: ${styles.colors.background.green};
+  background-color: ${styles.colors.general.green};
 
   &:hover {
-    background-color: ${styles.colors.background.darkGreen};
+    background-color: ${styles.colors.general.darkGreen};
   }
 `;
 
 export const LoadButton = styled.button`
-  background-color: ${styles.colors.background.blue};
+  background-color: ${styles.colors.general.blue};
 
   &:hover {
-    background-color: ${styles.colors.background.darkBlue};
+    background-color: ${styles.colors.general.darkBlue};
   }
 `;
 

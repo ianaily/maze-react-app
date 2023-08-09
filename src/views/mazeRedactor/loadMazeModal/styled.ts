@@ -20,7 +20,7 @@ export const MazeItem = styled.div<{ selected: boolean }>`
   ${({ selected }) =>
     selected &&
     css`
-      background-color: ${styles.colors.background.darkBlue};
+      background-color: ${styles.colors.general.darkBlue};
     `}
   cursor: pointer;
   transition: ${styles.transition.background}, ${styles.transition.boxShadow};
@@ -29,7 +29,7 @@ export const MazeItem = styled.div<{ selected: boolean }>`
     ${({ selected }) =>
       !selected &&
       css`
-        background-color: ${styles.colors.background.blue};
+        background-color: ${styles.colors.general.blue};
         box-shadow: ${styles.boxShadow.likeButton};
       `}
   }

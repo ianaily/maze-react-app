@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { styles } from 'src/styles/styles';
 
 export const GenerateContainer = styled.div`
@@ -8,7 +8,7 @@ export const GenerateContainer = styled.div`
   margin: ${styles.offsets.l};
   padding: ${styles.offsets.s};
   border-radius: ${styles.borderRadius.m};
-  background-color: ${styles.colors.background.grey1};
+  background-color: ${styles.colors.general.grey1};
 `;
 
 export const SizeContainer = styled.div`
@@ -17,4 +17,27 @@ export const SizeContainer = styled.div`
   gap: ${styles.offsets.s};
 `;
 
-export const Input = styled.input``;
+export const Input = styled.input<{ invalid: boolean }>`
+  &:not(:focus) {
+    box-shadow: ${styles.boxShadow.besideBlue};
+  }
+
+  &:focus {
+    box-shadow: ${styles.boxShadow.underlineBlue};
+    background-color: ${styles.colors.general.light};
+  }
+
+  ${({ invalid }) =>
+    invalid &&
+    css`
+      &:not(:focus) {
+        background-color: ${styles.colors.transparent.darkRed};
+        color: ${styles.colors.general.red};
+        box-shadow: ${styles.boxShadow.besideRed};
+      }
+
+      &:focus {
+        box-shadow: ${styles.boxShadow.underlineRed};
+      }
+    `}
+`;

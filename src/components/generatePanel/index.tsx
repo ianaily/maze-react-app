@@ -8,24 +8,29 @@ export const GeneratePanel: React.FC<GeneratePanelProps> = ({ onGenerate }) => {
   const [height, setHeight] = React.useState(24);
 
   const handleWidthChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setWidth(Math.max(+target.value, 10));
+    setWidth(+target.value);
   };
 
   const handleHeightChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setHeight(Math.max(+target.value, 10));
+    setHeight(+target.value);
   };
 
   const handleGenerate = () => {
     onGenerate(width, height);
   };
 
+  const invalidWidth = width < 10;
+  const invalidHeight = height < 10;
+
   return (
     <GenerateContainer>
       <SizeContainer>
-        <Input type="number" min="10" minLength={2} value={width} onChange={handleWidthChange} />
-        <Input type="number" min="10" minLength={2} value={height} onChange={handleHeightChange} />
+        <Input type="number" value={width} onChange={handleWidthChange} invalid={invalidWidth} />
+        <Input type="number" value={height} onChange={handleHeightChange} invalid={invalidHeight} />
       </SizeContainer>
-      <SaveButton onClick={handleGenerate}>Generate</SaveButton>
+      <SaveButton onClick={handleGenerate} disabled={invalidWidth || invalidHeight}>
+        Generate
+      </SaveButton>
     </GenerateContainer>
   );
 };

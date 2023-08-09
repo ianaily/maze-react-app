@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-    background-color: ${styles.colors.background.dark};
+    background-color: ${styles.colors.general.dark};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
@@ -56,10 +56,6 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: ${styles.borderRadius.m};
     background-color: ${styles.colors.transparent.light3};
     color: ${styles.colors.font.black};
-
-    &:focus {
-      box-shadow: ${styles.boxShadow.beside};
-      background-color: ${styles.colors.background.light};
-    }
+    transition: ${styles.transition.background}, ${styles.transition.boxShadow};
   }
 `;

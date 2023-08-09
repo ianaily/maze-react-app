@@ -8,7 +8,7 @@ export const ControlContainer = styled.div`
   margin: ${styles.offsets.l};
   padding: ${styles.offsets.s};
   border-radius: ${styles.borderRadius.m};
-  background-color: ${styles.colors.background.grey1};
+  background-color: ${styles.colors.general.grey1};
 `;
 
 export const ButtonContainer = styled.div`

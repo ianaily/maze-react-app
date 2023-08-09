@@ -24,7 +24,7 @@ export const ModalContent = styled.div`
   min-width: 385px;
   min-height: 256px;
   border-radius: ${styles.borderRadius.m};
-  background-color: ${styles.colors.background.grey1};
+  background-color: ${styles.colors.general.grey1};
   color: ${styles.colors.font.white};
   box-shadow: ${styles.boxShadow.regular};
 `;
@@ -35,15 +35,15 @@ export const ModalHeader = styled.div`
   align-items: center;
   width: 100%;
   padding: ${styles.offsets.m};
-  border-bottom: 1px solid ${styles.colors.background.grey0};
+  border-bottom: 1px solid ${styles.colors.general.grey0};
   border-radius: ${styles.borderRadius.m} ${styles.borderRadius.m} 0 0;
-  background-color: ${styles.colors.background.grey2};
+  background-color: ${styles.colors.general.grey2};
 `;
 
 export const ModalBody = styled.div`
   width: 100%;
   padding: ${styles.offsets.m};
-  background-color: ${styles.colors.background.grey1};
+  background-color: ${styles.colors.general.grey1};
 `;
 
 export const ModalFooter = styled.div`
@@ -52,7 +52,7 @@ export const ModalFooter = styled.div`
   align-items: center;
   width: 100%;
   padding: ${styles.offsets.m};
-  border-top: 1px solid ${styles.colors.background.grey0};
+  border-top: 1px solid ${styles.colors.general.grey0};
   border-radius: 0 0 ${styles.borderRadius.m} ${styles.borderRadius.m};
-  background-color: ${styles.colors.background.grey2};
+  background-color: ${styles.colors.general.grey2};
 `;

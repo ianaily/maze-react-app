@@ -1,5 +1,5 @@
 export const colors = {
-  background: {
+  general: {
     dark: '#221F2E',
     grey0: '#303a4f',
     grey1: '#404a5f',
@@ -9,6 +9,7 @@ export const colors = {
     darkBlue: '#4585cf',
     green: '#69ffbe',
     darkGreen: '#45cf85',
+    red: '#ff698e',
   },
   font: {
     white: '#e0eaff',
@@ -28,5 +29,6 @@ export const colors = {
     light1: 'rgba(224, 242, 255, .1)',
     light2: 'rgba(224, 242, 255, .2)',
     light3: 'rgba(224, 242, 255, .3)',
+    darkRed: 'rgba(224, 80, 100, .2)',
   },
 };

@@ -3,16 +3,18 @@ import { SaveButton } from 'src/components/buttons/styled';
 import { GeneratePanelProps } from './types';
 import { GenerateContainer, Input, SizeContainer } from './styled';
 
+const max = 250;
+
 export const GeneratePanel: React.FC<GeneratePanelProps> = ({ onGenerate }) => {
   const [width, setWidth] = React.useState(32);
   const [height, setHeight] = React.useState(24);
 
   const handleWidthChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setWidth(+target.value);
+    setWidth(Math.min(+target.value, max));
   };
 
   const handleHeightChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setHeight(+target.value);
+    setHeight(Math.min(+target.value, max));
   };
 
   const handleGenerate = () => {

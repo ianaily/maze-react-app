@@ -7,6 +7,8 @@ import { randomId } from 'src/utils/random';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 
+const mazeKeyPrefix = 'maze-';
+
 export class MazeStore {
   constructor() {
     makeObservable(this, {
@@ -44,10 +46,14 @@ export class MazeStore {
     this.fillAreaType = type;
   };
 
-  loadMazeList = (): Promise<void> => {
-    return localforage.getItem<string[]>('mazeList').then((list) => {
-      this.mazeList = list || [];
-    });
+  loadMazeList = (): Promise<string[]> => {
+    return localforage
+      .keys()
+      .then((list) => list?.filter((key) => key.includes(mazeKeyPrefix)) || [])
+      .then((mazeList) => {
+        this.mazeList = mazeList;
+        return mazeList;
+      });
   };
 
   load = async (id: string): Promise<void> => {
@@ -63,21 +69,12 @@ export class MazeStore {
     }
   };
 
-  saveMazeList = async (): Promise<void> => {
-    const uniqArray = [...new Set(toJS(this.mazeList))];
-    await localforage.setItem<string[]>('mazeList', uniqArray);
-
-    return;
-  };
-
   save = async (): Promise<void> => {
     if (this.mazeId) {
       await localforage.setItem(this.mazeId, toJS(this.maze));
     } else {
-      this.mazeId = `maze-${randomId()}`;
+      this.mazeId = `${mazeKeyPrefix}${randomId()}`;
       await this.loadMazeList();
-      this.mazeList.push(this.mazeId);
-      await this.saveMazeList();
       await localforage.setItem(this.mazeId, toJS(this.maze));
     }
   };

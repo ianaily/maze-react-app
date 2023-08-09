@@ -18,9 +18,7 @@ export const SizeContainer = styled.div`
 `;
 
 export const Input = styled.input<{ invalid: boolean }>`
-  &:not(:focus) {
-    box-shadow: ${styles.boxShadow.besideBlue};
-  }
+  width: 90px;
 
   &:focus {
     box-shadow: ${styles.boxShadow.underlineBlue};

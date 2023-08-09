@@ -5,6 +5,10 @@ export const ControlContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   margin: ${styles.offsets.l};
   padding: ${styles.offsets.s};
   border-radius: ${styles.borderRadius.m};

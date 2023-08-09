@@ -78,6 +78,10 @@ export class MazeStore {
       await this.loadMazeList();
     }
   };
+
+  delete = async (mazeId: string) => {
+    await localforage.removeItem(mazeId);
+  };
 }
 
 export default new MazeStore();

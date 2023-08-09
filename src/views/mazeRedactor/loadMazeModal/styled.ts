@@ -14,7 +14,18 @@ export const MazeLoadList = styled.div`
   gap: 2px;
 `;
 
+export const DeleteButton = styled.span`
+  color: ${styles.colors.general.red};
+  font-weight: bolder;
+
+  &:hover {
+    color: ${styles.colors.font.white};
+  }
+`;
+
 export const MazeItem = styled.div<{ selected: boolean }>`
+  display: flex;
+  justify-content: space-between;
   padding: ${styles.offsets.m} ${styles.offsets.l};
   border-radius: ${styles.borderRadius.m};
   color: ${styles.colors.font.black};
@@ -34,5 +45,9 @@ export const MazeItem = styled.div<{ selected: boolean }>`
         background-color: ${styles.colors.general.blue};
         box-shadow: ${styles.boxShadow.likeButton};
       `}
+  }
+
+  &:hover:has(${DeleteButton}:hover) {
+    background-color: ${styles.colors.general.red};
   }
 `;

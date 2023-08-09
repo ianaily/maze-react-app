@@ -1,18 +1,18 @@
 import React from 'react';
 import { toJS } from 'mobx';
-import { MobXProviderContext, observer } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { getNextAreaType } from 'src/utils/areaUtils';
 import { AreaTypes } from 'src/types/maze';
+import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
 import { ControlPanel } from 'src/components/controlPanel';
-import { StoresType } from './types';
 import { LoadMazeModal } from './loadMazeModal';
 
 const size = { width: 32, height: 24 };
 
 export const MazeRedactor: React.FC = observer(() => {
-  const { mazeStore, cursorStore } = React.useContext(MobXProviderContext) as StoresType;
+  const { mazeStore, cursorStore } = React.useContext(StoreContext);
   const [showLoadModal, setShowLoadModal] = React.useState(false);
 
   const keyActionMap: { [key: string]: VoidFunction } = {

@@ -2,7 +2,7 @@ import { makeObservable, action, computed, observable } from 'mobx';
 import * as utils from 'src/utils/pointUtils';
 import { Cursor } from 'src/types/cursor';
 
-export default class CursorStore {
+export class CursorStore {
   constructor() {
     makeObservable(this, {
       cursor: observable,
@@ -74,3 +74,5 @@ export default class CursorStore {
     }
   };
 }
+
+export default new CursorStore();

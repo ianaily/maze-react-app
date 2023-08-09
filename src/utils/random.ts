@@ -5,3 +5,5 @@ export const random = (max: number, min?: number) => {
 };
 
 export const randomBoolean = () => Math.random() >= 0.5;
+
+export const randomId = () => `${Date.now()}${random(10)}`;

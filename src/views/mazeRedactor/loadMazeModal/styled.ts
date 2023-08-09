@@ -8,6 +8,12 @@ export const ControlContainer = styled.div`
   gap: ${styles.offsets.s};
 `;
 
+export const MazeLoadList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;
+
 export const MazeItem = styled.div<{ selected: boolean }>`
   padding: ${styles.offsets.m} ${styles.offsets.l};
   border-radius: ${styles.borderRadius.m};
@@ -20,10 +26,10 @@ export const MazeItem = styled.div<{ selected: boolean }>`
   transition: ${styles.transition.background}, ${styles.transition.boxShadow};
 
   &:hover {
-    background-color: ${styles.colors.background.darkBlue};
     ${({ selected }) =>
       !selected &&
       css`
+        background-color: ${styles.colors.background.blue};
         box-shadow: ${styles.boxShadow.likeButton};
       `}
   }

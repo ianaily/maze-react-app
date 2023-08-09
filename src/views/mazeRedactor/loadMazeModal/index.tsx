@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal } from 'src/components/modal';
 import { CancelButton, LoadButton } from 'src/components/buttons/styled';
 import { LoadMazeModalProps } from './types';
-import { ControlContainer, MazeItem } from './styled';
+import { ControlContainer, MazeItem, MazeLoadList } from './styled';
 
 export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({ mazeList, onLoad, onCancel }) => {
   const [selectedItem, setSelectedItem] = React.useState<string>();
@@ -24,11 +24,17 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({ mazeList, onLoad, 
         </ControlContainer>
       }
     >
-      {mazeList.map((item) => (
-        <MazeItem key={item} selected={item === selectedItem} onClick={() => setSelectedItem(item)}>
-          {item}
-        </MazeItem>
-      ))}
+      <MazeLoadList>
+        {mazeList.map((item) => (
+          <MazeItem
+            key={item}
+            selected={item === selectedItem}
+            onClick={() => setSelectedItem(item)}
+          >
+            {item}
+          </MazeItem>
+        ))}
+      </MazeLoadList>
     </Modal>
   );
 };

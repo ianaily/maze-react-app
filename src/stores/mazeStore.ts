@@ -3,10 +3,11 @@ import localforage from 'localforage';
 import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
 import { mazeUtils } from 'src/utils/mazeUtils';
+import { randomId } from 'src/utils/random';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 
-class MazeStore {
+export class MazeStore {
   constructor() {
     makeObservable(this, {
       maze: observable,
@@ -51,6 +52,7 @@ class MazeStore {
 
   load = async (id: string): Promise<void> => {
     const maze = await localforage.getItem<Maze>(id);
+    this.mazeId = id;
 
     if (maze) {
       this.maze = maze;
@@ -70,9 +72,9 @@ class MazeStore {
 
   save = async (): Promise<void> => {
     if (this.mazeId) {
-      await localforage.setItem(`maze-${this.mazeId}`, toJS(this.maze));
+      await localforage.setItem(this.mazeId, toJS(this.maze));
     } else {
-      this.mazeId = `maze-${this.mazeList.length}`;
+      this.mazeId = `maze-${randomId()}`;
       await this.loadMazeList();
       this.mazeList.push(this.mazeId);
       await this.saveMazeList();
@@ -81,4 +83,4 @@ class MazeStore {
   };
 }
 
-export default MazeStore;
+export default new MazeStore();

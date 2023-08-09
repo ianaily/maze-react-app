@@ -1,20 +1,17 @@
 import React from 'react';
-import { Provider } from 'mobx-react';
-import MazeStore from 'src/stores/mazeStore';
-import CursorStore from 'src/stores/cursorStore';
+import mazeStore from 'src/stores/mazeStore';
+import cursorStore from 'src/stores/cursorStore';
+import { StoreContext } from 'src/context/storeContext';
 import { GlobalStyle } from 'src/styles/global';
 import { MazeRedactor } from 'src/views/mazeRedactor';
 
 export default function App() {
-  const mazeStore = React.useMemo(() => new MazeStore(), []);
-  const cursorStore = React.useMemo(() => new CursorStore(), []);
-
   return (
     <React.Fragment>
-      <Provider mazeStore={mazeStore} cursorStore={cursorStore}>
+      <StoreContext.Provider value={{ mazeStore, cursorStore }}>
         <GlobalStyle />
         <MazeRedactor />
-      </Provider>
+      </StoreContext.Provider>
     </React.Fragment>
   );
 }

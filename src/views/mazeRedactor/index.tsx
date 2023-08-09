@@ -76,6 +76,7 @@ export const MazeRedactor: React.FC = observer(() => {
   };
 
   React.useEffect(() => {
+    mazeStore.loadMazeList();
     React.startTransition(() => initMaze());
   }, []);
 

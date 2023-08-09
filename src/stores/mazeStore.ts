@@ -74,8 +74,8 @@ export class MazeStore {
       await localforage.setItem(this.mazeId, toJS(this.maze));
     } else {
       this.mazeId = `${mazeKeyPrefix}${randomId()}`;
-      await this.loadMazeList();
       await localforage.setItem(this.mazeId, toJS(this.maze));
+      await this.loadMazeList();
     }
   };
 }

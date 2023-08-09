@@ -17,10 +17,12 @@ export const MazeLoadList = styled.div`
 export const MazeItem = styled.div<{ selected: boolean }>`
   padding: ${styles.offsets.m} ${styles.offsets.l};
   border-radius: ${styles.borderRadius.m};
+  color: ${styles.colors.font.black};
   ${({ selected }) =>
     selected &&
     css`
       background-color: ${styles.colors.general.darkBlue};
+      color: ${styles.colors.font.white};
     `}
   cursor: pointer;
   transition: ${styles.transition.background}, ${styles.transition.boxShadow};

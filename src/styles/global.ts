@@ -2,10 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import { styles } from './styles';
+import { toastify } from './toastify';
 import './reset.css';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}
+  ${toastify}
   html, body {
     font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

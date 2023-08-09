@@ -1,7 +1,7 @@
 import React from 'react';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { useKeyboard } from 'src/hooks/useKeyboard';
+import { toast } from 'react-toastify';
 import { getNextAreaType } from 'src/utils/areaUtils';
 import { AreaTypes } from 'src/types/maze';
 import { StoreContext } from 'src/context/storeContext';
@@ -58,14 +58,14 @@ export const MazeRedactor: React.FC = observer(() => {
   };
 
   const handleSave = () => {
-    mazeStore.save().then(() => console.log('saved!'));
+    mazeStore.save().then(() => toast('Saved!'));
   };
 
   const handleLoad = (mazeId: string) => {
     mazeStore.load(mazeId).then(() => {
       cursorStore.setBoxSize(mazeStore.width, mazeStore.height);
       cursorStore.reset();
-      console.log('loaded!');
+      toast('Loaded!');
     });
   };
 

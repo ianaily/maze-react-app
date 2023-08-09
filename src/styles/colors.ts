@@ -31,6 +31,7 @@ export const colors = {
     light1: 'rgba(224, 242, 255, .1)',
     light2: 'rgba(224, 242, 255, .2)',
     light3: 'rgba(224, 242, 255, .3)',
+    light4: 'rgba(224, 242, 255, .4)',
     light5: 'rgba(224, 242, 255, .5)',
     light6: 'rgba(224, 242, 255, .6)',
     light7: 'rgba(224, 242, 255, .7)',

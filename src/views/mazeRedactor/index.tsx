@@ -3,18 +3,21 @@ import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { getNextAreaType } from 'src/utils/areaUtils';
+import { Point } from 'src/types/point';
 import { AreaTypes } from 'src/types/maze';
 import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
 import { ControlPanel } from 'src/components/controlPanel';
 import { GeneratePanel } from 'src/components/generatePanel';
 import { LoadMazeModal } from './loadMazeModal';
+import { hugeSizeFrom } from './const';
 
 const defaultSize = { width: 32, height: 24 };
 
 export const MazeRedactor: React.FC = observer(() => {
   const { mazeStore, cursorStore } = React.useContext(StoreContext);
   const [showLoadModal, setShowLoadModal] = React.useState(false);
+  const [enableCoords, setEnableCoords] = React.useState(true);
 
   const keyActionMap: { [key: string]: VoidFunction } = {
     'r': () => initMaze(),
@@ -36,6 +39,9 @@ export const MazeRedactor: React.FC = observer(() => {
   };
 
   const initMaze = (width: number = defaultSize.width, height: number = defaultSize.height) => {
+    const tooBig = width > hugeSizeFrom || height > hugeSizeFrom;
+
+    setEnableCoords(!tooBig);
     mazeStore.generate(width, height);
     cursorStore.setBoxSize(width, height);
     cursorStore.setEnable(true);
@@ -43,10 +49,6 @@ export const MazeRedactor: React.FC = observer(() => {
   };
 
   const handleKeyDown = (key: string) => {
-    if (showLoadModal) {
-      return;
-    }
-
     keyActionMap[key]?.();
 
     if (cursorStore.enabled) {
@@ -55,6 +57,10 @@ export const MazeRedactor: React.FC = observer(() => {
       ['ArrowDown', 's'].includes(key) && cursorStore.toDown();
       ['ArrowLeft', 'a'].includes(key) && cursorStore.toLeft();
     }
+  };
+
+  const handleAreaClick = (areaPoint: Point) => {
+    mazeStore.changeAreaType(areaPoint);
   };
 
   const handleSave = () => {
@@ -69,10 +75,7 @@ export const MazeRedactor: React.FC = observer(() => {
     });
   };
 
-  useKeyboard(handleKeyDown);
-
   React.useEffect(() => {
-    mazeStore.loadMazeList();
     React.startTransition(() => initMaze());
   }, []);
 
@@ -82,8 +85,11 @@ export const MazeRedactor: React.FC = observer(() => {
       <Renderer
         maze={mazeStore.maze}
         cursor={toJS(cursorStore.cursor)}
-        canvasWidth={1280}
-        canvasHeight={1024}
+        canvasWidth={window.innerWidth - 80}
+        canvasHeight={window.innerHeight * 0.7}
+        onKeyDown={handleKeyDown}
+        onAreaClick={handleAreaClick}
+        enableCoords={enableCoords}
       />
       <ControlPanel
         onSave={handleSave}

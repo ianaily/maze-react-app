@@ -16,6 +16,7 @@ export const styles = {
   },
   boxShadow: {
     likeButton: `inset 0 -4px 0 0 ${colors.transparent.dark3}`,
+    beside: `inset 24px 0 0px -18px ${colors.background.blue}`,
     regular: '0 4px 16px rgba(0, 20, 40, 0.2)',
   },
   transition: {

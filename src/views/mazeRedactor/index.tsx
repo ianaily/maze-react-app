@@ -7,9 +7,10 @@ import { AreaTypes } from 'src/types/maze';
 import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
 import { ControlPanel } from 'src/components/controlPanel';
+import { GeneratePanel } from 'src/components/generatePanel';
 import { LoadMazeModal } from './loadMazeModal';
 
-const size = { width: 32, height: 24 };
+const defaultSize = { width: 32, height: 24 };
 
 export const MazeRedactor: React.FC = observer(() => {
   const { mazeStore, cursorStore } = React.useContext(StoreContext);
@@ -34,9 +35,9 @@ export const MazeRedactor: React.FC = observer(() => {
     mazeStore.changeAreaType(cursorStore.cursor.point, nextType);
   };
 
-  const initMaze = () => {
-    mazeStore.generate(size.width, size.height);
-    cursorStore.setBoxSize(size.width, size.height);
+  const initMaze = (width: number = defaultSize.width, height: number = defaultSize.height) => {
+    mazeStore.generate(width, height);
+    cursorStore.setBoxSize(width, height);
     cursorStore.setEnable(true);
     cursorStore.reset();
   };
@@ -77,6 +78,7 @@ export const MazeRedactor: React.FC = observer(() => {
 
   return (
     <React.Fragment>
+      <GeneratePanel onGenerate={initMaze} />
       <Renderer
         maze={mazeStore.maze}
         cursor={toJS(cursorStore.cursor)}

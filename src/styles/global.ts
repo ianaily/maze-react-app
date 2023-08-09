@@ -49,4 +49,17 @@ export const GlobalStyle = createGlobalStyle`
       color: ${styles.colors.font.white};
     }
   }
+
+  input[type=text], input[type=number] {
+    padding: ${styles.offsets.button};
+    border: none;
+    border-radius: ${styles.borderRadius.m};
+    background-color: ${styles.colors.transparent.light3};
+    color: ${styles.colors.font.black};
+
+    &:focus {
+      box-shadow: ${styles.boxShadow.beside};
+      background-color: ${styles.colors.background.light};
+    }
+  }
 `;

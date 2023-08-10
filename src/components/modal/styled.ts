@@ -42,7 +42,7 @@ export const ModalHeader = styled.div`
 
 export const ModalBody = styled.div`
   width: 100%;
-  min-height: 96px;
+  min-height: 56px;
   padding: ${styles.offsets.m};
   background-color: ${styles.colors.transparent.light6};
 `;

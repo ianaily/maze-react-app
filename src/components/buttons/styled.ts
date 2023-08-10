@@ -17,6 +17,14 @@ export const LoadButton = styled.button`
   }
 `;
 
+export const DeleteButton = styled.button`
+  background-color: ${styles.colors.general.red};
+
+  &:hover {
+    background-color: ${styles.colors.general.darkRed};
+  }
+`;
+
 export const CancelButton = styled.button`
   background-color: ${styles.colors.disabled.light};
 

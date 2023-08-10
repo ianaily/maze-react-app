@@ -75,10 +75,11 @@ export const MazeRedactor: React.FC = observer(() => {
     });
   };
 
-  const handleDelete = (mazeId: string) => {
+  const handleDelete = (mazeId?: string) => {
     mazeStore.delete(mazeId).then(async () => {
       toast('Deleted!');
       await mazeStore.loadMazeList();
+      !mazeId && initMaze();
     });
   };
 
@@ -103,6 +104,8 @@ export const MazeRedactor: React.FC = observer(() => {
         onSave={handleSave}
         enableLoad={!!mazeStore.mazeList.length}
         onLoad={() => setShowLoadModal(true)}
+        enableDelete={!!mazeStore.mazeId}
+        onDelete={() => handleDelete()}
       />
       {showLoadModal && (
         <LoadMazeModal

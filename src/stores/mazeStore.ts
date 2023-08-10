@@ -39,6 +39,7 @@ export class MazeStore {
     this.height = height;
     const initial = buildMazePots(width, height);
     this.maze = generateMaze(initial);
+    this.mazeId = null;
   };
 
   changeAreaType = (point: Point, type: AreaType = this.fillAreaType) => {
@@ -79,8 +80,8 @@ export class MazeStore {
     }
   };
 
-  delete = async (mazeId: string) => {
-    await localforage.removeItem(mazeId);
+  delete = async (mazeId?: string) => {
+    await localforage.removeItem(mazeId || this.mazeId || '');
   };
 }
 

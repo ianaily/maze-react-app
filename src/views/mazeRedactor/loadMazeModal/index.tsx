@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal } from 'src/components/modal';
-import { CancelButton, LoadButton } from 'src/components/buttons/styled';
+import { CancelButton, DeleteButton, LoadButton } from 'src/components/buttons/styled';
 import { LoadMazeModalProps } from './types';
-import { ControlContainer, DeleteButton, MazeItem, MazeLoadList } from './styled';
+import { ControlContainer, MazeItem, MazeLoadList } from './styled';
 
 export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
   mazeList,
@@ -11,15 +11,15 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
   onCancel,
 }) => {
   const [selectedItem, setSelectedItem] = React.useState<string>();
+  const [toDelete, setToDelete] = React.useState<boolean>(false);
 
   const handleLoad = () => {
     selectedItem && onLoad(selectedItem);
     onCancel();
   };
 
-  const handleDelete = (id: string) => {
-    onDelete(id);
-    onCancel();
+  const handleDelete = () => {
+    selectedItem && onDelete(selectedItem);
   };
 
   return (
@@ -28,6 +28,14 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
       footer={
         <ControlContainer>
           <CancelButton onClick={onCancel}>Cancel</CancelButton>
+          <DeleteButton
+            onClick={handleDelete}
+            onMouseEnter={() => setToDelete(true)}
+            onMouseLeave={() => setToDelete(false)}
+            disabled={!selectedItem}
+          >
+            Delete
+          </DeleteButton>
           <LoadButton onClick={handleLoad} disabled={!selectedItem}>
             Load
           </LoadButton>
@@ -39,10 +47,10 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
           <MazeItem
             key={item}
             selected={item === selectedItem}
+            toDelete={toDelete}
             onClick={() => setSelectedItem(item)}
           >
             {item}
-            <DeleteButton onClick={() => handleDelete(item)}>Delete</DeleteButton>
           </MazeItem>
         ))}
       </MazeLoadList>

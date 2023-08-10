@@ -6,7 +6,6 @@ export interface RendererProps {
   maze: Maze;
   cursor: Cursor;
   canvasWidth: number;
-  canvasHeight: number;
   onKeyDown: (key: string) => void;
   onAreaClick: (area: Point) => void;
   enableCoords: boolean;

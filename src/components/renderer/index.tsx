@@ -11,7 +11,6 @@ export const Renderer: React.FC<RendererProps> = ({
   maze,
   cursor,
   canvasWidth,
-  canvasHeight,
   onKeyDown,
   onAreaClick,
   enableCoords,
@@ -20,12 +19,8 @@ export const Renderer: React.FC<RendererProps> = ({
   const context = React.useMemo(() => canvasRef.current?.getContext('2d'), [canvasRef.current]);
   const { getAreaType } = React.useMemo(() => mazeUtils(maze), [maze]);
 
-  const areaSize = React.useMemo(() => {
-    const largerMazeSide = Math.max(maze.width, maze.height);
-    const largerCanvasSize = Math.max(canvasWidth, canvasHeight);
-
-    return largerCanvasSize / largerMazeSide;
-  }, [maze, canvasWidth, canvasHeight]);
+  const areaSize = React.useMemo(() => canvasWidth / maze.width, [maze.width, canvasWidth]);
+  const canvasHeight = React.useMemo(() => areaSize * maze.height, [areaSize, maze.height]);
 
   const drawArea = ({ x, y, type }: Area) => {
     if (!context) {
@@ -46,7 +41,7 @@ export const Renderer: React.FC<RendererProps> = ({
     context.fillText(`${x}:${y}`, x * areaSize, y * areaSize + offset, areaSize);
   };
 
-  const drawCursor = ({ x, y }: Point) => {
+  const drawSelect = ({ x, y }: Point) => {
     if (!context) {
       return;
     }
@@ -56,6 +51,36 @@ export const Renderer: React.FC<RendererProps> = ({
     context.lineWidth = cursorStyle.lineWidth;
     context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
     context.strokeRect(x * areaSize + 2, y * areaSize + 2, areaSize - 4, areaSize - 4);
+  };
+
+  const drawMaze = () => {
+    React.startTransition(() => {
+      if (canvasRef.current) {
+        const canvas = canvasRef.current;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        canvas.style.height = `${canvasHeight}px`;
+      }
+
+      context?.clearRect(0, 0, canvasWidth, canvasHeight);
+      maze.areas.map((area) => {
+        drawArea(area);
+        drawCoords(area);
+      });
+    });
+  };
+
+  const drawCursor = () => {
+    React.startTransition(() => {
+      if (cursor.enable && maze.areas.length) {
+        const { point, prevPoint } = cursor;
+        const type = getAreaType(prevPoint);
+
+        drawSelect(point);
+        drawArea({ ...prevPoint, type });
+        drawCoords({ ...prevPoint });
+      }
+    });
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -96,24 +121,11 @@ export const Renderer: React.FC<RendererProps> = ({
   }, [context]);
 
   React.useEffect(() => {
-    React.startTransition(() => {
-      context?.clearRect(0, 0, canvasWidth, canvasHeight);
-      maze.areas.map((area) => {
-        drawArea(area);
-        drawCoords(area);
-      });
-    });
+    drawMaze();
   }, [maze, context]);
 
   React.useEffect(() => {
-    if (cursor.enable && maze.areas.length) {
-      const { point, prevPoint } = cursor;
-      const type = getAreaType(prevPoint);
-
-      drawCursor(point);
-      drawArea({ ...prevPoint, type });
-      drawCoords({ ...prevPoint });
-    }
+    drawCursor();
   }, [cursor, maze]);
 
   return (

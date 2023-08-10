@@ -60,4 +60,23 @@ export const GlobalStyle = createGlobalStyle`
     color: ${styles.colors.font.black};
     transition: ${styles.transition.background}, ${styles.transition.boxShadow};
   }
+
+  ::-webkit-scrollbar {
+    width: ${styles.offsets.s};
+    border-radius: ${styles.borderRadius.m};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: ${styles.borderRadius.m};
+    background-color: ${styles.colors.transparent.light1};
+    box-shadow: ${styles.boxShadow.regular};
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${styles.colors.transparent.dark2};
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
 `;

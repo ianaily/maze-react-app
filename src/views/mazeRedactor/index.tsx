@@ -95,7 +95,6 @@ export const MazeRedactor: React.FC = observer(() => {
         maze={mazeStore.maze}
         cursor={toJS(cursorStore.cursor)}
         canvasWidth={window.innerWidth - 80}
-        canvasHeight={window.innerHeight * 0.7}
         onKeyDown={handleKeyDown}
         onAreaClick={handleAreaClick}
         enableCoords={enableCoords}

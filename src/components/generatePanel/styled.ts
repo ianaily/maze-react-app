@@ -6,6 +6,7 @@ export const GenerateContainer = styled(Panel)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: calc(${styles.offsets.xl} * 4);
 `;
 
 export const SizeContainer = styled.div`

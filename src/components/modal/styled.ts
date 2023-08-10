@@ -12,6 +12,7 @@ export const ModalBackdrop = styled.div`
   left: 0;
   background-color: ${styles.colors.transparent.dark1};
   backdrop-filter: blur(8px);
+  z-index: ${styles.zIndex.above};
   transition: ${styles.transition.background};
 `;
 
@@ -23,7 +24,6 @@ export const ModalContent = styled.div`
   position: absolute;
   min-width: 385px;
   border-radius: ${styles.borderRadius.m};
-  background-color: ${styles.colors.transparent.light3};
   color: ${styles.colors.font.white};
   box-shadow: ${styles.boxShadow.regular};
 `;
@@ -44,7 +44,7 @@ export const ModalBody = styled.div`
   width: 100%;
   min-height: 56px;
   padding: ${styles.offsets.m};
-  background-color: ${styles.colors.transparent.light6};
+  background-color: ${styles.colors.transparent.light5};
 `;
 
 export const ModalFooter = styled.div`
@@ -55,5 +55,5 @@ export const ModalFooter = styled.div`
   padding: ${styles.offsets.m};
   border-top: 1px solid ${styles.colors.general.grey0};
   border-radius: 0 0 ${styles.borderRadius.m} ${styles.borderRadius.m};
-  background-color: ${styles.colors.transparent.light5};
+  background-color: ${styles.colors.transparent.light4};
 `;

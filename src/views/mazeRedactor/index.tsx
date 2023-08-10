@@ -8,9 +8,11 @@ import { AreaTypes } from 'src/types/maze';
 import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
 import { ControlPanel } from 'src/components/controlPanel';
+import { PalettePanel } from 'src/components/palettePanel';
 import { GeneratePanel } from 'src/components/generatePanel';
 import { LoadMazeModal } from './loadMazeModal';
 import { hugeSizeFrom } from './const';
+import { HeadControl } from './styled';
 
 const defaultSize = { width: 32, height: 24 };
 
@@ -90,7 +92,14 @@ export const MazeRedactor: React.FC = observer(() => {
 
   return (
     <React.Fragment>
-      <GeneratePanel onGenerate={initMaze} />
+      <HeadControl>
+        <PalettePanel
+          areaType={mazeStore.fillAreaType}
+          areaTypes={Object.values(AreaTypes)}
+          onSelect={(type) => mazeStore.setFillAreaType(type)}
+        />
+        <GeneratePanel onGenerate={initMaze} />
+      </HeadControl>
       <Renderer
         maze={mazeStore.maze}
         cursor={toJS(cursorStore.cursor)}

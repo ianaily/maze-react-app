@@ -18,6 +18,8 @@ export class MazeStore {
       utils: computed,
       generate: action,
       changeAreaType: action,
+      setFillAreaType: action,
+      setMazeList: action,
       loadMazeList: action,
       load: action,
     });
@@ -44,7 +46,15 @@ export class MazeStore {
 
   changeAreaType = (point: Point, type: AreaType = this.fillAreaType) => {
     this.maze = this.utils.setAreaType(point, type, true);
+    this.setFillAreaType(type);
+  };
+
+  setFillAreaType = (type: AreaType) => {
     this.fillAreaType = type;
+  };
+
+  setMazeList = (mazeList: string[]) => {
+    this.mazeList = mazeList;
   };
 
   loadMazeList = (): Promise<string[]> => {
@@ -52,7 +62,7 @@ export class MazeStore {
       .keys()
       .then((list) => list?.filter((key) => key.includes(mazeKeyPrefix)) || [])
       .then((mazeList) => {
-        this.mazeList = mazeList;
+        this.setMazeList(mazeList);
         return mazeList;
       });
   };

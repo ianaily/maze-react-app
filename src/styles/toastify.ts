@@ -22,7 +22,7 @@ export const toastify = css`
 
   .Toastify__toast {
     border-radius: ${styles.borderRadius.m};
-    background-color: ${styles.colors.transparent.light7};
+    background-color: ${styles.colors.transparent.light5};
     box-shadow: ${styles.boxShadow.regular};
   }
 

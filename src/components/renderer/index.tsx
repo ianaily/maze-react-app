@@ -2,9 +2,9 @@ import React from 'react';
 import { Area } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { mazeUtils } from 'src/utils/mazeUtils';
+import { areaFillStyles, coordsFillStyle, cursorStyle } from 'src/const/areaTypes';
 import { Loading } from 'src/components/loading/styled';
 import { RendererProps } from './types';
-import { areaFillStyles, coordsFillStyle, cursorStyle } from './const';
 import { Canvas, Container } from './styled';
 
 export const Renderer: React.FC<RendererProps> = ({

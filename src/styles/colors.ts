@@ -15,6 +15,7 @@ export const colors = {
   },
   font: {
     white: '#e0eaff',
+    grey: '#808a9f',
     black: '#16202f',
   },
   disabled: {

@@ -3,10 +3,12 @@ import { colors } from './colors';
 export const styles = {
   colors,
   offsets: {
+    xs: '2px',
     s: '8px',
     m: '16px',
     xm: '24px',
     l: '32px',
+    xl: '64px',
     button: '16px 24px',
   },
   borderRadius: {
@@ -26,5 +28,10 @@ export const styles = {
     background: 'background-color ease 0.2s',
     boxShadow: 'box-shadow ease 0.2s',
     ease: 'ease 0.2s',
+  },
+  zIndex: {
+    regular: '0',
+    above: '1',
+    extra: '2',
   },
 };

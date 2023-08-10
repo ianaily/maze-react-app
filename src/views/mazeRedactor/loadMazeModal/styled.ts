@@ -11,7 +11,7 @@ export const ControlContainer = styled.div`
 export const MazeLoadList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: ${styles.offsets.xs};
 `;
 
 export const MazeItem = styled.div<{ selected: boolean; toDelete: boolean }>`

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { styles } from 'src/styles/styles';
 
-export const SaveButton = styled.button`
+export const GreenButton = styled.button`
   background-color: ${styles.colors.general.green};
 
   &:hover {
@@ -9,7 +9,7 @@ export const SaveButton = styled.button`
   }
 `;
 
-export const LoadButton = styled.button`
+export const BlueButton = styled.button`
   background-color: ${styles.colors.general.blue};
 
   &:hover {
@@ -17,7 +17,15 @@ export const LoadButton = styled.button`
   }
 `;
 
-export const DeleteButton = styled.button`
+export const YellowButton = styled.button`
+  background-color: ${styles.colors.general.yellow};
+
+  &:hover {
+    background-color: ${styles.colors.general.darkYellow};
+  }
+`;
+
+export const RedButton = styled.button`
   background-color: ${styles.colors.general.red};
 
   &:hover {
@@ -25,7 +33,7 @@ export const DeleteButton = styled.button`
   }
 `;
 
-export const CancelButton = styled.button`
+export const GreyButton = styled.button`
   background-color: ${styles.colors.disabled.light};
 
   &:hover {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal } from 'src/components/modal';
-import { CancelButton, DeleteButton, LoadButton } from 'src/components/buttons/styled';
+import { Button } from 'src/components/button';
 import { LoadMazeModalProps } from './types';
 import { ControlContainer, MazeItem, MazeLoadList } from './styled';
 
@@ -27,18 +27,21 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
       title={<span>Saved Mazes</span>}
       footer={
         <ControlContainer>
-          <CancelButton onClick={onCancel}>Cancel</CancelButton>
-          <DeleteButton
+          <Button variant="grey" onClick={onCancel}>
+            Cancel
+          </Button>
+          <Button
+            variant="red"
             onClick={handleDelete}
             onMouseEnter={() => setToDelete(true)}
             onMouseLeave={() => setToDelete(false)}
             disabled={!selectedItem}
           >
             Delete
-          </DeleteButton>
-          <LoadButton onClick={handleLoad} disabled={!selectedItem}>
+          </Button>
+          <Button variant="blue" onClick={handleLoad} disabled={!selectedItem}>
             Load
-          </LoadButton>
+          </Button>
         </ControlContainer>
       }
     >

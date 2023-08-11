@@ -1,28 +1,27 @@
 import React from 'react';
-import { SaveButton } from 'src/components/buttons/styled';
+import { defaultMazeSide, maxMazeSide, minMazeSide } from 'src/const/maze';
+import { Button } from 'src/components/button';
 import { GeneratePanelProps } from './types';
 import { GenerateContainer, Input, SizeContainer } from './styled';
 
-const max = 250;
-
 export const GeneratePanel: React.FC<GeneratePanelProps> = ({ onGenerate }) => {
-  const [width, setWidth] = React.useState(32);
-  const [height, setHeight] = React.useState(24);
+  const [width, setWidth] = React.useState(defaultMazeSide);
+  const [height, setHeight] = React.useState(defaultMazeSide);
 
   const handleWidthChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setWidth(Math.min(+target.value, max));
+    setWidth(Math.min(+target.value, maxMazeSide));
   };
 
   const handleHeightChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setHeight(Math.min(+target.value, max));
+    setHeight(Math.min(+target.value, maxMazeSide));
   };
 
   const handleGenerate = () => {
     onGenerate(width, height);
   };
 
-  const invalidWidth = width < 10;
-  const invalidHeight = height < 10;
+  const invalidWidth = width < minMazeSide;
+  const invalidHeight = height < minMazeSide;
 
   return (
     <GenerateContainer>
@@ -30,9 +29,9 @@ export const GeneratePanel: React.FC<GeneratePanelProps> = ({ onGenerate }) => {
         <Input type="number" value={width} onChange={handleWidthChange} invalid={invalidWidth} />
         <Input type="number" value={height} onChange={handleHeightChange} invalid={invalidHeight} />
       </SizeContainer>
-      <SaveButton onClick={handleGenerate} disabled={invalidWidth || invalidHeight}>
+      <Button variant="green" onClick={handleGenerate} disabled={invalidWidth || invalidHeight}>
         Generate
-      </SaveButton>
+      </Button>
     </GenerateContainer>
   );
 };

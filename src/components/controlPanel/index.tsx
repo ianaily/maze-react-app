@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteButton, LoadButton, SaveButton } from 'src/components/buttons/styled';
+import { Button } from 'src/components/button';
 import { ControlPanelProps } from './types';
 import { ButtonContainer, ControlContainer } from './styled';
 
@@ -12,15 +12,17 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
 }) => (
   <ControlContainer>
     <ButtonContainer>
-      <LoadButton onClick={onLoad} disabled={!enableLoad}>
+      <Button variant="blue" onClick={onLoad} disabled={!enableLoad}>
         Load
-      </LoadButton>
+      </Button>
     </ButtonContainer>
     <ButtonContainer>
-      <DeleteButton onClick={onDelete} disabled={!enableDelete}>
+      <Button variant="red" onClick={onDelete} disabled={!enableDelete}>
         Delete
-      </DeleteButton>
-      <SaveButton onClick={onSave}>Save</SaveButton>
+      </Button>
+      <Button variant="green" onClick={onSave}>
+        Save
+      </Button>
     </ButtonContainer>
   </ControlContainer>
 );

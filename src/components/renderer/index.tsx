@@ -13,6 +13,7 @@ export const Renderer: React.FC<RendererProps> = ({
   canvasWidth,
   onKeyDown,
   onAreaClick,
+  onMouseMove,
   enableCoords,
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -83,32 +84,38 @@ export const Renderer: React.FC<RendererProps> = ({
     });
   };
 
+  const calculateCursorPosition = (offset: Point): Point => {
+    const rect = canvasRef.current?.getBoundingClientRect();
+    const mazeWidth = rect?.width || 0;
+    const mazeHeight = rect?.height || 0;
+
+    if (offset.x > mazeWidth || offset.y > mazeHeight) {
+      return { x: 0, y: 0 };
+    }
+
+    return {
+      x: Math.floor(offset.x / areaSize),
+      y: Math.floor(offset.y / areaSize),
+    };
+  };
+
   const handleKeyDown = (event: React.KeyboardEvent) => {
     onKeyDown(event.key);
   };
 
-  const handleClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
-    if (!context || !canvasRef.current) {
-      return;
-    }
-    const offsetX = event.nativeEvent.offsetX;
-    const offsetY = event.nativeEvent.offsetY;
-    const mazeWidth = maze.width * areaSize;
-    const mazeHeight = maze.height * areaSize;
-
-    if (offsetX > mazeWidth || offsetY > mazeHeight) {
-      return;
-    }
-
-    // todo okay... need to correct modifier
-    const modX = offsetX <= mazeWidth / 2 ? -1 : -2;
-    const modY = offsetY <= mazeHeight / 2 ? -1 : -2;
-    const areaPoint = {
-      x: Math.floor(offsetX / (areaSize + modX)),
-      y: Math.floor(offsetY / (areaSize + modY)),
-    };
+  const handleClick = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
+    const offset = { x: nativeEvent.offsetX, y: nativeEvent.offsetY };
+    const areaPoint = calculateCursorPosition(offset);
 
     onAreaClick(areaPoint);
+  };
+
+  const handleMouseMove = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
+    const offset = { x: nativeEvent.offsetX, y: nativeEvent.offsetY };
+    const areaPoint = calculateCursorPosition(offset);
+
+    onMouseMove(areaPoint);
+    drawMaze();
   };
 
   React.useEffect(() => {
@@ -137,6 +144,7 @@ export const Renderer: React.FC<RendererProps> = ({
         height={canvasHeight}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
+        onMouseMove={handleMouseMove}
         tabIndex={0}
       />
     </Container>

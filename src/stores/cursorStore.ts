@@ -1,6 +1,7 @@
 import { makeObservable, action, computed, observable } from 'mobx';
 import * as utils from 'src/utils/pointUtils';
 import { Cursor } from 'src/types/cursor';
+import { Point } from '../types/point';
 
 export class CursorStore {
   constructor() {
@@ -11,6 +12,7 @@ export class CursorStore {
       enabled: computed,
       setEnable: action,
       setBoxSize: action,
+      setCursorPoint: action,
       reset: action,
       toUp: action,
       toRight: action,
@@ -44,6 +46,10 @@ export class CursorStore {
   reset = () => {
     this.cursor.point = { x: 0, y: 0 };
     this.cursor.prevPoint = { x: 0, y: 0 };
+  };
+
+  setCursorPoint = (point: Point) => {
+    this.cursor.point = point;
   };
 
   toUp = () => {

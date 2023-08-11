@@ -65,6 +65,10 @@ export const MazeRedactor: React.FC = observer(() => {
     mazeStore.changeAreaType(areaPoint);
   };
 
+  const handleMouseMove = (areaPoint: Point) => {
+    cursorStore.setCursorPoint(areaPoint);
+  };
+
   const handleSave = () => {
     mazeStore.save().then(() => toast('Saved!'));
   };
@@ -106,6 +110,7 @@ export const MazeRedactor: React.FC = observer(() => {
         canvasWidth={window.innerWidth - 80}
         onKeyDown={handleKeyDown}
         onAreaClick={handleAreaClick}
+        onMouseMove={handleMouseMove}
         enableCoords={enableCoords}
       />
       <ControlPanel

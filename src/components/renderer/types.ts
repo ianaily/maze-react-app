@@ -8,5 +8,6 @@ export interface RendererProps {
   canvasWidth: number;
   onKeyDown: (key: string) => void;
   onAreaClick: (area: Point) => void;
+  onMouseMove: (area: Point) => void;
   enableCoords: boolean;
 }

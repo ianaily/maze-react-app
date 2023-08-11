@@ -15,6 +15,7 @@ export class MazeStore {
       maze: observable,
       fillAreaType: observable,
       mazeList: observable,
+      areaTypes: observable,
       utils: computed,
       generate: action,
       changeAreaType: action,
@@ -31,6 +32,7 @@ export class MazeStore {
   fillAreaType: AreaType = AreaTypes.Wall;
   mazeId: string | null = null;
   mazeList: string[] = [];
+  areaTypes = Object.values(AreaTypes);
 
   get utils() {
     return mazeUtils({ ...this.maze });

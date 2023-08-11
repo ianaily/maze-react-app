@@ -14,6 +14,7 @@ export const Renderer: React.FC<RendererProps> = ({
   onKeyDown,
   onAreaClick,
   onMouseMove,
+  onContextMenu,
   enableCoords,
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -118,6 +119,14 @@ export const Renderer: React.FC<RendererProps> = ({
     drawMaze();
   };
 
+  const handleContextMenu = (e: React.MouseEvent<HTMLCanvasElement>) => {
+    e.preventDefault();
+    const offset = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
+    const areaPoint = calculateCursorPosition(offset);
+
+    onContextMenu(areaPoint, { x: e.clientX, y: e.clientY });
+  };
+
   React.useEffect(() => {
     if (!context) {
       return;
@@ -145,6 +154,7 @@ export const Renderer: React.FC<RendererProps> = ({
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onMouseMove={handleMouseMove}
+        onContextMenu={handleContextMenu}
         tabIndex={0}
       />
     </Container>

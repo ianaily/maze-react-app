@@ -9,5 +9,6 @@ export interface RendererProps {
   onKeyDown: (key: string) => void;
   onAreaClick: (area: Point) => void;
   onMouseMove: (area: Point) => void;
+  onContextMenu: (area: Point, offset: Point) => void;
   enableCoords: boolean;
 }

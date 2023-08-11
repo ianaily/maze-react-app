@@ -9,6 +9,7 @@ export const Container = styled.div<{ isOpened: boolean }>`
   height: max-content;
   border-radius: ${styles.borderRadius.m};
   background-color: ${styles.colors.transparent.light4};
+  box-shadow: ${styles.boxShadow.regular};
   opacity: 1;
   z-index: ${styles.zIndex.above};
   transition: height ${styles.transition.ease}, opacity ${styles.transition.ease};

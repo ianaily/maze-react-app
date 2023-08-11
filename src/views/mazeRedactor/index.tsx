@@ -4,15 +4,16 @@ import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { getNextAreaType } from 'src/utils/areaUtils';
 import { Point } from 'src/types/point';
-import { AreaTypes } from 'src/types/maze';
+import { AreaType, AreaTypes } from 'src/types/maze';
 import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
 import { ControlPanel } from 'src/components/controlPanel';
 import { PalettePanel } from 'src/components/palettePanel';
 import { GeneratePanel } from 'src/components/generatePanel';
+import { RedactorCanvasContextMenu } from 'src/components/contextMenu';
 import { LoadMazeModal } from './loadMazeModal';
 import { hugeSizeFrom } from './const';
-import { HeadControl } from './styled';
+import { Container, HeadControl } from './styled';
 
 const defaultSize = { width: 32, height: 24 };
 
@@ -20,6 +21,10 @@ export const MazeRedactor: React.FC = observer(() => {
   const { mazeStore, cursorStore } = React.useContext(StoreContext);
   const [showLoadModal, setShowLoadModal] = React.useState(false);
   const [enableCoords, setEnableCoords] = React.useState(true);
+  const [contextMenuData, setContextMenuData] = React.useState<{
+    offset: Point;
+    area: Point;
+  } | null>(null);
 
   const keyActionMap: { [key: string]: VoidFunction } = {
     'r': () => initMaze(),
@@ -69,6 +74,19 @@ export const MazeRedactor: React.FC = observer(() => {
     cursorStore.setCursorPoint(areaPoint);
   };
 
+  const handleContextMenu = (area: Point, offset: Point) => {
+    setContextMenuData({ area, offset });
+  };
+
+  const handleFillArea = (type: AreaType) => {
+    mazeStore.setFillAreaType(type);
+    contextMenuData && mazeStore.changeAreaType(contextMenuData.area);
+  };
+
+  const handleSelectType = (type: AreaType) => {
+    mazeStore.setFillAreaType(type);
+  };
+
   const handleSave = () => {
     mazeStore.save().then(() => toast('Saved!'));
   };
@@ -95,12 +113,12 @@ export const MazeRedactor: React.FC = observer(() => {
   }, []);
 
   return (
-    <React.Fragment>
+    <Container>
       <HeadControl>
         <PalettePanel
           areaType={mazeStore.fillAreaType}
-          areaTypes={Object.values(AreaTypes)}
-          onSelect={(type) => mazeStore.setFillAreaType(type)}
+          areaTypes={mazeStore.areaTypes}
+          onSelect={handleSelectType}
         />
         <GeneratePanel onGenerate={initMaze} />
       </HeadControl>
@@ -111,6 +129,7 @@ export const MazeRedactor: React.FC = observer(() => {
         onKeyDown={handleKeyDown}
         onAreaClick={handleAreaClick}
         onMouseMove={handleMouseMove}
+        onContextMenu={handleContextMenu}
         enableCoords={enableCoords}
       />
       <ControlPanel
@@ -128,6 +147,14 @@ export const MazeRedactor: React.FC = observer(() => {
           onCancel={() => setShowLoadModal(false)}
         />
       )}
-    </React.Fragment>
+      {contextMenuData && (
+        <RedactorCanvasContextMenu
+          {...contextMenuData.offset}
+          areaTypes={mazeStore.areaTypes}
+          onSelectAreaType={handleFillArea}
+          onClose={() => setContextMenuData(null)}
+        />
+      )}
+    </Container>
   );
 });

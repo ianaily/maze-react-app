@@ -12,7 +12,6 @@ export interface Area {
   x: number;
   y: number;
   type: AreaType;
-  // todo passed: boolean
 }
 
 export enum AreaTypeKeys {
@@ -21,7 +20,6 @@ export enum AreaTypeKeys {
   Enter = 'Enter',
   Exit = 'Exit',
   Center = 'Center',
-  Pass = 'Pass',
   Wall = 'Wall',
 }
 
@@ -34,44 +32,37 @@ export interface AreaType {
 
 // todo redo keys
 export const AreaTypes: { [key in AreaTypeKeys]: AreaType } = {
-  Way: {
+  [AreaTypeKeys.Way]: {
     name: AreaTypeKeys.Way,
     short: ' ',
     passable: true,
     rewritable: true,
   },
-  Thread: {
+  [AreaTypeKeys.Thread]: {
     name: AreaTypeKeys.Thread,
     short: '·',
     passable: true,
     rewritable: false,
   },
-  Enter: {
+  [AreaTypeKeys.Enter]: {
     name: AreaTypeKeys.Enter,
     short: '>',
     passable: false,
     rewritable: false,
   },
-  Exit: {
+  [AreaTypeKeys.Exit]: {
     name: AreaTypeKeys.Exit,
     short: '<',
     passable: false,
     rewritable: false,
   },
-  Center: {
+  [AreaTypeKeys.Center]: {
     name: AreaTypeKeys.Center,
     short: 'o',
     passable: true,
     rewritable: false,
   },
-  // todo delete
-  Pass: {
-    name: AreaTypeKeys.Pass,
-    short: '◦',
-    passable: true,
-    rewritable: false,
-  },
-  Wall: {
+  [AreaTypeKeys.Wall]: {
     name: AreaTypeKeys.Wall,
     short: '▒',
     passable: false,

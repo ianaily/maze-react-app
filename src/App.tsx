@@ -1,10 +1,11 @@
 import React from 'react';
+import { RouterProvider } from 'react-router';
 import { Slide, ToastContainer } from 'react-toastify';
 import mazeStore from 'src/stores/mazeStore';
 import cursorStore from 'src/stores/cursorStore';
 import { StoreContext } from 'src/context/storeContext';
 import { GlobalStyle } from 'src/styles/global';
-import { MazeRedactor } from 'src/views/mazeRedactor';
+import { AppRouter } from 'src/router';
 
 export default function App() {
   return (
@@ -12,7 +13,9 @@ export default function App() {
       <StoreContext.Provider value={{ mazeStore, cursorStore }}>
         <ToastContainer position="top-right" autoClose={3000} theme="dark" transition={Slide} />
         <GlobalStyle />
-        <MazeRedactor />
+        <React.Suspense fallback="loading">
+          <RouterProvider router={AppRouter} />
+        </React.Suspense>
       </StoreContext.Provider>
     </React.Fragment>
   );

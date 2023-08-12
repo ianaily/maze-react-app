@@ -1,12 +1,12 @@
 import React from 'react';
-import { defaultMazeSide, maxMazeSide, minMazeSide } from 'src/const/maze';
+import { defaultMazeSize, maxMazeSide, minMazeSide } from 'src/const/maze';
 import { Button } from 'src/components/button';
 import { GeneratePanelProps } from './types';
 import { GenerateContainer, Input, SizeContainer } from './styled';
 
 export const GeneratePanel: React.FC<GeneratePanelProps> = ({ onGenerate }) => {
-  const [width, setWidth] = React.useState(defaultMazeSide);
-  const [height, setHeight] = React.useState(defaultMazeSide);
+  const [width, setWidth] = React.useState(defaultMazeSize.width);
+  const [height, setHeight] = React.useState(defaultMazeSize.height);
 
   const handleWidthChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(Math.min(+target.value, maxMazeSide));

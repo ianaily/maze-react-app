@@ -2,10 +2,10 @@ import React from 'react';
 import { AreaType } from 'src/types/maze';
 import { useOutsideClick } from 'src/hooks/useOutsideClick';
 import { AreaPalette } from 'src/components/palettePanel/styled';
-import { RedactorCanvasContextMenuProps } from './types';
+import { RedactorContextMenuProps } from './types';
 import { AreaTypeRow, ContextDropdown } from './styled';
 
-export const RedactorCanvasContextMenu: React.FC<RedactorCanvasContextMenuProps> = ({
+export const RedactorContextMenu: React.FC<RedactorContextMenuProps> = ({
   x,
   y,
   areaTypes,

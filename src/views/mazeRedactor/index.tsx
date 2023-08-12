@@ -3,6 +3,7 @@ import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { getNextAreaType } from 'src/utils/areaUtils';
+import { defaultMazeSize } from 'src/const/maze';
 import { Point } from 'src/types/point';
 import { AreaType, AreaTypes } from 'src/types/maze';
 import { StoreContext } from 'src/context/storeContext';
@@ -10,14 +11,12 @@ import { Renderer } from 'src/components/renderer';
 import { ControlPanel } from 'src/components/controlPanel';
 import { PalettePanel } from 'src/components/palettePanel';
 import { GeneratePanel } from 'src/components/generatePanel';
-import { RedactorCanvasContextMenu } from 'src/components/contextMenu';
+import { RedactorContextMenu } from 'src/views/mazeRedactor/contextMenu';
 import { LoadMazeModal } from './loadMazeModal';
 import { hugeSizeFrom } from './const';
 import { Container, HeadControl } from './styled';
 
-const defaultSize = { width: 32, height: 24 };
-
-export const MazeRedactor: React.FC = observer(() => {
+const MazeRedactor: React.FC = observer(() => {
   const { mazeStore, cursorStore } = React.useContext(StoreContext);
   const [showLoadModal, setShowLoadModal] = React.useState(false);
   const [enableCoords, setEnableCoords] = React.useState(true);
@@ -45,7 +44,10 @@ export const MazeRedactor: React.FC = observer(() => {
     mazeStore.changeAreaType(cursorStore.cursor.point, nextType);
   };
 
-  const initMaze = (width: number = defaultSize.width, height: number = defaultSize.height) => {
+  const initMaze = (
+    width: number = defaultMazeSize.width,
+    height: number = defaultMazeSize.height,
+  ) => {
     const tooBig = width > hugeSizeFrom || height > hugeSizeFrom;
 
     setEnableCoords(!tooBig);
@@ -122,7 +124,7 @@ export const MazeRedactor: React.FC = observer(() => {
         />
         <GeneratePanel onGenerate={initMaze} />
       </HeadControl>
-      <Renderer
+      <Renderer.MazeRedactor
         maze={mazeStore.maze}
         cursor={toJS(cursorStore.cursor)}
         canvasWidth={window.innerWidth - 80}
@@ -148,7 +150,7 @@ export const MazeRedactor: React.FC = observer(() => {
         />
       )}
       {contextMenuData && (
-        <RedactorCanvasContextMenu
+        <RedactorContextMenu
           {...contextMenuData.offset}
           areaTypes={mazeStore.areaTypes}
           onSelectAreaType={handleFillArea}
@@ -158,3 +160,5 @@ export const MazeRedactor: React.FC = observer(() => {
     </Container>
   );
 });
+
+export default MazeRedactor;

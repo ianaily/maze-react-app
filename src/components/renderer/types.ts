@@ -1,14 +1,9 @@
-import { Maze } from 'src/types/maze';
-import { Point } from 'src/types/point';
-import { Cursor } from 'src/types/cursor';
+import { MazeRedactorRendererProps } from './mazeRedactor/types';
+import { GameplayRendererProps } from './gameplay/types';
 
-export interface RendererProps {
-  maze: Maze;
-  cursor: Cursor;
-  canvasWidth: number;
-  onKeyDown: (key: string) => void;
-  onAreaClick: (area: Point) => void;
-  onMouseMove: (area: Point) => void;
-  onContextMenu: (area: Point, offset: Point) => void;
-  enableCoords: boolean;
-}
+export type RendererVariants = 'MazeRedactor' | 'Gameplay';
+
+export type VariantPropsMap = {
+  MazeRedactor: MazeRedactorRendererProps;
+  Gameplay: GameplayRendererProps;
+};

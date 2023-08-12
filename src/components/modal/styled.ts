@@ -52,7 +52,7 @@ export const ModalFooter = styled.div`
   justify-content: end;
   align-items: center;
   width: 100%;
-  padding: ${styles.offsets.m};
+  padding: ${styles.offsets.s};
   border-top: 1px solid ${styles.colors.general.grey0};
   border-radius: 0 0 ${styles.borderRadius.m} ${styles.borderRadius.m};
   background-color: ${styles.colors.transparent.light4};

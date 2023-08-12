@@ -1,6 +1,6 @@
 import { AreaType } from 'src/types/maze';
 
-export interface RedactorCanvasContextMenuProps {
+export interface RedactorContextMenuProps {
   x: number;
   y: number;
   areaTypes: AreaType[];

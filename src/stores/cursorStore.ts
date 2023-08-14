@@ -2,16 +2,16 @@ import { makeObservable, action, computed, observable } from 'mobx';
 import * as utils from 'src/utils/pointUtils';
 import { Cursor } from 'src/types/cursor';
 import { Point } from '../types/point';
+import { Size } from '../types/size';
 
 export class CursorStore {
   constructor() {
     makeObservable(this, {
       cursor: observable,
-      width: observable,
-      height: observable,
+      mazeSize: observable,
       enabled: computed,
       setEnable: action,
-      setBoxSize: action,
+      setMazeSize: action,
       setCursorPoint: action,
       reset: action,
       toUp: action,
@@ -27,16 +27,14 @@ export class CursorStore {
     prevPoint: { x: 0, y: 0 },
   };
 
-  width = 0;
-  height = 0;
+  mazeSize = { width: 0, height: 0 };
 
   setEnable = (isEnable: boolean) => {
     this.cursor.enable = isEnable;
   };
 
-  setBoxSize = (width: number, height: number) => {
-    this.width = width;
-    this.height = height;
+  setMazeSize = (size: Size) => {
+    this.mazeSize = size;
   };
 
   get enabled(): boolean {
@@ -60,14 +58,14 @@ export class CursorStore {
   };
 
   toRight = () => {
-    if (this.cursor.point.x + 1 < this.width) {
+    if (this.cursor.point.x + 1 < this.mazeSize.width) {
       this.cursor.prevPoint = { ...this.cursor.point };
       this.cursor.point = utils.toRight(this.cursor.point);
     }
   };
 
   toDown = () => {
-    if (this.cursor.point.y + 1 < this.height) {
+    if (this.cursor.point.y + 1 < this.mazeSize.height) {
       this.cursor.prevPoint = { ...this.cursor.point };
       this.cursor.point = utils.toBottom(this.cursor.point);
     }

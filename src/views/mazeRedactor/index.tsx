@@ -52,8 +52,8 @@ const MazeRedactor: React.FC = observer(() => {
     const tooBig = width > hugeSizeFrom || height > hugeSizeFrom;
 
     setEnableCoords(!tooBig);
-    mazeStore.generate(width, height);
-    cursorStore.setBoxSize(width, height);
+    mazeStore.generate({ width, height });
+    cursorStore.setMazeSize({ width, height });
     cursorStore.setEnable(true);
     cursorStore.reset();
   };
@@ -100,7 +100,7 @@ const MazeRedactor: React.FC = observer(() => {
 
   const handleLoad = (mazeId: string) => {
     mazeStore.load(mazeId).then(() => {
-      cursorStore.setBoxSize(mazeStore.width, mazeStore.height);
+      cursorStore.setMazeSize(mazeStore.size);
       cursorStore.reset();
       toast('Loaded!');
     });

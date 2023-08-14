@@ -6,6 +6,7 @@ import { toBottom, toLeft, toRight, toTop, updatePoint } from 'src/utils/pointUt
 
 export const generateMaze = (maze: Maze) => {
   const { setAreaType, getAreaType, fillEmpty } = mazeUtils(maze);
+  const { width, height } = maze.size;
   let enterPort: Point;
   let exitPort: Point;
   let center: Area;
@@ -30,8 +31,8 @@ export const generateMaze = (maze: Maze) => {
 
   function generateMainPath() {
     const center2 = {
-      x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
-      y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
+      x: random(width - (8 % width)) + (4 % height),
+      y: random(height - (8 % height)) + (4 % height),
     };
     setAreaType(center2, AreaTypes.Center);
     generatePath(enterPort, center, AreaTypes.Thread, calcMinMoves(enterPort, center));
@@ -41,42 +42,42 @@ export const generateMaze = (maze: Maze) => {
 
   function generateLeftPaths() {
     const point1 = {
-      x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
-      y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
+      x: random(width - (8 % width)) + (4 % height),
+      y: random(height - (8 % height)) + (4 % height),
     };
     const point2 = {
-      x: random(maze.width - (8 % maze.width)) + (4 % maze.height),
-      y: random(maze.height - (8 % maze.height)) + (4 % maze.height),
+      x: random(width - (8 % width)) + (4 % height),
+      y: random(height - (8 % height)) + (4 % height),
     };
 
-    generatePath(enterPort, point1, AreaTypes.Way, random((maze.width * maze.height) / 3));
-    generatePath(enterPort, point2, AreaTypes.Way, random((maze.width * maze.height) / 3));
-    generatePath(point1, point2, AreaTypes.Way, random((maze.width * maze.height) / 3));
+    generatePath(enterPort, point1, AreaTypes.Way, random((width * height) / 3));
+    generatePath(enterPort, point2, AreaTypes.Way, random((width * height) / 3));
+    generatePath(point1, point2, AreaTypes.Way, random((width * height) / 3));
   }
 
   function buildPortPoint(point: Point): Point {
     // prettier-ignore
     return {
       x: point.x === 0
-        ? 1 : point.x === maze.width - 1
+        ? 1 : point.x === width - 1
           ? toLeft(point).x : point.x,
       y: point.y === 0
-        ? 1 : point.y === maze.height - 1
+        ? 1 : point.y === height - 1
           ? toTop(point).y : point.y,
     };
   }
 
   function calcMinMoves(fromPoint: Point, toPoint: Point): number {
     const minMoves = Math.abs(fromPoint.x - toPoint.x) + Math.abs(fromPoint.y - toPoint.y);
-    const additionalMultiplierByWidth = random(maze.width / 5) + 1;
-    const additionalMultiplierByHeight = random(maze.height / 5) + 1;
+    const additionalMultiplierByWidth = random(width / 5) + 1;
+    const additionalMultiplierByHeight = random(height / 5) + 1;
 
     return additionalMultiplierByWidth * additionalMultiplierByHeight + minMoves;
   }
 
   function generatePath(from: Point, end: Point, type: AreaType, stepsCount: number) {
     const current = { ...from };
-    const maxChance = maze.width / 2;
+    const maxChance = width / 2;
 
     for (let step = stepsCount; ; step--) {
       const distance = Math.abs(end.y - current.y) + Math.abs(end.x - current.x);
@@ -115,8 +116,8 @@ export const generateMaze = (maze: Maze) => {
 
     // prettier-ignore
     notSameBottomRight && notSameBottomLeft
-    && updatePoint(current, toBottom)
-    && setAreaType(current, type);
+      && updatePoint(current, toBottom)
+      && setAreaType(current, type);
   }
 
   function initTopArea(current: Point, type: AreaType) {
@@ -129,8 +130,8 @@ export const generateMaze = (maze: Maze) => {
 
     // prettier-ignore
     notSameTopRight && notSameTopLeft
-    && updatePoint(current, toTop)
-    && setAreaType(current, type);
+      && updatePoint(current, toTop)
+      && setAreaType(current, type);
   }
 
   function initLeftArea(current: Point, type: AreaType) {
@@ -143,8 +144,8 @@ export const generateMaze = (maze: Maze) => {
 
     // prettier-ignore
     notSameTopLeft && notSameBottomLeft
-    && updatePoint(current, toLeft)
-    && setAreaType(current, type);
+      && updatePoint(current, toLeft)
+      && setAreaType(current, type);
   }
 
   function initRightArea(current: Point, type: AreaType) {
@@ -157,8 +158,8 @@ export const generateMaze = (maze: Maze) => {
 
     // prettier-ignore
     notSameTopRight && notSameBottomRight
-    && updatePoint(current, toRight)
-    && setAreaType(current, type);
+      && updatePoint(current, toRight)
+      && setAreaType(current, type);
   }
 
   function initNextArea(current: Point, end: Point, type: AreaType) {
@@ -171,8 +172,8 @@ export const generateMaze = (maze: Maze) => {
   function isBorder(current: Point) {
     return (
       toTop(current).y < 1 ||
-      toRight(current).x >= maze.width - 1 ||
-      toBottom(current).y >= maze.height - 1 ||
+      toRight(current).x >= width - 1 ||
+      toBottom(current).y >= height - 1 ||
       toLeft(current).x < 1
     );
   }

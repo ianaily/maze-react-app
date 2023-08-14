@@ -4,8 +4,10 @@ import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
 import { mazeUtils } from 'src/utils/mazeUtils';
 import { randomId } from 'src/utils/random';
+import { defaultMazeSize } from 'src/const/maze';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
+import { Size } from 'src/types/size';
 
 const mazeKeyPrefix = 'maze-';
 
@@ -26,9 +28,8 @@ export class MazeStore {
     });
   }
 
-  width = 64;
-  height = 32;
-  maze: Maze = buildMazePots(this.width, this.height);
+  size = defaultMazeSize;
+  maze: Maze = buildMazePots(this.size);
   fillAreaType: AreaType = AreaTypes.Wall;
   mazeId: string | null = null;
   mazeList: string[] = [];
@@ -38,10 +39,9 @@ export class MazeStore {
     return mazeUtils({ ...this.maze });
   }
 
-  generate = (width: number, height: number) => {
-    this.width = width;
-    this.height = height;
-    const initial = buildMazePots(width, height);
+  generate = (size: Size) => {
+    this.size = size;
+    const initial = buildMazePots(size);
     this.maze = generateMaze(initial);
     this.mazeId = null;
   };
@@ -75,10 +75,9 @@ export class MazeStore {
 
     if (maze) {
       this.maze = maze;
-      this.width = maze.width;
-      this.height = maze.height;
+      this.size = maze.size;
     } else {
-      this.maze = buildMazePots(this.width, this.height);
+      this.maze = buildMazePots(this.size);
     }
   };
 

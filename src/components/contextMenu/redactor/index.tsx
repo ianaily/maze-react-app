@@ -1,7 +1,7 @@
 import React from 'react';
 import { AreaType } from 'src/types/maze';
 import { useOutsideClick } from 'src/hooks/useOutsideClick';
-import { useContextPosition } from './hooks';
+import { useContextPosition } from '../hooks';
 import { RedactorContextMenuProps } from './types';
 import { AreaTypePalette, AreaTypeRow, ContextDropdown } from './styled';
 

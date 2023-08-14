@@ -1,15 +1,9 @@
 import React from 'react';
-import { ModalProps } from './types';
-import { ModalBackdrop, ModalBody, ModalContent, ModalFooter, ModalHeader } from './styled';
+import { ModalVariants, VariantPropsMap } from './types';
+import { LoadMazeModal } from './loadMaze';
+import { PauseModal } from './pause';
 
-export const Modal: React.FC<ModalProps> = ({ title, children, footer }) => {
-  return (
-    <ModalBackdrop>
-      <ModalContent>
-        <ModalHeader>{title}</ModalHeader>
-        <ModalBody>{children}</ModalBody>
-        <ModalFooter>{footer}</ModalFooter>
-      </ModalContent>
-    </ModalBackdrop>
-  );
+export const Modal: { [key in ModalVariants]: React.FC<VariantPropsMap[key]> } = {
+  LoadMaze: LoadMazeModal,
+  Pause: PauseModal,
 };

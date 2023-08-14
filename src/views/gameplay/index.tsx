@@ -2,8 +2,8 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
+import { Modal } from 'src/components/modal';
 import { Container } from './styled';
-import { PauseModal } from './pauseModal';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 
 const Gameplay: React.FC = observer(() => {
@@ -16,7 +16,6 @@ const Gameplay: React.FC = observer(() => {
 
   const handleKeyDown = (key: string) => {
     commands[key]?.();
-    console.log(key);
   };
 
   useKeyboard(handleKeyDown);
@@ -24,7 +23,7 @@ const Gameplay: React.FC = observer(() => {
   return (
     <Container>
       <Renderer.Gameplay maze={mazeStore.maze} />
-      {showPauseModal && <PauseModal onCancel={() => setShowPauseModal(false)} />}
+      {showPauseModal && <Modal.Pause onCancel={() => setShowPauseModal(false)} />}
     </Container>
   );
 });

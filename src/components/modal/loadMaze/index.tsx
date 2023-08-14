@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'src/components/modal';
+import { Modal } from 'src/components/modal/base';
 import { Button } from 'src/components/button';
 import { LoadMazeModalProps } from './types';
 import { ControlContainer, MazeItem, MazeLoadList } from './styled';

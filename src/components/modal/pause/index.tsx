@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'src/components/modal';
+import { Modal } from 'src/components/modal/base';
 import { Button } from 'src/components/button';
 import { PauseModalProps } from './types';
 import { ControlContainer } from './styled';

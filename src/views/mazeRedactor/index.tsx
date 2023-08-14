@@ -11,9 +11,9 @@ import { appLinks } from 'src/router/const';
 import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
 import { Panel } from 'src/components/panels';
-import { RedactorContextMenu } from 'src/views/mazeRedactor/contextMenu';
+import { Modal } from 'src/components/modal';
+import { ContextMenu } from 'src/components/contextMenu';
 import { hugeSizeFrom } from './const';
-import { LoadMazeModal } from './loadMazeModal';
 import { Container, HeadControl, LeftHeadControl } from './styled';
 
 const MazeRedactor: React.FC = observer(() => {
@@ -150,7 +150,7 @@ const MazeRedactor: React.FC = observer(() => {
         onDelete={() => handleDelete()}
       />
       {showLoadModal && (
-        <LoadMazeModal
+        <Modal.LoadMaze
           mazeList={mazeStore.mazeList}
           onLoad={handleLoad}
           onDelete={handleDelete}
@@ -158,7 +158,7 @@ const MazeRedactor: React.FC = observer(() => {
         />
       )}
       {contextMenuData && (
-        <RedactorContextMenu
+        <ContextMenu.Redactor
           {...contextMenuData.offset}
           areaTypes={mazeStore.areaTypes}
           onSelectAreaType={handleFillArea}

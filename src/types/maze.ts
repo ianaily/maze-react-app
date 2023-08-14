@@ -46,19 +46,19 @@ export const AreaTypes: { [key in AreaTypeKeys]: AreaType } = {
   },
   [AreaTypeKeys.Enter]: {
     name: AreaTypeKeys.Enter,
-    short: '>',
+    short: '⍈',
     passable: false,
     rewritable: false,
   },
   [AreaTypeKeys.Exit]: {
     name: AreaTypeKeys.Exit,
-    short: '<',
+    short: '⍇',
     passable: false,
     rewritable: false,
   },
   [AreaTypeKeys.Center]: {
     name: AreaTypeKeys.Center,
-    short: 'o',
+    short: '◈', // ◇
     passable: true,
     rewritable: false,
   },

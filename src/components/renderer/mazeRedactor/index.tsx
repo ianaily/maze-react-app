@@ -1,11 +1,12 @@
 import React from 'react';
 import { Area } from 'src/types/maze';
 import { Point } from 'src/types/point';
-import { mazeUtils } from 'src/utils/mazeUtils';
 import { areaFillStyles, coordsFillStyle, cursorStyle } from 'src/const/areaTypes';
+import { mazeUtils } from 'src/utils/mazeUtils';
 import { Loading } from 'src/components/loading/styled';
 import { MazeRedactorRendererProps } from './types';
 import { Canvas, Container } from './styled';
+import { useCanvasInit } from '../hooks';
 
 export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   maze,
@@ -18,11 +19,12 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   enableCoords,
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
-  const context = React.useMemo(() => canvasRef.current?.getContext('2d'), [canvasRef.current]);
+  const { context, areaSize, canvasHeight, calculateCursorPosition } = useCanvasInit(
+    canvasRef,
+    canvasWidth,
+    maze,
+  );
   const { getAreaType } = React.useMemo(() => mazeUtils(maze), [maze]);
-
-  const areaSize = React.useMemo(() => canvasWidth / maze.width, [maze.width, canvasWidth]);
-  const canvasHeight = React.useMemo(() => areaSize * maze.height, [areaSize, maze.height]);
 
   const drawArea = ({ x, y, type }: Area) => {
     if (!context) {
@@ -85,21 +87,6 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
     });
   };
 
-  const calculateCursorPosition = (offset: Point): Point => {
-    const rect = canvasRef.current?.getBoundingClientRect();
-    const mazeWidth = rect?.width || 0;
-    const mazeHeight = rect?.height || 0;
-
-    if (offset.x > mazeWidth || offset.y > mazeHeight) {
-      return { x: 0, y: 0 };
-    }
-
-    return {
-      x: Math.floor(offset.x / areaSize),
-      y: Math.floor(offset.y / areaSize),
-    };
-  };
-
   const handleKeyDown = (event: React.KeyboardEvent) => {
     onKeyDown(event.key);
   };
@@ -126,15 +113,6 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
 
     onContextMenu(areaPoint, { x: e.clientX, y: e.clientY });
   };
-
-  React.useEffect(() => {
-    if (!context) {
-      return;
-    }
-
-    context.imageSmoothingEnabled = true;
-    context.imageSmoothingQuality = 'high';
-  }, [context]);
 
   React.useEffect(() => {
     drawMaze();

@@ -66,3 +66,5 @@ export class PlayerStore {
     }
   }
 }
+
+export default new PlayerStore();

@@ -4,12 +4,11 @@ import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
 import { mazeUtils } from 'src/utils/mazeUtils';
 import { randomId } from 'src/utils/random';
-import { defaultMazeSize } from 'src/const/maze';
+import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { Size } from 'src/types/size';
-
-const mazeKeyPrefix = 'maze-';
+import { Save } from 'src/types/save';
 
 export class MazeStore {
   constructor() {
@@ -32,7 +31,7 @@ export class MazeStore {
   maze: Maze = buildMazePots(this.size);
   fillAreaType: AreaType = AreaTypes.Wall;
   mazeId: string | null = null;
-  mazeList: string[] = [];
+  mazeList: Save[] = [];
   areaTypes = Object.values(AreaTypes);
 
   get utils() {
@@ -59,18 +58,34 @@ export class MazeStore {
     this.fillAreaType = type;
   };
 
-  setMazeList = (mazeList: string[]) => {
+  setMazeList = (mazeList: Save[]) => {
     this.mazeList = mazeList;
   };
 
-  loadMazeList = (): Promise<string[]> => {
+  loadMazeList = (): Promise<Save[]> => {
     return localforage
-      .keys()
-      .then((list) => list?.filter((key) => key.includes(mazeKeyPrefix)) || [])
+      .getItem<{ saves: Save[] }>(mazeSavesKey)
+      .then((mazeList) => mazeList?.saves || [])
       .then((mazeList) => {
         this.setMazeList(mazeList);
+
         return mazeList;
       });
+  };
+
+  saveMazeList = async (): Promise<void> => {
+    const newSave: Save = {
+      mazeId: this.mazeId || '',
+      mazeName: this.maze.name,
+      mazeSize: this.maze.size,
+    };
+    const updatedSaves = [newSave, ...this.mazeList];
+
+    this.mazeList = [...new Set(updatedSaves.map((item) => item.mazeId))]
+      .map((id) => updatedSaves.find((item) => item.mazeId === id))
+      .filter((save) => !!save) as Save[];
+
+    await localforage.setItem<{ saves: Save[] }>(mazeSavesKey, { saves: toJS(this.mazeList) });
   };
 
   load = async (id: string): Promise<void> => {
@@ -86,16 +101,17 @@ export class MazeStore {
   };
 
   save = async (): Promise<void> => {
-    if (this.mazeId) {
-      await localforage.setItem(this.mazeId, toJS(this.maze));
-    } else {
-      this.mazeId = `${mazeKeyPrefix}${randomId()}`;
-      await localforage.setItem(this.mazeId, toJS(this.maze));
-      await this.loadMazeList();
-    }
+    this.mazeId = this.mazeId || `${mazeSaveKeyPrefix}${randomId()}`;
+    await this.loadMazeList();
+    await localforage.setItem(this.mazeId, toJS(this.maze));
+    await this.saveMazeList();
   };
 
   delete = async (mazeId?: string) => {
+    await this.loadMazeList();
+    this.mazeList = this.mazeList.filter((save) => save.mazeId !== mazeId);
+    await this.saveMazeList;
+
     await localforage.removeItem(mazeId || this.mazeId || '');
   };
 }

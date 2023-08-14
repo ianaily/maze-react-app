@@ -1,8 +1,8 @@
 import { makeObservable, action, computed, observable } from 'mobx';
 import * as utils from 'src/utils/pointUtils';
 import { Cursor } from 'src/types/cursor';
-import { Point } from '../types/point';
-import { Size } from '../types/size';
+import { Point } from 'src/types/point';
+import { Size } from 'src/types/size';
 
 export class CursorStore {
   constructor() {

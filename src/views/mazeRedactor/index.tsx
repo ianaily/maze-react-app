@@ -8,17 +8,17 @@ import { defaultMazeSize } from 'src/const/maze';
 import { Point } from 'src/types/point';
 import { AreaType, AreaTypes } from 'src/types/maze';
 import { appLinks } from 'src/router/const';
-import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
 import { Panel } from 'src/components/panels';
 import { Modal } from 'src/components/modal';
 import { ContextMenu } from 'src/components/contextMenu';
+import { useStore } from './store';
 import { hugeSizeFrom } from './const';
 import { Container, HeadControl, LeftHeadControl } from './styled';
 
 const MazeRedactor: React.FC = observer(() => {
   const navigate = useNavigate();
-  const { mazeStore, cursorStore } = React.useContext(StoreContext);
+  const { mazeStore, cursorStore } = useStore();
   const [showLoadModal, setShowLoadModal] = React.useState(false);
   const [enableCoords, setEnableCoords] = React.useState(true);
   const [contextMenuData, setContextMenuData] = React.useState<{

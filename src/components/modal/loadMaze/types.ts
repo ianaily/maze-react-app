@@ -1,5 +1,7 @@
+import { Save } from 'src/types/save';
+
 export interface LoadMazeModalProps {
-  mazeList: string[];
+  mazeList: Save[];
   onLoad: (mazeId: string) => void;
   onDelete: (mazeId: string) => void;
   onCancel: VoidFunction;

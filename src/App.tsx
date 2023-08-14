@@ -3,6 +3,8 @@ import { RouterProvider } from 'react-router';
 import { Slide, ToastContainer } from 'react-toastify';
 import mazeStore from 'src/stores/mazeStore';
 import cursorStore from 'src/stores/cursorStore';
+import playerStore from 'src/stores/playerStore';
+import cameraStore from 'src/stores/cameraStore';
 import { StoreContext } from 'src/context/storeContext';
 import { GlobalStyle } from 'src/styles/global';
 import { AppRouter } from 'src/router';
@@ -10,7 +12,7 @@ import { AppRouter } from 'src/router';
 export default function App() {
   return (
     <React.Fragment>
-      <StoreContext.Provider value={{ mazeStore, cursorStore }}>
+      <StoreContext.Provider value={{ mazeStore, cursorStore, playerStore, cameraStore }}>
         <ToastContainer position="top-right" autoClose={3000} theme="dark" transition={Slide} />
         <GlobalStyle />
         <React.Suspense fallback="loading">

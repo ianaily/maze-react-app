@@ -48,12 +48,12 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
       <MazeLoadList>
         {mazeList.map((item) => (
           <MazeItem
-            key={item}
-            selected={item === selectedItem}
+            key={item.mazeId}
+            selected={item.mazeId === selectedItem}
             toDelete={toDelete}
-            onClick={() => setSelectedItem(item)}
+            onClick={() => setSelectedItem(item.mazeId)}
           >
-            {item}
+            {item.mazeName}
           </MazeItem>
         ))}
       </MazeLoadList>

@@ -63,6 +63,7 @@ export const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar {
     width: ${styles.offsets.s};
+    height: ${styles.offsets.s};
     border-radius: ${styles.borderRadius.m};
   }
 

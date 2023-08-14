@@ -114,6 +114,10 @@ const MazeRedactor: React.FC = observer(() => {
     });
   };
 
+  const handleMazeNameChange = (name: string) => {
+    mazeStore.setMazeName(name);
+  };
+
   React.useEffect(() => {
     mazeStore.loadMazeList();
     React.startTransition(() => initMaze());
@@ -148,6 +152,8 @@ const MazeRedactor: React.FC = observer(() => {
         onLoad={() => setShowLoadModal(true)}
         enableDelete={!!mazeStore.mazeId}
         onDelete={() => handleDelete()}
+        mazeName={mazeStore.maze.name}
+        onMazeNameChange={handleMazeNameChange}
       />
       {showLoadModal && (
         <Modal.LoadMaze

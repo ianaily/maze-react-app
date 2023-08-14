@@ -20,6 +20,10 @@ export const AreaTypeRow = styled.div`
   padding: ${styles.offsets.s};
   cursor: pointer;
 
+  & > span {
+    color: ${styles.colors.font.black};
+  }
+
   &:hover {
     background-color: ${styles.colors.transparent.dark1};
   }

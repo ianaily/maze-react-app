@@ -46,6 +46,10 @@ export class MazeStore {
     this.mazeId = null;
   };
 
+  setMazeName = (name: string) => {
+    this.maze.name = name;
+  };
+
   changeAreaType = (point: Point, type: AreaType = this.fillAreaType) => {
     this.maze = this.utils.setAreaType(point, type, true);
     this.setFillAreaType(type);

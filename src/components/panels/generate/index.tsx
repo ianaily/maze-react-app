@@ -2,7 +2,7 @@ import React from 'react';
 import { defaultMazeSize, maxMazeSide, minMazeSide } from 'src/const/maze';
 import { Button } from 'src/components/button';
 import { GeneratePanelProps } from './types';
-import { GenerateContainer, Input, SizeContainer } from './styled';
+import { GenerateContainer, SizeContainer, SizeInput } from './styled';
 
 export const GeneratePanel: React.FC<GeneratePanelProps> = ({ onGenerate }) => {
   const [width, setWidth] = React.useState(defaultMazeSize.width);
@@ -26,8 +26,18 @@ export const GeneratePanel: React.FC<GeneratePanelProps> = ({ onGenerate }) => {
   return (
     <GenerateContainer>
       <SizeContainer>
-        <Input type="number" value={width} onChange={handleWidthChange} invalid={invalidWidth} />
-        <Input type="number" value={height} onChange={handleHeightChange} invalid={invalidHeight} />
+        <SizeInput
+          type="number"
+          value={width}
+          onChange={handleWidthChange}
+          invalid={invalidWidth}
+        />
+        <SizeInput
+          type="number"
+          value={height}
+          onChange={handleHeightChange}
+          invalid={invalidHeight}
+        />
       </SizeContainer>
       <Button variant="green" onClick={handleGenerate} disabled={invalidWidth || invalidHeight}>
         Generate

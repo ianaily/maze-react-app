@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { styles } from 'src/styles/styles';
+import { Input } from 'src/components/input';
 import { Panel } from '../styled';
 
 export const GenerateContainer = styled(Panel)`
@@ -15,25 +16,6 @@ export const SizeContainer = styled.div`
   gap: ${styles.offsets.s};
 `;
 
-export const Input = styled.input<{ invalid: boolean }>`
+export const SizeInput = styled(Input)`
   width: 90px;
-
-  &:focus {
-    box-shadow: ${styles.boxShadow.underlineBlue};
-    background-color: ${styles.colors.general.light};
-  }
-
-  ${({ invalid }) =>
-    invalid &&
-    css`
-      &:not(:focus) {
-        background-color: ${styles.colors.transparent.darkRed};
-        color: ${styles.colors.general.red};
-        box-shadow: ${styles.boxShadow.besideRed};
-      }
-
-      &:focus {
-        box-shadow: ${styles.boxShadow.underlineRed};
-      }
-    `}
 `;

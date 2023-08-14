@@ -4,4 +4,6 @@ export interface ControlPanelProps {
   onLoad: VoidFunction;
   enableDelete: boolean;
   onDelete: VoidFunction;
+   mazeName: string;
+  onMazeNameChange: (name: string) => void;
 }

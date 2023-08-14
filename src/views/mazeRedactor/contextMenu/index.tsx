@@ -1,9 +1,9 @@
 import React from 'react';
 import { AreaType } from 'src/types/maze';
 import { useOutsideClick } from 'src/hooks/useOutsideClick';
-import { AreaPalette } from 'src/components/palettePanel/styled';
+import { useContextPosition } from './hooks';
 import { RedactorContextMenuProps } from './types';
-import { AreaTypeRow, ContextDropdown } from './styled';
+import { AreaTypePalette, AreaTypeRow, ContextDropdown } from './styled';
 
 export const RedactorContextMenu: React.FC<RedactorContextMenuProps> = ({
   x,
@@ -13,6 +13,7 @@ export const RedactorContextMenu: React.FC<RedactorContextMenuProps> = ({
   onClose,
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
+  const position = useContextPosition(ref, x, y);
 
   const handleRowClick = (areaType: AreaType) => {
     onSelectAreaType(areaType);
@@ -22,10 +23,10 @@ export const RedactorContextMenu: React.FC<RedactorContextMenuProps> = ({
   useOutsideClick([ref], onClose);
 
   return (
-    <ContextDropdown ref={ref} x={x} y={y} isOpened>
+    <ContextDropdown ref={ref} top={position.y} left={position.x} isOpened>
       {areaTypes.map((type) => (
         <AreaTypeRow key={type.name} onClick={() => handleRowClick(type)}>
-          <AreaPalette type={type.name} />
+          <AreaTypePalette type={type.name} />
           <span>{type.name}</span>
         </AreaTypeRow>
       ))}

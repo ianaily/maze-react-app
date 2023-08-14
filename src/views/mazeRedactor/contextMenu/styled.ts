@@ -3,13 +3,13 @@ import { styles } from 'src/styles/styles';
 import { Container as DropdownContainer } from 'src/components/dropdown/styled';
 import { AreaPalette } from 'src/components/panels/palette/styled';
 
-export const ContextDropdown = styled(DropdownContainer)<{ x: number; y: number }>`
+export const ContextDropdown = styled(DropdownContainer)<{ top: number; left: number }>`
   display: flex;
   flex-direction: column;
 
-  ${({ x, y }) => css`
-    top: ${y}px;
-    left: ${x}px;
+  ${({ top, left }) => css`
+    top: ${top}px;
+    left: ${left}px;
   `})
 `;
 

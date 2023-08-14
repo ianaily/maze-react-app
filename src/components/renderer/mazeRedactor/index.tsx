@@ -22,7 +22,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   const { context, areaSize, canvasHeight, calculateCursorPosition } = useCanvasInit(
     canvasRef,
     canvasWidth,
-    maze,
+    maze.size,
   );
   const { getAreaType } = React.useMemo(() => mazeUtils(maze), [maze]);
 

@@ -1,4 +1,5 @@
 import { Size } from './size';
+import { Point } from './point';
 
 export interface Maze {
   name: string;
@@ -9,9 +10,7 @@ export interface Maze {
   size: Size;
 }
 
-export interface Area {
-  x: number;
-  y: number;
+export interface Area extends Point {
   type: AreaType;
 }
 

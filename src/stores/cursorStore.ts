@@ -27,7 +27,7 @@ export class CursorStore {
     prevPoint: { x: 0, y: 0 },
   };
 
-  mazeSize = { width: 0, height: 0 };
+  mazeSize: Size = { width: 0, height: 0 };
 
   setEnable = (isEnable: boolean) => {
     this.cursor.enable = isEnable;

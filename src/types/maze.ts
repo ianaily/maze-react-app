@@ -1,11 +1,12 @@
+import { Size } from './size';
+
 export interface Maze {
   name: string;
   areas: Area[];
   enter: Area;
   exit: Area;
   center: Area;
-  width: number;
-  height: number;
+  size: Size;
 }
 
 export interface Area {
@@ -30,7 +31,6 @@ export interface AreaType {
   rewritable: boolean;
 }
 
-// todo redo keys
 export const AreaTypes: { [key in AreaTypeKeys]: AreaType } = {
   [AreaTypeKeys.Way]: {
     name: AreaTypeKeys.Way,

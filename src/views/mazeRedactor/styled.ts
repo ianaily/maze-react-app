@@ -10,3 +10,12 @@ export const HeadControl = styled.div`
   justify-content: space-between;
   gap: ${styles.offsets.xs};
 `;
+
+export const LeftHeadControl = styled.div`
+  display: flex;
+  gap: ${styles.offsets.xs};
+
+  & > div:first-child {
+    margin-right: 0;
+  }
+`;

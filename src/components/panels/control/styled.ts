@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { styles } from 'src/styles/styles';
-import { Panel } from 'src/components/containers/styled';
+import { Panel } from '../styled';
 
 export const ControlContainer = styled(Panel)`
   display: flex;

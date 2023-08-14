@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { areaFillStyles } from 'src/const/areaTypes';
 import { AreaTypeKeys } from 'src/types/maze';
 import { styles } from 'src/styles/styles';
-import { Panel } from 'src/components/containers/styled';
+import { Panel } from '../styled';
 
 export const AreaPaletteBlock = styled.div`
   display: flex;

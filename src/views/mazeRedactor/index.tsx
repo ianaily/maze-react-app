@@ -2,21 +2,22 @@ import React from 'react';
 import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 import { getNextAreaType } from 'src/utils/areaUtils';
 import { defaultMazeSize } from 'src/const/maze';
 import { Point } from 'src/types/point';
 import { AreaType, AreaTypes } from 'src/types/maze';
+import { appLinks } from 'src/router/const';
 import { StoreContext } from 'src/context/storeContext';
 import { Renderer } from 'src/components/renderer';
-import { ControlPanel } from 'src/components/controlPanel';
-import { PalettePanel } from 'src/components/palettePanel';
-import { GeneratePanel } from 'src/components/generatePanel';
+import { Panel } from 'src/components/panels';
 import { RedactorContextMenu } from 'src/views/mazeRedactor/contextMenu';
-import { LoadMazeModal } from './loadMazeModal';
 import { hugeSizeFrom } from './const';
-import { Container, HeadControl } from './styled';
+import { LoadMazeModal } from './loadMazeModal';
+import { Container, HeadControl, LeftHeadControl } from './styled';
 
 const MazeRedactor: React.FC = observer(() => {
+  const navigate = useNavigate();
   const { mazeStore, cursorStore } = React.useContext(StoreContext);
   const [showLoadModal, setShowLoadModal] = React.useState(false);
   const [enableCoords, setEnableCoords] = React.useState(true);
@@ -89,6 +90,10 @@ const MazeRedactor: React.FC = observer(() => {
     mazeStore.setFillAreaType(type);
   };
 
+  const handleBack = () => {
+    navigate(appLinks.mainMenu, { replace: true });
+  };
+
   const handleSave = () => {
     mazeStore.save().then(() => toast('Saved!'));
   };
@@ -117,12 +122,15 @@ const MazeRedactor: React.FC = observer(() => {
   return (
     <Container>
       <HeadControl>
-        <PalettePanel
-          areaType={mazeStore.fillAreaType}
-          areaTypes={mazeStore.areaTypes}
-          onSelect={handleSelectType}
-        />
-        <GeneratePanel onGenerate={initMaze} />
+        <LeftHeadControl>
+          <Panel.Navigation onBack={handleBack} />
+          <Panel.Palette
+            areaType={mazeStore.fillAreaType}
+            areaTypes={mazeStore.areaTypes}
+            onSelect={handleSelectType}
+          />
+        </LeftHeadControl>
+        <Panel.Generate onGenerate={initMaze} />
       </HeadControl>
       <Renderer.MazeRedactor
         maze={mazeStore.maze}
@@ -134,7 +142,7 @@ const MazeRedactor: React.FC = observer(() => {
         onContextMenu={handleContextMenu}
         enableCoords={enableCoords}
       />
-      <ControlPanel
+      <Panel.Control
         onSave={handleSave}
         enableLoad={!!mazeStore.mazeList.length}
         onLoad={() => setShowLoadModal(true)}

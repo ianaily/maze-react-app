@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Panel } from 'src/components/containers/styled';
+import { Panel } from 'src/components/panels/styled';
 import { styles } from 'src/styles/styles';
 
 export const Container = styled(Panel)`

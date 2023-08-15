@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Difficult } from 'src/types/game';
 import { styles } from 'src/styles/styles';
 
 export const ControlContainer = styled.div`
@@ -39,4 +40,15 @@ export const MazeItem = styled.div<{ selected: boolean; toDelete: boolean }>`
         box-shadow: ${styles.boxShadow.likeButton};
       `}
   }
+`;
+
+const colors = {
+  [Difficult.easy]: styles.colors.general.darkGreen,
+  [Difficult.normal]: styles.colors.general.darkYellow,
+  [Difficult.hard]: styles.colors.general.darkRed,
+};
+
+export const MazeSizeInfo = styled.span<{ difficult: Difficult }>`
+  font-size: 12px;
+  color: ${({ difficult }) => colors[difficult]};
 `;

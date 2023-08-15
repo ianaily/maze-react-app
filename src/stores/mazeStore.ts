@@ -20,8 +20,11 @@ export class MazeStore {
       utils: computed,
       generate: action,
       changeAreaType: action,
+      setMaze: action,
+      setMazeName: action,
       setFillAreaType: action,
       setMazeList: action,
+      saveMazeList: action,
       loadMazeList: action,
       load: action,
     });
@@ -56,6 +59,15 @@ export class MazeStore {
 
   setFillAreaType = (type: AreaType) => {
     this.fillAreaType = type;
+  };
+
+  setMaze = (maze: Maze | null) => {
+    if (maze) {
+      this.maze = maze;
+      this.size = maze.size;
+    } else {
+      this.maze = buildMazePots(this.size);
+    }
   };
 
   setMazeList = (mazeList: Save[]) => {
@@ -98,14 +110,9 @@ export class MazeStore {
 
   load = async (id: string): Promise<void> => {
     const maze = await localforage.getItem<Maze>(id);
-    this.mazeId = id;
 
-    if (maze) {
-      this.maze = maze;
-      this.size = maze.size;
-    } else {
-      this.maze = buildMazePots(this.size);
-    }
+    this.mazeId = id;
+    this.setMaze(maze);
   };
 
   save = async (): Promise<void> => {

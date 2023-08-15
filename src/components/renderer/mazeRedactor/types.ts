@@ -10,5 +10,4 @@ export interface MazeRedactorRendererProps {
   onAreaClick: (area: Point) => void;
   onMouseMove: (area: Point) => void;
   onContextMenu: (area: Point, offset: Point) => void;
-  enableCoords: boolean;
 }

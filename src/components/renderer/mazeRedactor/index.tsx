@@ -1,6 +1,7 @@
 import React from 'react';
 import { Area } from 'src/types/maze';
 import { Point } from 'src/types/point';
+import { tooSmallAreaSize } from 'src/const/maze';
 import { areaFillStyles, coordsFillStyle, cursorStyle } from 'src/const/areaTypes';
 import { mazeUtils } from 'src/utils/mazeUtils';
 import { Loading } from 'src/components/loading/styled';
@@ -16,7 +17,6 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   onAreaClick,
   onMouseMove,
   onContextMenu,
-  enableCoords,
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const { context, areaSize, canvasHeight, calculateCursorPosition } = useCanvasInit(
@@ -24,6 +24,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
     canvasWidth,
     maze.size,
   );
+  const enableCoords = React.useMemo(() => areaSize > tooSmallAreaSize, [areaSize]);
   const { getAreaType } = React.useMemo(() => mazeUtils(maze), [maze]);
 
   const drawArea = ({ x, y, type }: Area) => {

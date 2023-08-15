@@ -13,14 +13,12 @@ import { Panel } from 'src/components/panels';
 import { Modal } from 'src/components/modal';
 import { ContextMenu } from 'src/components/contextMenu';
 import { useStore } from './store';
-import { hugeSizeFrom } from './const';
 import { Container, HeadControl, LeftHeadControl } from './styled';
 
 const MazeRedactor: React.FC = observer(() => {
   const navigate = useNavigate();
   const { mazeStore, cursorStore } = useStore();
   const [showLoadModal, setShowLoadModal] = React.useState(false);
-  const [enableCoords, setEnableCoords] = React.useState(true);
   const [contextMenuData, setContextMenuData] = React.useState<{
     offset: Point;
     area: Point;
@@ -49,9 +47,6 @@ const MazeRedactor: React.FC = observer(() => {
     width: number = defaultMazeSize.width,
     height: number = defaultMazeSize.height,
   ) => {
-    const tooBig = width > hugeSizeFrom || height > hugeSizeFrom;
-
-    setEnableCoords(!tooBig);
     mazeStore.generate({ width, height });
     cursorStore.setMazeSize({ width, height });
     cursorStore.setEnable(true);
@@ -144,7 +139,6 @@ const MazeRedactor: React.FC = observer(() => {
         onAreaClick={handleAreaClick}
         onMouseMove={handleMouseMove}
         onContextMenu={handleContextMenu}
-        enableCoords={enableCoords}
       />
       <Panel.Control
         onSave={handleSave}

@@ -9,5 +9,6 @@ export interface MazeRedactorRendererProps {
   onKeyDown: (key: string) => void;
   onAreaClick: (area: Point) => void;
   onMouseMove: (area: Point) => void;
+  onMouseHoldMove: (area: Point) => void;
   onContextMenu: (area: Point, offset: Point) => void;
 }

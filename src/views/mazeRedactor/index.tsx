@@ -139,6 +139,7 @@ const MazeRedactor: React.FC = observer(() => {
         onAreaClick={handleAreaClick}
         onMouseMove={handleMouseMove}
         onContextMenu={handleContextMenu}
+        onMouseHoldMove={handleAreaClick}
       />
       <Panel.Control
         onSave={handleSave}

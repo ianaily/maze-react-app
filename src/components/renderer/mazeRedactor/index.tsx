@@ -16,6 +16,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   onKeyDown,
   onAreaClick,
   onMouseMove,
+  onMouseHoldMove,
   onContextMenu,
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
@@ -24,6 +25,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
     canvasWidth,
     maze.size,
   );
+  const [mouseHold, setMouseHold] = React.useState(false);
   const enableCoords = React.useMemo(() => areaSize > tooSmallAreaSize, [areaSize]);
   const { getAreaType } = React.useMemo(() => mazeUtils(maze), [maze]);
 
@@ -103,6 +105,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
     const offset = { x: nativeEvent.offsetX, y: nativeEvent.offsetY };
     const areaPoint = calculateCursorPosition(offset);
 
+    mouseHold && onMouseHoldMove(areaPoint);
     onMouseMove(areaPoint);
     drawMaze();
   };
@@ -133,6 +136,8 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         onMouseMove={handleMouseMove}
+        onMouseDown={() => setMouseHold(true)}
+        onMouseUp={() => setMouseHold(false)}
         onContextMenu={handleContextMenu}
         tabIndex={0}
       />

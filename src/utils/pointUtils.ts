@@ -1,4 +1,5 @@
 import { Point } from 'src/types/point';
+import { Direction } from 'src/types/direction';
 
 export const toTop = (point: Point) => ({ ...point, y: Math.max(point.y - 1, 0) });
 export const toRight = (point: Point) => ({ ...point, x: point.x + 1 });
@@ -13,3 +14,11 @@ export const updatePoint = (current: Point, modFunc: (point: Point) => Point) =>
 
   return current;
 };
+
+export const toDirection = (point: Point, direction: Direction) =>
+  ({
+    top: toTop,
+    right: toRight,
+    bottom: toBottom,
+    left: toLeft,
+  }[direction](point));

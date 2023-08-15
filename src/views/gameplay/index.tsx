@@ -14,11 +14,11 @@ const Gameplay: React.FC = observer(() => {
   const commands: { [key: string]: VoidFunction } = {
     Escape: () => setShowPauseModal((show) => !show),
     w: () => {
-      playerStore.moveTop();
+      playerStore.moveUp();
       console.log(toJS(playerStore.player.point));
     },
     s: () => {
-      playerStore.moveBottom();
+      playerStore.moveDown();
       console.log(toJS(playerStore.player.point));
     },
     a: () => {

@@ -1,5 +1,8 @@
+import { squareEasy, squareNormal } from 'src/const/maze';
 import { Area, AreaType, AreaTypes, Maze } from 'src/types/maze';
+import { Size } from 'src/types/size';
 import { Point } from 'src/types/point';
+import { Difficult } from 'src/types/game';
 import { areaTypeByShort } from './areaUtils';
 
 // prettier-ignore
@@ -38,6 +41,16 @@ export const mazeUtils = (maze: Maze) => {
   };
 
   return { getFlatIndex, setAreaType, getAreaType, fillEmpty };
+};
+
+export const getAreaDifficult = ({ width, height }: Size): Difficult => {
+  const square = width * height;
+
+  return square < squareEasy
+    ? Difficult.easy
+    : square < squareNormal
+    ? Difficult.normal
+    : Difficult.hard;
 };
 
 export const stringifyMaze = (maze: Maze): string => {

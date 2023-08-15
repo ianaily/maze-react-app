@@ -1,8 +1,10 @@
 import React from 'react';
+import { Save } from 'src/types/save';
+import { getAreaDifficult } from 'src/utils/mazeUtils';
 import { Modal } from 'src/components/modal/base';
 import { Button } from 'src/components/button';
 import { LoadMazeModalProps } from './types';
-import { ControlContainer, MazeItem, MazeLoadList } from './styled';
+import { ControlContainer, MazeItem, MazeLoadList, MazeSizeInfo } from './styled';
 
 export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
   mazeList,
@@ -12,6 +14,10 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
 }) => {
   const [selectedItem, setSelectedItem] = React.useState<string>();
   const [toDelete, setToDelete] = React.useState<boolean>(false);
+
+  const getMazeDifficult = ({ mazeSize }: Save) => {
+    return getAreaDifficult(mazeSize);
+  };
 
   const handleLoad = () => {
     selectedItem && onLoad(selectedItem);
@@ -49,11 +55,15 @@ export const LoadMazeModal: React.FC<LoadMazeModalProps> = ({
         {mazeList.map((item) => (
           <MazeItem
             key={item.mazeId}
+            title={item.mazeId}
             selected={item.mazeId === selectedItem}
             toDelete={toDelete}
             onClick={() => setSelectedItem(item.mazeId)}
           >
             {item.mazeName}
+            <MazeSizeInfo difficult={getMazeDifficult(item)}>
+              {Object.values(item.mazeSize).join('x')}
+            </MazeSizeInfo>
           </MazeItem>
         ))}
       </MazeLoadList>

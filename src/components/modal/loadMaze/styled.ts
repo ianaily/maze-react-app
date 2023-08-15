@@ -15,6 +15,8 @@ export const MazeLoadList = styled.div`
 `;
 
 export const MazeItem = styled.div<{ selected: boolean; toDelete: boolean }>`
+  display: flex;
+  justify-content: space-between;
   padding: ${styles.offsets.m} ${styles.offsets.l};
   border-radius: ${styles.borderRadius.m};
   color: ${styles.colors.font.black};

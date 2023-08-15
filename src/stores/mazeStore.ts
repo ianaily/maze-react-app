@@ -88,6 +88,14 @@ export class MazeStore {
     await localforage.setItem<{ saves: Save[] }>(mazeSavesKey, { saves: toJS(this.mazeList) });
   };
 
+  deleteMazeListItem = async (mazeId: string): Promise<void> => {
+    const list = await this.loadMazeList();
+    const updatedList = list.filter((save) => save.mazeId !== mazeId);
+
+    await localforage.setItem<{ saves: Save[] }>(mazeSavesKey, { saves: updatedList });
+    this.setMazeList(updatedList);
+  };
+
   load = async (id: string): Promise<void> => {
     const maze = await localforage.getItem<Maze>(id);
     this.mazeId = id;
@@ -108,11 +116,10 @@ export class MazeStore {
   };
 
   delete = async (mazeId?: string) => {
-    await this.loadMazeList();
-    this.mazeList = this.mazeList.filter((save) => save.mazeId !== mazeId);
-    await this.saveMazeList;
+    const id = mazeId || this.mazeId || '';
 
-    await localforage.removeItem(mazeId || this.mazeId || '');
+    await this.deleteMazeListItem(id);
+    await localforage.removeItem(id);
   };
 }
 

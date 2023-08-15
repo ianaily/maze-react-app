@@ -42,27 +42,27 @@ export class PlayerStore {
     return this.utils.getAreaType(point).passable;
   }
 
-  moveTop() {
+  moveUp() {
     if (this.y - 1 >= 0 && this.throughPassable(toTop(this.player.point))) {
-      this.setPosition({ x: this.x, y: this.y - 1 });
-    }
-  }
-
-  moveBottom() {
-    if (this.y + 1 < this.maze.size.height && this.throughPassable(toBottom(this.player.point))) {
-      this.setPosition({ x: this.x, y: this.y + 1 });
-    }
-  }
-
-  moveLeft() {
-    if (this.x - 1 >= 0 && this.throughPassable(toLeft(this.player.point))) {
-      this.setPosition({ x: this.x - 1, y: this.y });
+      this.setPosition(toTop(this.player.point));
     }
   }
 
   moveRight() {
     if (this.x + 1 < this.maze.size.width && this.throughPassable(toRight(this.player.point))) {
-      this.setPosition({ x: this.x + 1, y: this.y });
+      this.setPosition(toRight(this.player.point));
+    }
+  }
+
+  moveDown() {
+    if (this.y + 1 < this.maze.size.height && this.throughPassable(toBottom(this.player.point))) {
+      this.setPosition(toBottom(this.player.point));
+    }
+  }
+
+  moveLeft() {
+    if (this.x - 1 >= 0 && this.throughPassable(toLeft(this.player.point))) {
+      this.setPosition(toLeft(this.player.point));
     }
   }
 }

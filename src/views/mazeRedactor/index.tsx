@@ -19,6 +19,7 @@ import { Container, HeadControl, LeftHeadControl } from './styled';
 const MazeRedactor: React.FC = observer(() => {
   const navigate = useNavigate();
   const { mazeStore, cursorStore } = useStore();
+  const [route, setRoute] = React.useState<Point[]>([]);
   const [showLoadModal, setShowLoadModal] = React.useState(false);
   const [contextMenuData, setContextMenuData] = React.useState<{
     offset: Point;
@@ -28,6 +29,7 @@ const MazeRedactor: React.FC = observer(() => {
   const keyActionMap: { [key: string]: VoidFunction } = {
     'r': () => initMaze(),
     'e': () => fillWithNextType(),
+    'c': () => handleCheck(),
     'f': () => mazeStore.changeAreaType(cursorStore.cursor.point),
     '1': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Wall),
     '2': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Way),
@@ -52,6 +54,7 @@ const MazeRedactor: React.FC = observer(() => {
     cursorStore.setMazeSize({ width, height });
     cursorStore.setEnable(true);
     cursorStore.reset();
+    setRoute([]);
   };
 
   const handleKeyDown = (key: string) => {
@@ -91,10 +94,11 @@ const MazeRedactor: React.FC = observer(() => {
   };
 
   const handleCheck = () => {
-    const isPassable = checkMazePassable(toJS(mazeStore.maze));
+    const { isChecked, history } = checkMazePassable(toJS(mazeStore.maze));
 
-    !isPassable && toast.error("Maze isn't passable!");
-    isPassable && toast.success('Maze is passable!');
+    setRoute(history);
+    !isChecked && toast.error("Maze isn't passable!");
+    isChecked && toast.success('Maze is passable!');
   };
 
   const handleSave = () => {
@@ -105,11 +109,13 @@ const MazeRedactor: React.FC = observer(() => {
     mazeStore.load(mazeId).then(() => {
       cursorStore.setMazeSize(mazeStore.size);
       cursorStore.reset();
+      setRoute([]);
       toast('Loaded!');
     });
   };
 
   const handleDelete = (mazeId?: string) => {
+    !mazeId && setRoute([]);
     mazeStore.delete(mazeId).then(async () => {
       toast('Deleted!');
       await mazeStore.loadMazeList();
@@ -142,6 +148,7 @@ const MazeRedactor: React.FC = observer(() => {
       <Renderer.MazeRedactor
         maze={mazeStore.maze}
         cursor={toJS(cursorStore.cursor)}
+        route={route}
         canvasWidth={window.innerWidth - 80}
         onKeyDown={handleKeyDown}
         onAreaClick={handleAreaClick}

@@ -11,15 +11,18 @@ export const checkMazePassable = (maze: Maze) => {
   let position: Point = maze.enter;
   let target: Point = maze.exit;
   let moveNum = 0;
+  const history: Point[] = [];
   const { getAreaType, setAreaType } = mazeUtils({ ...maze });
 
   const check = (): boolean => {
     const maxMoves = maze.size.width * maze.size.height;
+    history.push(position);
 
     while (!checkFinish()) {
       try {
         step();
         moveNum++;
+        history.push(position);
       } catch {
         return false;
       }
@@ -147,5 +150,5 @@ export const checkMazePassable = (maze: Maze) => {
     checkType([AreaTypes.Exit], 'bottom') ||
     checkType([AreaTypes.Exit], 'left');
 
-  return check();
+  return { isChecked: check(), history };
 };

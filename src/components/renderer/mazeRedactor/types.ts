@@ -5,6 +5,7 @@ import { Cursor } from 'src/types/cursor';
 export interface MazeRedactorRendererProps {
   maze: Maze;
   cursor: Cursor;
+  route: Point[];
   canvasWidth: number;
   onKeyDown: (key: string) => void;
   onAreaClick: (area: Point) => void;

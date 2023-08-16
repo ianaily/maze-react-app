@@ -7,3 +7,10 @@ export type VariantPropsMap = {
   MazeRedactor: MazeRedactorRendererProps;
   Gameplay: GameplayRendererProps;
 };
+
+export interface DrawStyleProps {
+  textFill?: string;
+  fill: string;
+  stroke?: string;
+  lineWidth?: number;
+}

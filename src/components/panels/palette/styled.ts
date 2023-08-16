@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { areaFillStyles } from 'src/const/areaTypes';
+import { areaFillColors } from 'src/const/areaTypes';
 import { AreaTypeKeys } from 'src/types/maze';
 import { styles } from 'src/styles/styles';
 import { Panel } from '../styled';
@@ -37,7 +37,7 @@ export const AreaPalette = styled.div<{ type: AreaTypeKeys }>`
   height: 42px;
   padding: ${styles.offsets.s};
   border-radius: ${styles.borderRadius.m};
-  background-color: ${({ type }) => areaFillStyles[type]};
+  background-color: ${({ type }) => areaFillColors[type]};
   cursor: pointer;
 `;
 

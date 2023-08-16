@@ -42,6 +42,7 @@ const Gameplay: React.FC = observer(() => {
     playerStore.setMaze(mazeStore.maze);
     playerStore.setPosition(mazeStore.maze.enter);
   }, []);
+
   return (
     <Container>
       <Renderer.Gameplay

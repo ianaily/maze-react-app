@@ -128,7 +128,7 @@ const MazeRedactor: React.FC = observer(() => {
   };
 
   React.useEffect(() => {
-    mazeStore.loadMazeList();
+    mazeStore.loadMazeList().then();
     React.startTransition(() => initMaze());
   }, []);
 

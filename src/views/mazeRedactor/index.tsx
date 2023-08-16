@@ -94,9 +94,9 @@ const MazeRedactor: React.FC = observer(() => {
   };
 
   const handleCheck = () => {
-    const { isChecked, history } = checkMazePassable(toJS(mazeStore.maze));
+    const { isChecked, moveHistory } = checkMazePassable(toJS(mazeStore.maze));
 
-    setRoute(history);
+    setRoute(moveHistory);
     !isChecked && toast.error("Maze isn't passable!");
     isChecked && toast.success('Maze is passable!');
   };

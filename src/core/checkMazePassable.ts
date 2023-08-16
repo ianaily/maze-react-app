@@ -11,18 +11,17 @@ export const checkMazePassable = (maze: Maze) => {
   let position: Point = maze.enter;
   let target: Point = maze.exit;
   let moveNum = 0;
-  const history: Point[] = [];
+  const moveHistory: Point[] = [];
   const { getAreaType, setAreaType } = mazeUtils({ ...maze });
 
   const check = (): boolean => {
     const maxMoves = maze.size.width * maze.size.height;
-    history.push(position);
 
     while (!checkFinish()) {
       try {
         step();
         moveNum++;
-        history.push(position);
+        moveHistory.push(position);
       } catch {
         return false;
       }
@@ -50,26 +49,34 @@ export const checkMazePassable = (maze: Maze) => {
 
   const getPosition = (fork: Fork) => {
     if (isNoWayFork(fork)) {
-      toLastFork();
-      if (isNoWayFork(fork)) {
-        throw Error('Dead end');
-      }
-
-      const newPosition = popFork(forks[forks.length - 1]);
-
-      if (!newPosition) {
-        throw Error('Dead end');
-      } else {
-        return newPosition;
-      }
+      return moveToLastFork(fork);
     } else {
-      const newPosition = popFork(fork);
+      return moveToNextFork(fork);
+    }
+  };
 
-      if (!newPosition) {
-        throw Error('Dead end');
-      } else {
-        return newPosition;
-      }
+  const moveToLastFork = (fork: Fork) => {
+    toLastFork();
+    if (isNoWayFork(fork)) {
+      throw Error('Dead end');
+    }
+
+    const newPosition = popFork(forks[forks.length - 1]);
+
+    if (!newPosition) {
+      throw Error('Dead end');
+    } else {
+      return newPosition;
+    }
+  };
+
+  const moveToNextFork = (fork: Fork) => {
+    const newPosition = popFork(fork);
+
+    if (!newPosition) {
+      throw Error('Dead end');
+    } else {
+      return newPosition;
     }
   };
 
@@ -150,5 +157,5 @@ export const checkMazePassable = (maze: Maze) => {
     checkType([AreaTypes.Exit], 'bottom') ||
     checkType([AreaTypes.Exit], 'left');
 
-  return { isChecked: check(), history };
+  return { isChecked: check(), moveHistory };
 };

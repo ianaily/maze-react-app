@@ -1,4 +1,5 @@
 export interface ControlPanelProps {
+  onCheck: VoidFunction;
   onSave: VoidFunction;
   enableLoad: boolean;
   onLoad: VoidFunction;

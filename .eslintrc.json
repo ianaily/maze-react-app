@@ -39,7 +39,10 @@
     "semi": "warn",
     "quotes": [
       "error",
-      "single"
+      "single",
+      {
+        "avoidEscape": true
+      }
     ],
     "no-duplicate-imports": "error",
     "prettier/prettier": [

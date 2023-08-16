@@ -20,6 +20,10 @@ export const toastify = css`
     padding: ${styles.offsets.s};
   }
 
+  .Toastify__toast-icon {
+    display: none;
+  }
+
   .Toastify__toast {
     border-radius: ${styles.borderRadius.m};
     background-color: ${styles.colors.transparent.light5};
@@ -39,7 +43,7 @@ export const toastify = css`
   }
 
   .Toastify--animate {
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
   }
 
   .Toastify__close-button {

@@ -45,7 +45,9 @@ export const popFork = (fork: Fork): Point | undefined => {
 
 export const addDirections = (fork: Fork, direction: Direction) => {
   direction === 'top' && (fork.top = toTop(fork.point));
-  direction === 'right' && (fork.top = toRight(fork.point));
-  direction === 'bottom' && (fork.top = toBottom(fork.point));
-  direction === 'left' && (fork.top = toLeft(fork.point));
+  direction === 'right' && (fork.right = toRight(fork.point));
+  direction === 'bottom' && (fork.bottom = toBottom(fork.point));
+  direction === 'left' && (fork.left = toLeft(fork.point));
+
+  return fork;
 };

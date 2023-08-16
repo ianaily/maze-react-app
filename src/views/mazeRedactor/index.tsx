@@ -3,6 +3,7 @@ import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
+import { checkMazePassable } from 'src/core/checkMazePassable';
 import { getNextAreaType } from 'src/utils/areaUtils';
 import { defaultMazeSize } from 'src/const/maze';
 import { Point } from 'src/types/point';
@@ -89,6 +90,13 @@ const MazeRedactor: React.FC = observer(() => {
     navigate(appLinks.mainMenu, { replace: true });
   };
 
+  const handleCheck = () => {
+    const isPassable = checkMazePassable(toJS(mazeStore.maze));
+
+    !isPassable && toast.error("Maze isn't passable!");
+    isPassable && toast.success('Maze is passable!');
+  };
+
   const handleSave = () => {
     mazeStore.save().then(() => toast('Saved!'));
   };
@@ -142,6 +150,7 @@ const MazeRedactor: React.FC = observer(() => {
         onMouseHoldMove={handleAreaClick}
       />
       <Panel.Control
+        onCheck={handleCheck}
         onSave={handleSave}
         enableLoad={!!mazeStore.mazeList.length}
         onLoad={() => setShowLoadModal(true)}

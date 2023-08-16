@@ -5,6 +5,7 @@ import { ControlPanelProps } from './types';
 import { ButtonContainer, ControlContainer } from './styled';
 
 export const ControlPanel: React.FC<ControlPanelProps> = ({
+  onCheck,
   onSave,
   enableLoad,
   onLoad,
@@ -30,6 +31,9 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
     <ButtonContainer>
       <Button variant="red" onClick={onDelete} disabled={!enableDelete}>
         Delete
+      </Button>
+      <Button variant="yellow" onClick={onCheck}>
+        Check
       </Button>
       <Button variant="green" onClick={onSave}>
         Save

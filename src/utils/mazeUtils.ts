@@ -26,7 +26,7 @@ export const mazeUtils = (maze: Maze) => {
   };
 
   const getAreaType = (point: Point) =>
-    maze.areas[getFlatIndex(point.x, point.y)].type;
+    maze.areas[getFlatIndex(point.x, point.y)]?.type;
 
   const fillEmpty = () => {
     maze.areas = [...Array(width * height)].map((_, index) => ({

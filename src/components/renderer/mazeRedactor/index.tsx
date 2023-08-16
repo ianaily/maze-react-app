@@ -115,7 +115,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
 
   React.useEffect(() => {
     drawMaze();
-  }, [maze, context]);
+  }, [maze, route]);
 
   React.useEffect(() => {
     drawCursor();

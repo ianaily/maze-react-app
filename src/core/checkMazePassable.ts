@@ -2,7 +2,7 @@ import { Fork } from 'src/types/fork';
 import { Point } from 'src/types/point';
 import { Direction } from 'src/types/direction';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
-import { toBottom, toDirection, toLeft, toRight, toTop, updatePoint } from 'src/utils/pointUtils';
+import { toDirection } from 'src/utils/pointUtils';
 import { addDirections, isNoWayFork, popFork } from 'src/utils/forkUtils';
 import { mazeUtils } from 'src/utils/mazeUtils';
 
@@ -49,19 +49,23 @@ export const checkMazePassable = (maze: Maze) => {
 
   const getPosition = (fork: Fork) => {
     if (isNoWayFork(fork)) {
-      return moveToLastFork(fork);
+      return moveToLastFork();
     } else {
       return moveToNextFork(fork);
     }
   };
 
-  const moveToLastFork = (fork: Fork) => {
+  const moveToLastFork = () => {
     toLastFork();
-    if (isNoWayFork(fork)) {
+    removeEmptyForks();
+
+    const lastFork = forks[forks.length - 1];
+
+    if (isNoWayFork(lastFork)) {
       throw Error('Dead end');
     }
 
-    const newPosition = popFork(forks[forks.length - 1]);
+    const newPosition = popFork(lastFork);
 
     if (!newPosition) {
       throw Error('Dead end');
@@ -114,24 +118,13 @@ export const checkMazePassable = (maze: Maze) => {
   };
 
   const toTarget = () => {
-    let attempts = (maze.size.width + maze.size.height) * 2;
-    // prettier-ignore
-    while (position.x !== target.x && position.y !== target.y) {
-      position.x < target.x &&
-        checkPassable('right') &&
-        markAreaPassed(updatePoint(position, toRight));
-      position.x > target.x &&
-        checkPassable('left') &&
-        markAreaPassed(updatePoint(position, toLeft));
-      position.y < target.y &&
-        checkPassable('bottom') &&
-        markAreaPassed(updatePoint(position, toBottom));
-      position.y > target.y &&
-        checkPassable('top') &&
-        markAreaPassed(updatePoint(position, toTop));
+    for (let index = moveHistory.length - 1; index >= 0; index--) {
+      const isReturnToTarget = position.x === target.x && position.y === target.y;
 
-      if (!attempts--) {
-        throw Error('Bot Lost');
+      if (isReturnToTarget) {
+        break;
+      } else {
+        position = moveHistory[index];
       }
     }
   };
@@ -145,10 +138,6 @@ export const checkMazePassable = (maze: Maze) => {
     const typeNames = types.map((type) => type.name);
 
     return typeNames.includes(typeName);
-  };
-
-  const checkPassable = (direction: Direction) => {
-    return getAreaType(toDirection(position, direction))?.passable;
   };
 
   const checkFinish = () =>

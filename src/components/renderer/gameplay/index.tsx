@@ -1,6 +1,5 @@
 import React from 'react';
-import { Area } from 'src/types/maze';
-import { areaFillColors } from 'src/const/areaTypes';
+import { AreaSprite } from 'src/types/camera';
 import { playerStyle } from '../const';
 import { useCanvasInit } from '../hooks';
 import { GameplayRendererProps } from './types';
@@ -14,8 +13,11 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const { context, canvasHeight, drawPoint } = useCanvasInit(canvasRef, canvasWidth, camera.size);
 
-  const drawArea = ({ x, y, type }: Area) => {
-    drawPoint({ x, y }, { fill: areaFillColors[type.name] });
+  const drawArea = (area: AreaSprite) => {
+    const sprite = new Image();
+    sprite.src = area.sprite;
+
+    drawPoint(area, { image: sprite });
   };
 
   const drawPlayer = () => {
@@ -28,10 +30,16 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
     });
   };
 
-  React.useEffect(() => {
+  const updateFrame = () => {
     drawCamera();
     drawPlayer();
-  }, [camera, player, context]);
+
+    requestAnimationFrame(updateFrame);
+  };
+
+  React.useEffect(() => {
+    updateFrame();
+  }, [context]);
 
   return (
     <Container>

@@ -9,8 +9,8 @@ import { areaTypeByShort } from './areaUtils';
 export const mazeUtils = (maze: Maze) => {
   const {width, height} = maze.size;
 
-  const getFlatIndex = (x: number, y: number): number =>
-    x * height + y;
+  const getFlatIndex = (x: number, y: number) =>
+    (x < width && y < height && x >= 0 && y >= 0) ? x * height + y : -1;
 
   const getX = (flatIndex: number): number =>
     Math.floor(flatIndex / height);
@@ -20,7 +20,9 @@ export const mazeUtils = (maze: Maze) => {
 
   const setAreaType = (point: Point, type: AreaType, ignoreRewritable?: boolean) => {
     const ableToChange = ignoreRewritable || getAreaType(point).rewritable;
-    ableToChange && (maze.areas[getFlatIndex(point.x, point.y)].type = type);
+    const index = getFlatIndex(point.x, point.y);
+
+    ableToChange && index >= 0 && (maze.areas[index].type = type);
 
     return maze;
   };

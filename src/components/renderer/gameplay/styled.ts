@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
+// todo redo calculation
 export const Container = styled.div`
-  width: 100%;
-  height: 100vh;
+  width: 500px;
+  height: 500px;
 `;
 
 export const Canvas = styled.canvas`

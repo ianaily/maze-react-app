@@ -52,7 +52,7 @@ export const AreaTypes: { [key in AreaTypeKeys]: AreaType } = {
   [AreaTypeKeys.Exit]: {
     name: AreaTypeKeys.Exit,
     short: '!',
-    passable: false,
+    passable: true,
     rewritable: false,
   },
   [AreaTypeKeys.Center]: {

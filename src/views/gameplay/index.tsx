@@ -1,5 +1,4 @@
 import React from 'react';
-import { toJS } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { Renderer } from 'src/components/renderer';
@@ -13,21 +12,20 @@ const Gameplay: React.FC = observer(() => {
 
   const commands: { [key: string]: VoidFunction } = {
     Escape: () => setShowPauseModal((show) => !show),
+    r: () => {
+      initMaze();
+    },
     w: () => {
       playerStore.moveUp();
-      console.log(toJS(playerStore.player.point));
     },
     s: () => {
       playerStore.moveDown();
-      console.log(toJS(playerStore.player.point));
     },
     a: () => {
       playerStore.moveLeft();
-      console.log(toJS(playerStore.player.point));
     },
     d: () => {
       playerStore.moveRight();
-      console.log(toJS(playerStore.player.point));
     },
   };
 
@@ -37,17 +35,25 @@ const Gameplay: React.FC = observer(() => {
 
   useKeyboard(handleKeyDown);
 
-  React.useEffect(() => {
-    mazeStore.generate({ height: 90, width: 70 });
+  const initMaze = () => {
+    // todo get maze from storage
+    mazeStore.generate({ height: 10, width: 10 });
     playerStore.setMaze(mazeStore.maze);
-    playerStore.setPosition(mazeStore.maze.enter);
+    cameraStore.setMaze(mazeStore.maze);
+    // todo calculate camera size by maze size
+    cameraStore.setCameraSize({ height: 10, width: 10 });
+  };
+
+  React.useEffect(() => {
+    initMaze();
   }, []);
 
+  // todo calculate canvasWidth and canvasHeight
   return (
     <Container>
       <Renderer.Gameplay
         maze={mazeStore.maze}
-        canvasWidth={window.innerWidth - 80}
+        canvasWidth={100 * 5}
         camera={cameraStore.camera}
         player={playerStore.player}
       />

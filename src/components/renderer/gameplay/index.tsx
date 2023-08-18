@@ -39,7 +39,7 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
 
   React.useEffect(() => {
     updateFrame();
-  }, [context]);
+  }, [context, player.point]);
 
   return (
     <Container>

@@ -5,5 +5,9 @@ import { Area } from './maze';
 export interface Camera {
   size: Size;
   point: Point;
-  areas: Area[];
+  areas: AreaSprite[];
+}
+
+export interface AreaSprite extends Area {
+  sprite: string;
 }

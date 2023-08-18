@@ -32,6 +32,7 @@ export class PlayerStore {
 
   setMaze(maze: Maze) {
     this.maze = maze;
+    this.setPosition(maze.enter);
   }
 
   setPosition(position: Point) {

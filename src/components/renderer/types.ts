@@ -10,7 +10,8 @@ export type VariantPropsMap = {
 
 export interface DrawStyleProps {
   textFill?: string;
-  fill: string;
+  fill?: string;
   stroke?: string;
   lineWidth?: number;
+  image?: CanvasImageSource;
 }

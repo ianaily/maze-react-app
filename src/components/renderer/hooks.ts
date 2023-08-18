@@ -57,6 +57,7 @@ export const useCanvasInit = (
     style.lineWidth && (context.lineWidth = style.lineWidth);
 
     style.fill && context.fillRect(x * areaSize, y * areaSize, areaSize, areaSize);
+    style.image && context.drawImage(style.image, x * areaSize, y * areaSize, areaSize, areaSize);
 
     if (style.stroke && style.lineWidth) {
       const w = style.lineWidth;

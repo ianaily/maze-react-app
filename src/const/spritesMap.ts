@@ -16,6 +16,7 @@ import NV from 'src/assets/sprites/walls/narrow-vertical.png';
 import NM from 'src/assets/sprites/walls/narrow.png';
 import Way from 'src/assets/sprites/way.png';
 import Door from 'src/assets/sprites/door.png';
+import CharRight from 'src/assets/sprites/char-r.png';
 
 export const walls = {
   topLeft: TL as string,
@@ -63,3 +64,5 @@ export const spritesImages: { [src: string]: CanvasImageSource } = {
   [Way]: getImage(Way),
   [Door]: getImage(Door),
 };
+
+export const charSpriteImage = getImage(CharRight);

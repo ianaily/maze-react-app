@@ -1,8 +1,7 @@
 import React from 'react';
 import { Point } from 'src/types/point';
 import { AreaSprite } from 'src/types/camera';
-import { spritesImages } from 'src/const/spritesMap';
-import { playerStyle } from '../const';
+import { charSpriteImage, spritesImages } from 'src/const/spritesMap';
 import { useCanvasInit } from '../hooks';
 import { GameplayRendererProps } from './types';
 import { Canvas, Container } from './styled';
@@ -30,7 +29,7 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
       x: player.point.x - firstPoint.x,
       y: player.point.y - firstPoint.y,
     };
-    drawPoint(point, playerStyle);
+    drawPoint(point, { image: charSpriteImage });
   };
 
   const drawCamera = () => {

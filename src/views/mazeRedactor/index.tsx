@@ -27,16 +27,16 @@ const MazeRedactor: React.FC = observer(() => {
   } | null>(null);
 
   const keyActionMap: { [key: string]: VoidFunction } = {
-    'r': () => initMaze(),
-    'e': () => fillWithNextType(),
-    'c': () => handleCheck(),
-    'f': () => mazeStore.changeAreaType(cursorStore.cursor.point),
-    '1': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Wall),
-    '2': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Way),
-    '3': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Thread),
-    '4': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Center),
-    '5': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Enter),
-    '6': () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Exit),
+    KeyR: () => initMaze(),
+    KeyE: () => fillWithNextType(),
+    KeyC: () => handleCheck(),
+    KeyF: () => mazeStore.changeAreaType(cursorStore.cursor.point),
+    Digit1: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Wall),
+    Digit2: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Way),
+    Digit3: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Thread),
+    Digit4: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Center),
+    Digit5: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Enter),
+    Digit6: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Exit),
   };
 
   const fillWithNextType = () => {
@@ -61,10 +61,10 @@ const MazeRedactor: React.FC = observer(() => {
     keyActionMap[key]?.();
 
     if (cursorStore.enabled) {
-      ['ArrowUp', 'w'].includes(key) && cursorStore.toUp();
-      ['ArrowRight', 'd'].includes(key) && cursorStore.toRight();
-      ['ArrowDown', 's'].includes(key) && cursorStore.toDown();
-      ['ArrowLeft', 'a'].includes(key) && cursorStore.toLeft();
+      ['ArrowUp', 'KeyW'].includes(key) && cursorStore.toUp();
+      ['ArrowRight', 'KeyD'].includes(key) && cursorStore.toRight();
+      ['ArrowDown', 'KeyS'].includes(key) && cursorStore.toDown();
+      ['ArrowLeft', 'KeyA'].includes(key) && cursorStore.toLeft();
     }
   };
 

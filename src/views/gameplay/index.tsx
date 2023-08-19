@@ -22,26 +22,24 @@ const Gameplay: React.FC = observer(() => {
   );
 
   const commands: { [key: string]: VoidFunction } = {
-    Escape: () => setShowPauseModal((show) => !show),
-    r: () => {
+    keyR: () => {
       initMaze();
-    },
-    w: () => {
-      playerStore.moveUp();
-    },
-    s: () => {
-      playerStore.moveDown();
-    },
-    a: () => {
-      playerStore.moveLeft();
-    },
-    d: () => {
-      playerStore.moveRight();
     },
   };
 
   const handleKeyDown = (key: string) => {
+    key === 'Escape' && setShowPauseModal((show) => !show);
+
+    if (showPauseModal) {
+      return;
+    }
+
     commands[key]?.();
+
+    ['ArrowUp', 'KeyW'].includes(key) && playerStore.moveUp();
+    ['ArrowRight', 'KeyD'].includes(key) && playerStore.moveRight();
+    ['ArrowDown', 'KeyS'].includes(key) && playerStore.moveDown();
+    ['ArrowLeft', 'KeyA'].includes(key) && playerStore.moveLeft();
   };
 
   useKeyboard(handleKeyDown);

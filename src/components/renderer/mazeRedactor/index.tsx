@@ -77,7 +77,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    onKeyDown(event.key);
+    onKeyDown(event.code);
   };
 
   const handleClick = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {

@@ -115,6 +115,8 @@ const enrichWithWallByDirection = (
   } else if (neighborsAreWall([beside2, opposite])) {
     return spriteBeside1;
   }
+
+  return;
 };
 
 const neighborsAreWall = (areas: AreaType[]) => areas.every((area) => isWall(area));

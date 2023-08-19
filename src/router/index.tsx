@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import { appLinks } from './const';
 
 const MainMenu = React.lazy(() => import('src/views/mainMenu'));
@@ -25,4 +25,4 @@ export const routes = [
   },
 ];
 
-export const AppRouter = createBrowserRouter(routes);
+export const AppRouter = createHashRouter(routes);

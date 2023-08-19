@@ -41,6 +41,8 @@ export const popFork = (fork: Fork): Point | undefined => {
 
     return value;
   }
+
+  return;
 };
 
 export const addDirections = (fork: Fork, direction: Direction) => {

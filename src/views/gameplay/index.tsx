@@ -6,7 +6,6 @@ import { Renderer } from 'src/components/renderer';
 import { Modal } from 'src/components/modal';
 import { Container } from './styled';
 import { useStore } from './store';
-import { toJS } from 'mobx';
 
 const Gameplay: React.FC = observer(() => {
   const { mazeStore, playerStore, cameraStore } = useStore();
@@ -23,7 +22,7 @@ const Gameplay: React.FC = observer(() => {
 
   const commands: { [key: string]: VoidFunction } = {
     keyR: () => {
-      initMaze();
+      initMaze().then();
     },
   };
 

@@ -9,7 +9,7 @@ import { StoreContext } from 'src/context/storeContext';
 import { GlobalStyle } from 'src/styles/global';
 import { AppRouter } from 'src/router';
 
-export default function App() {
+export default function App(): JSX.Element {
   return (
     <React.Fragment>
       <StoreContext.Provider value={{ mazeStore, cursorStore, playerStore, cameraStore }}>

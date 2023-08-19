@@ -10,8 +10,9 @@
 # testing
 /coverage
 
-# production
-/build
+/dist
+/out
+/.vite
 
 # misc
 .DS_Store

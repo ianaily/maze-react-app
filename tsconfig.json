@@ -24,6 +24,10 @@
   "include": [
     "src",
     "src/types",
-    "styled-components.d.ts"
-  ]
+    "styled-components.d.ts",
+    "electron.vite.config.*",
+    "electron/*"
+  ],
+  "files": [],
+  "references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.web.json" }]
 }

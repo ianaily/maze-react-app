@@ -3,7 +3,8 @@ import { Player } from 'src/types/player';
 import { Camera } from 'src/types/camera';
 
 export interface GameplayRendererProps {
-  canvasWidth: number;
+  maxCanvasWidth: number;
+  maxCanvasHeight: number;
   maze: Maze;
   player: Player;
   camera: Camera;

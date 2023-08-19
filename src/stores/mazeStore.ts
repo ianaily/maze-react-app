@@ -3,7 +3,7 @@ import localforage from 'localforage';
 import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
 import { mazeUtils } from 'src/utils/mazeUtils';
-import { randomId } from 'src/utils/random';
+import { random, randomId } from 'src/utils/random';
 import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
@@ -66,12 +66,22 @@ export class MazeStore {
       this.maze = maze;
       this.size = maze.size;
     } else {
-      this.maze = buildMazePots(this.size);
+      this.generate(defaultMazeSize);
     }
   };
 
   setMazeList = (mazeList: Save[]) => {
     this.mazeList = mazeList;
+  };
+
+  getRandomSavedMaze = async () => {
+    const saves = await this.loadMazeList();
+    const randomIndex = random(saves.length - 1, 0);
+    const randomSave = saves[randomIndex];
+
+    await this.load(randomSave.mazeId);
+
+    return this.maze;
   };
 
   loadMazeList = (): Promise<Save[]> => {

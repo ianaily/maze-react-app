@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import { Size } from 'src/types/size';
 
-// todo redo calculation
-export const Container = styled.div`
-  width: 500px;
-  height: 500px;
+export const Container = styled.div<Size>`
+  width: ${({ width }) => width || 0}px;
+  height: ${({ height }) => height || 0}px;
 `;
 
 export const Canvas = styled.canvas`

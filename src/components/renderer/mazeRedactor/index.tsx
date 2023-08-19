@@ -38,7 +38,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   const drawCoords = ({ x, y }: Point) => {
     if (context && enableCoords) {
       const offset = areaSize / 2;
-      context.fillStyle = coordsStyle.textFill;
+      coordsStyle.textFill && (context.fillStyle = coordsStyle.textFill);
       context.fillText(`${x}:${y}`, x * areaSize, y * areaSize + offset, areaSize);
     }
   };

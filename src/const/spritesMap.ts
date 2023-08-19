@@ -14,6 +14,8 @@ import NL from 'src/assets/sprites/walls/narrow-left.png';
 import NH from 'src/assets/sprites/walls/narrow-horizontal.png';
 import NV from 'src/assets/sprites/walls/narrow-vertical.png';
 import NM from 'src/assets/sprites/walls/narrow.png';
+import Way from 'src/assets/sprites/way.png';
+import Door from 'src/assets/sprites/door.png';
 
 export const walls = {
   topLeft: TL as string,
@@ -32,4 +34,32 @@ export const walls = {
   narrowHorizontal: NH as string,
   narrowVertical: NV as string,
   narrowMiddle: NM as string,
+};
+
+const getImage = (src: string) => {
+  const image = new Image();
+  image.src = src;
+
+  return image;
+};
+
+export const spritesImages: { [src: string]: CanvasImageSource } = {
+  [TL]: getImage(TL),
+  [TM]: getImage(TM),
+  [TR]: getImage(TR),
+  [ML]: getImage(ML),
+  [MM]: getImage(MM),
+  [MR]: getImage(MR),
+  [BL]: getImage(BL),
+  [BM]: getImage(BM),
+  [BR]: getImage(BR),
+  [NT]: getImage(NT),
+  [NR]: getImage(NR),
+  [NB]: getImage(NB),
+  [NL]: getImage(NL),
+  [NH]: getImage(NH),
+  [NV]: getImage(NV),
+  [NM]: getImage(NM),
+  [Way]: getImage(Way),
+  [Door]: getImage(Door),
 };

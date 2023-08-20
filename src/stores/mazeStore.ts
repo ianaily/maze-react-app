@@ -2,13 +2,14 @@ import { action, computed, makeObservable, observable, toJS } from 'mobx';
 import localforage from 'localforage';
 import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
-import { mazeUtils } from 'src/utils/mazeUtils';
+import { mazeUtils, parseMaze } from 'src/utils/mazeUtils';
 import { random, randomId } from 'src/utils/random';
 import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { Size } from 'src/types/size';
 import { Save } from 'src/types/save';
+import * as dump from 'src/assets/presets.json';
 
 export class MazeStore {
   constructor() {
@@ -28,6 +29,7 @@ export class MazeStore {
       loadMazeList: action,
       load: action,
     });
+    this.loadPresets();
   }
 
   size = defaultMazeSize;
@@ -84,6 +86,26 @@ export class MazeStore {
     return this.maze;
   };
 
+  private loadPresets = async () => {
+    const { presets } = dump;
+
+    const saveList = await localforage.getItem<{ saves: Save[] }>(mazeSavesKey);
+    const saves = saveList?.saves || [];
+    const notSaved = presets.filter(({ id }) => !saves.some((save: Save) => save.mazeId === id));
+
+    await this.loadMazeList();
+    notSaved.forEach((preset) => {
+      const maze = parseMaze(preset.maze);
+
+      this.saveMazeList({
+        mazeId: preset.id,
+        mazeName: maze.name,
+        mazeSize: maze.size,
+      });
+      localforage.setItem(preset.id, maze);
+    });
+  };
+
   loadMazeList = (): Promise<Save[]> => {
     return localforage
       .getItem<{ saves: Save[] }>(mazeSavesKey)
@@ -95,8 +117,8 @@ export class MazeStore {
       });
   };
 
-  saveMazeList = async (): Promise<void> => {
-    const newSave: Save = {
+  saveMazeList = async (save?: Save): Promise<void> => {
+    const newSave: Save = save || {
       mazeId: this.mazeId || '',
       mazeName: this.maze.name,
       mazeSize: this.maze.size,

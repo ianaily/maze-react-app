@@ -5,6 +5,9 @@
     "src/**/*.tsx",
     "electron/*.d.ts"
   ],
+  "files": [
+    "src/assets/presets.json"
+  ],
   "compilerOptions": {
     "composite": true,
     "jsx": "react-jsx",

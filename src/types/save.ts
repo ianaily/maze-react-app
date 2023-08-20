@@ -5,3 +5,8 @@ export interface Save {
   mazeName: string;
   mazeSize: Size;
 }
+
+export interface Import {
+  id: string;
+  maze: string;
+}

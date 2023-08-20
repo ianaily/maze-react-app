@@ -8,7 +8,7 @@ import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { Size } from 'src/types/size';
-import { Save } from 'src/types/save';
+import { Import, Save } from 'src/types/save';
 import * as dump from 'src/assets/presets.json';
 
 export class MazeStore {
@@ -25,11 +25,12 @@ export class MazeStore {
       setMazeName: action,
       setFillAreaType: action,
       setMazeList: action,
+      importMaze: action,
       saveMazeList: action,
       loadMazeList: action,
       load: action,
     });
-    this.loadPresets();
+    this.loadPresets().then();
   }
 
   size = defaultMazeSize;
@@ -104,6 +105,13 @@ export class MazeStore {
       });
       localforage.setItem(preset.id, maze);
     });
+  };
+
+  importMaze = (save: Import) => {
+    this.mazeId = save.id;
+    const maze = parseMaze(save.maze);
+    this.setMaze(maze);
+    this.save().then();
   };
 
   loadMazeList = (): Promise<Save[]> => {

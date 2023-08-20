@@ -40,6 +40,9 @@ const MainMenu: React.FC = () => {
         <Button variant="yellow" onClick={() => navigate(appLinks.mazeRedactor)}>
           Redactor
         </Button>
+        <Button variant="grey" onClick={() => navigate(appLinks.settings)}>
+          Settings
+        </Button>
       </MenuPanel>
       {showLoadModal && (
         <Modal.LoadMaze

@@ -1,5 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
+import { appLinks } from 'src/router/const';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { useWindowSize } from 'src/hooks/useWindowSize';
 import { Renderer } from 'src/components/renderer';
@@ -11,6 +13,7 @@ const Gameplay: React.FC = observer(() => {
   const { mazeStore, playerStore, cameraStore } = useStore();
   const [showPauseModal, setShowPauseModal] = React.useState(false);
   const { width = 0, height = 0 } = useWindowSize();
+  const navigate = useNavigate();
   // todo add difficult condition
   const cameraSize = React.useMemo(
     () =>
@@ -24,6 +27,10 @@ const Gameplay: React.FC = observer(() => {
     keyR: () => {
       initMaze().then();
     },
+  };
+
+  const handleMainMenu = () => {
+    navigate(appLinks.mainMenu, { replace: true });
   };
 
   const handleKeyDown = (key: string) => {
@@ -41,14 +48,14 @@ const Gameplay: React.FC = observer(() => {
     ['ArrowLeft', 'KeyA'].includes(key) && playerStore.moveLeft();
   };
 
-  useKeyboard(handleKeyDown);
-
   const initMaze = async () => {
     await mazeStore.getRandomSavedMaze();
     playerStore.setMaze(mazeStore.maze);
     cameraStore.setMaze(mazeStore.maze);
     cameraStore.setCameraSize(cameraSize);
   };
+
+  useKeyboard(handleKeyDown);
 
   React.useEffect(() => {
     initMaze().then();
@@ -67,7 +74,9 @@ const Gameplay: React.FC = observer(() => {
         camera={cameraStore.camera}
         player={playerStore.player}
       />
-      {showPauseModal && <Modal.Pause onCancel={() => setShowPauseModal(false)} />}
+      {showPauseModal && (
+        <Modal.Pause onMainMenu={handleMainMenu} onCancel={() => setShowPauseModal(false)} />
+      )}
     </Container>
   );
 });

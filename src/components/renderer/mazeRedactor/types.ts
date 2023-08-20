@@ -7,7 +7,6 @@ export interface MazeRedactorRendererProps {
   cursor: Cursor;
   route: Point[];
   canvasWidth: number;
-  onKeyDown: (key: string) => void;
   onAreaClick: (area: Point) => void;
   onMouseMove: (area: Point) => void;
   onMouseHoldMove: (area: Point) => void;

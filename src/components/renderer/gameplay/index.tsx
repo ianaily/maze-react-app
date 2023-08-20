@@ -57,7 +57,7 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
     updateFrame();
 
     window.requestAnimationFrame(updateFrame);
-  }, [context]);
+  }, [context, spritesLoaded]);
 
   React.useEffect(() => {
     updateFrame();
@@ -66,7 +66,7 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
   return (
     <Container width={canvasWidth} height={canvasHeight}>
       {!spritesLoaded && <Loading width="64px" height="64px" />}
-      {canvasWidth && canvasHeight && spritesLoaded && (
+      {canvasWidth && canvasHeight && (
         <Canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} tabIndex={0} />
       )}
     </Container>

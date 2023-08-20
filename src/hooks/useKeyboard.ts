@@ -2,10 +2,11 @@ import React from 'react';
 
 export const useKeyboard = (onKeyDown: (key: string) => void) => {
   React.useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      const key = event.code;
+    const handleKeyDown = ({ target, code }: KeyboardEvent) => {
+      const isInputActive =
+        target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement;
 
-      onKeyDown(key);
+      !isInputActive && onKeyDown(code);
     };
     document.addEventListener('keydown', handleKeyDown);
 

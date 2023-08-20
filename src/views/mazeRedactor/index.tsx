@@ -9,6 +9,7 @@ import { defaultMazeSize } from 'src/const/maze';
 import { Point } from 'src/types/point';
 import { AreaType, AreaTypes } from 'src/types/maze';
 import { appLinks } from 'src/router/const';
+import { useKeyboard } from 'src/hooks/useKeyboard';
 import { Renderer } from 'src/components/renderer';
 import { Panel } from 'src/components/panels';
 import { Modal } from 'src/components/modal';
@@ -32,9 +33,9 @@ const MazeRedactor: React.FC = observer(() => {
     KeyC: () => handleCheck(),
     KeyF: () => mazeStore.changeAreaType(cursorStore.cursor.point),
     Digit1: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Wall),
-    Digit2: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Way),
-    Digit3: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Thread),
-    Digit4: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Center),
+    Digit2: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Center),
+    Digit3: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Way),
+    Digit4: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Thread),
     Digit5: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Enter),
     Digit6: () => mazeStore.changeAreaType(cursorStore.cursor.point, AreaTypes.Exit),
   };
@@ -58,6 +59,10 @@ const MazeRedactor: React.FC = observer(() => {
   };
 
   const handleKeyDown = (key: string) => {
+    if (showLoadModal) {
+      return;
+    }
+
     keyActionMap[key]?.();
 
     if (cursorStore.enabled) {
@@ -127,6 +132,8 @@ const MazeRedactor: React.FC = observer(() => {
     mazeStore.setMazeName(name);
   };
 
+  useKeyboard(handleKeyDown);
+
   React.useEffect(() => {
     mazeStore.loadMazeList().then();
     React.startTransition(() => initMaze());
@@ -150,7 +157,6 @@ const MazeRedactor: React.FC = observer(() => {
         cursor={toJS(cursorStore.cursor)}
         route={route}
         canvasWidth={window.innerWidth - 80}
-        onKeyDown={handleKeyDown}
         onAreaClick={handleAreaClick}
         onMouseMove={handleMouseMove}
         onContextMenu={handleContextMenu}

@@ -31,6 +31,18 @@ export interface AreaType {
 }
 
 export const AreaTypes: { [key in AreaTypeKeys]: AreaType } = {
+  [AreaTypeKeys.Wall]: {
+    name: AreaTypeKeys.Wall,
+    short: '▒',
+    passable: false,
+    rewritable: true,
+  },
+  [AreaTypeKeys.Center]: {
+    name: AreaTypeKeys.Center,
+    short: '*',
+    passable: true,
+    rewritable: false,
+  },
   [AreaTypeKeys.Way]: {
     name: AreaTypeKeys.Way,
     short: ' ',
@@ -54,17 +66,5 @@ export const AreaTypes: { [key in AreaTypeKeys]: AreaType } = {
     short: '!',
     passable: true,
     rewritable: false,
-  },
-  [AreaTypeKeys.Center]: {
-    name: AreaTypeKeys.Center,
-    short: '*',
-    passable: true,
-    rewritable: false,
-  },
-  [AreaTypeKeys.Wall]: {
-    name: AreaTypeKeys.Wall,
-    short: '▒',
-    passable: false,
-    rewritable: true,
   },
 };

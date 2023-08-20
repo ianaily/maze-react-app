@@ -15,7 +15,6 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   cursor,
   route,
   canvasWidth,
-  onKeyDown,
   onAreaClick,
   onMouseMove,
   onMouseHoldMove,
@@ -76,10 +75,6 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
     });
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    onKeyDown(event.code);
-  };
-
   const handleClick = ({ nativeEvent }: React.MouseEvent<HTMLCanvasElement>) => {
     const offset = { x: nativeEvent.offsetX, y: nativeEvent.offsetY };
     const areaPoint = calculateCursorPosition(offset);
@@ -133,7 +128,6 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
         width={canvasWidth}
         height={canvasHeight}
         onClick={handleClick}
-        onKeyDown={handleKeyDown}
         onMouseMove={handleMouseMove}
         onMouseDown={() => setMouseHold(true)}
         onMouseUp={() => setMouseHold(false)}

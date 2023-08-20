@@ -1,5 +1,6 @@
 import React from 'react';
 import { AreaType } from 'src/types/maze';
+import { useKeyboard } from 'src/hooks/useKeyboard';
 import { Dropdown } from 'src/components/dropdown';
 import { PalettePanelProps } from './types';
 import { AreaPaletteBlock, AreaInfo, AreaPalette, AreaTypeList, Container } from './styled';
@@ -10,11 +11,9 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ areaType, areaTypes,
   const prev = React.useMemo(() => history?.[0] || null, [history]);
   const triggerRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
-    setHistory((history) =>
-      history.length ? [history[history.length - 1], areaType] : [areaType],
-    );
-  }, [areaType]);
+  const handleKeyDown = (key: string) => {
+    key === 'KeyX' && prev && onSelect(prev);
+  };
 
   const handleSwitchShowPalettes = () => {
     setPalettesOpened((opened) => !opened);
@@ -33,6 +32,14 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ areaType, areaTypes,
     setPalettesOpened(false);
     prev && onSelect(prev);
   };
+
+  useKeyboard(handleKeyDown);
+
+  React.useEffect(() => {
+    setHistory((history) =>
+      history.length ? [history[history.length - 1], areaType] : [areaType],
+    );
+  }, [areaType]);
 
   return (
     <Container>

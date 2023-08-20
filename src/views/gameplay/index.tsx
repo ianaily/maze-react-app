@@ -49,7 +49,7 @@ const Gameplay: React.FC = observer(() => {
   };
 
   const initMaze = async () => {
-    await mazeStore.getRandomSavedMaze();
+    mazeStore.isEmpty && (await mazeStore.getRandomSavedMaze());
     playerStore.setMaze(mazeStore.maze);
     cameraStore.setMaze(mazeStore.maze);
     cameraStore.setCameraSize(cameraSize);

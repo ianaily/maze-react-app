@@ -6,6 +6,7 @@ const MainMenu = React.lazy(() => import('src/views/mainMenu'));
 const Gameplay = React.lazy(() => import('src/views/gameplay'));
 const Redactor = React.lazy(() => import('src/views/mazeRedactor'));
 const Settings = React.lazy(() => import('src/views/settings'));
+const Difficult = React.lazy(() => import('src/views/difficult'));
 
 export const routes = [
   {
@@ -23,6 +24,10 @@ export const routes = [
   {
     path: appLinks.settings,
     element: <Settings />,
+  },
+  {
+    path: appLinks.difficult,
+    element: <Difficult />,
   },
   {
     path: '*',

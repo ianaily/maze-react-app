@@ -8,7 +8,7 @@ import { appLinks } from 'src/router/const';
 import { Modal } from 'src/components/modal';
 import { Panel } from 'src/components/panels';
 import { Button } from 'src/components/button';
-import { Container, FileInput, HeadControl, ImportExportContainer } from './styled';
+import { Container, FileInput, HeadControl, SettingsContainer, SettingsPanel } from './styled';
 import { readFile, writeFile } from './utils';
 import { useStore } from './store';
 
@@ -69,8 +69,8 @@ const Settings: React.FC = observer(() => {
       <HeadControl>
         <Panel.Navigation onBack={handleBack} />
       </HeadControl>
-      <Panel.Blank>
-        <ImportExportContainer>
+      <SettingsContainer>
+        <SettingsPanel>
           <FileInput ref={inputRef} type="file" onChange={handleImport} />
           <Button variant="green" onClick={() => inputRef.current?.click()}>
             Import
@@ -78,8 +78,8 @@ const Settings: React.FC = observer(() => {
           <Button variant="blue" onClick={() => setShowSavesModal(true)}>
             Export
           </Button>
-        </ImportExportContainer>
-      </Panel.Blank>
+        </SettingsPanel>
+      </SettingsContainer>
       {showSavesModal && (
         <Modal.LoadMaze
           mazeList={mazeStore.mazeList}

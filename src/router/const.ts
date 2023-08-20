@@ -3,4 +3,5 @@ export const appLinks = {
   gameplay: '/game',
   mazeRedactor: '/redactor',
   settings: '/settings',
+  difficult: '/difficult',
 };

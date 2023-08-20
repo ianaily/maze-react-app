@@ -3,23 +3,15 @@ import { styles } from 'src/styles/styles';
 import { Panel } from 'src/components/panels/styled';
 
 export const Container = styled.div`
-  position: relative;
-`;
-
-export const HeadControl = styled.div`
-  display: flex;
-  gap: ${styles.offsets.xs};
-`;
-
-export const SettingsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
 `;
 
-export const SettingsPanel = styled(Panel)`
+export const DifficultPanel = styled(Panel)`
   display: flex;
   flex-direction: column;
   gap: ${styles.offsets.s};
@@ -28,6 +20,10 @@ export const SettingsPanel = styled(Panel)`
   padding: ${styles.offsets.l};
 `;
 
-export const FileInput = styled.input`
-  display: none;
+export const MainMenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 384px;
+  padding: ${styles.offsets.l};
 `;

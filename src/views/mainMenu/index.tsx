@@ -31,7 +31,7 @@ const MainMenu: React.FC = () => {
       <Title>Maze</Title>
       <MenuTitle>Main menu</MenuTitle>
       <MenuPanel>
-        <Button variant="green" onClick={() => navigate(appLinks.gameplay)}>
+        <Button variant="green" onClick={() => navigate(appLinks.difficult)}>
           Play!
         </Button>
         <Button variant="blue" onClick={() => setShowLoadModal(true)}>

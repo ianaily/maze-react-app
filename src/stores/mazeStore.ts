@@ -2,7 +2,7 @@ import { action, computed, makeObservable, observable, toJS } from 'mobx';
 import localforage from 'localforage';
 import { buildMazePots } from 'src/core/buildMazePots';
 import { generateMaze } from 'src/core/generateMaze';
-import { mazeUtils, parseMaze } from 'src/utils/mazeUtils';
+import { getAreaDifficult, mazeUtils, parseMaze } from 'src/utils/mazeUtils';
 import { random, randomId } from 'src/utils/random';
 import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze';
 import { AreaType, AreaTypes, Maze } from 'src/types/maze';
@@ -10,6 +10,7 @@ import { Point } from 'src/types/point';
 import { Size } from 'src/types/size';
 import { Import, Save } from 'src/types/save';
 import * as dump from 'src/assets/presets.json';
+import { Difficult } from '../types/game';
 
 export class MazeStore {
   constructor() {
@@ -19,6 +20,7 @@ export class MazeStore {
       mazeList: observable,
       areaTypes: observable,
       utils: computed,
+      isEmpty: computed,
       generate: action,
       changeAreaType: action,
       setMaze: action,
@@ -42,6 +44,10 @@ export class MazeStore {
 
   get utils() {
     return mazeUtils({ ...this.maze });
+  }
+
+  get isEmpty() {
+    return !this.maze.areas.length;
   }
 
   generate = (size: Size) => {
@@ -77,14 +83,21 @@ export class MazeStore {
     this.mazeList = mazeList;
   };
 
-  getRandomSavedMaze = async () => {
-    const saves = await this.loadMazeList();
+  getRandomSavedMaze = async (saveList?: Save[]) => {
+    const saves = saveList || (await this.loadMazeList());
     const randomIndex = random(saves.length - 1, 0);
     const randomSave = saves[randomIndex];
 
     await this.load(randomSave.mazeId);
 
     return this.maze;
+  };
+
+  getRandomSavedMazeByDifficult = async (difficult: Difficult) => {
+    const saves = await this.loadMazeList();
+    const filtered = saves.filter((save) => getAreaDifficult(save.mazeSize) === difficult);
+
+    return await this.getRandomSavedMaze(filtered);
   };
 
   private loadPresets = async () => {

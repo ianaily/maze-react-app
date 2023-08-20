@@ -37,32 +37,8 @@ export const walls = {
   narrowMiddle: NM as string,
 };
 
-const getImage = (src: string) => {
-  const image = new Image();
-  image.src = src;
-
-  return image;
+export const sprites = {
+  way: Way,
+  door: Door,
+  char: CharRight,
 };
-
-export const spritesImages: { [src: string]: CanvasImageSource } = {
-  [TL]: getImage(TL),
-  [TM]: getImage(TM),
-  [TR]: getImage(TR),
-  [ML]: getImage(ML),
-  [MM]: getImage(MM),
-  [MR]: getImage(MR),
-  [BL]: getImage(BL),
-  [BM]: getImage(BM),
-  [BR]: getImage(BR),
-  [NT]: getImage(NT),
-  [NR]: getImage(NR),
-  [NB]: getImage(NB),
-  [NL]: getImage(NL),
-  [NH]: getImage(NH),
-  [NV]: getImage(NV),
-  [NM]: getImage(NM),
-  [Way]: getImage(Way),
-  [Door]: getImage(Door),
-};
-
-export const charSpriteImage = getImage(CharRight);

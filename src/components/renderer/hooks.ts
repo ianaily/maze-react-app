@@ -13,7 +13,7 @@ type UseCanvas = {
 
 export const useCanvasInit = (
   canvasRef: React.RefObject<HTMLCanvasElement>,
-  canvasWidth: number,
+  canvasSize: number,
   territorySize: Size,
 ): UseCanvas => {
   const context = React.useMemo(() => {
@@ -24,8 +24,8 @@ export const useCanvasInit = (
     return context;
   }, [canvasRef.current]);
   const areaSize = React.useMemo(
-    () => canvasWidth / territorySize.width,
-    [territorySize.width, canvasWidth],
+    () => canvasSize / Math.min(territorySize.width, territorySize.height),
+    [territorySize.width, territorySize.height, canvasSize],
   );
   const canvasHeight = React.useMemo(
     () => areaSize * territorySize.height,
@@ -69,7 +69,7 @@ export const useCanvasInit = (
 
   return {
     context,
-    areaSize,
+    areaSize: isFinite(areaSize) ? areaSize : 0,
     canvasHeight,
     calculateCursorPosition,
     drawPoint,

@@ -39,6 +39,7 @@ export const walls = {
 };
 
 export const sprites = {
+  middleWall: MM,
   way: Way,
   door: Door,
   char: CharRight,

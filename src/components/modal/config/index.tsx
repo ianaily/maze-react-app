@@ -1,7 +1,7 @@
 import React from 'react';
-import { AreaTypes } from 'src/types/maze';
+import { AreaTypeKeys, AreaTypes } from 'src/types/maze';
 import { areaFillColors } from 'src/const/areaTypes';
-import { spritesMap } from 'src/const/spritesMap';
+import { sprites, spritesMap } from 'src/const/spritesMap';
 import { Button } from 'src/components/button';
 import { Modal } from '../base';
 import { ConfigModalProps } from './types';
@@ -14,10 +14,15 @@ import {
   AreaTypeShort,
   Container,
   ControlContainer,
+  MultiSprite,
   Sprite,
 } from './styled';
 
-export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel }) => {
+export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) => {
+  const handleSave = () => {
+    onSave();
+  };
+
   return (
     <Modal
       title="Create config"
@@ -25,6 +30,9 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel }) => {
         <ControlContainer>
           <Button variant="grey" onClick={onCancel}>
             Cancel
+          </Button>
+          <Button variant="green" onClick={handleSave}>
+            Save
           </Button>
         </ControlContainer>
       }
@@ -38,7 +46,13 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel }) => {
               <AreaTypeName>{type.name}</AreaTypeName>
             </AreaTypeInfo>
             <AreaTypeData>passable: {type.passable ? 'yes' : 'no'}</AreaTypeData>
-            <Sprite src={spritesMap[type.name]} />
+            {type.name === AreaTypeKeys.Wall ? (
+              <MultiSprite>
+                <Sprite src={sprites.middleWall} />
+              </MultiSprite>
+            ) : (
+              <Sprite src={spritesMap[type.name]} />
+            )}
           </AreaType>
         ))}
       </Container>

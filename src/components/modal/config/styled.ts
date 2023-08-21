@@ -12,6 +12,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
   gap: ${styles.offsets.s};
+  max-height: 75vh;
+  overflow: auto;
 `;
 
 export const AreaType = styled.div`
@@ -66,4 +68,21 @@ export const Sprite = styled.img`
   width: 32px;
   height: 32px;
   border-radius: ${styles.borderRadius.m};
+  cursor: pointer;
+`;
+
+export const MultiSprite = styled.div`
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  &::after {
+    content: '...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: ${styles.colors.font.white};
+  }
 `;

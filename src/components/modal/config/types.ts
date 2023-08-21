@@ -1,4 +1,4 @@
 export interface ConfigModalProps {
-  onSave: (mazeId: string) => void;
+  onSave: VoidFunction;
   onCancel: VoidFunction;
 }

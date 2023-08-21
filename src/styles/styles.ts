@@ -2,6 +2,11 @@ import { colors } from './colors';
 
 export const styles = {
   colors,
+  breakpoints: {
+    mobile: 375,
+    tablet: 720,
+    desktop: 1200,
+  },
   offsets: {
     xs: '2px',
     s: '8px',

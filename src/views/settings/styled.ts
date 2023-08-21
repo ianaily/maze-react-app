@@ -19,6 +19,16 @@ export const SettingsContainer = styled.div`
   height: 100vh;
 `;
 
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: ${styles.offsets.s};
+
+  & > button {
+    width: 100%;
+  }
+`;
+
 export const SettingsPanel = styled(Panel)`
   display: flex;
   flex-direction: column;

@@ -1,17 +1,7 @@
-import { walls } from 'src/const/spritesMap';
+import { spritesMap, walls } from 'src/const/spritesMap';
 import { mazeUtils } from 'src/utils/mazeUtils';
 import { toDirection } from 'src/utils/pointUtils';
 import { Area, AreaType, AreaTypeKeys, Maze } from 'src/types/maze';
-import Way from 'src/assets/sprites/way.png';
-import Door from 'src/assets/sprites/door.png';
-
-const spritesMap: { [key: string]: string } = {
-  [AreaTypeKeys.Way]: Way,
-  [AreaTypeKeys.Thread]: Way,
-  [AreaTypeKeys.Center]: Way,
-  [AreaTypeKeys.Enter]: Door,
-  [AreaTypeKeys.Exit]: Door,
-};
 
 export const enrichMazeWithSprite = (maze: Maze) => {
   const { getAreaType } = mazeUtils(maze);

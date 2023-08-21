@@ -17,6 +17,7 @@ import NM from 'src/assets/sprites/walls/narrow.png';
 import Way from 'src/assets/sprites/way.png';
 import Door from 'src/assets/sprites/door.png';
 import CharRight from 'src/assets/sprites/char-r.png';
+import { AreaTypeKeys } from '../types/maze';
 
 export const walls = {
   topLeft: TL as string,
@@ -41,4 +42,12 @@ export const sprites = {
   way: Way,
   door: Door,
   char: CharRight,
+};
+
+export const spritesMap: { [key: string]: string } = {
+  [AreaTypeKeys.Way]: Way,
+  [AreaTypeKeys.Thread]: Way,
+  [AreaTypeKeys.Center]: Way,
+  [AreaTypeKeys.Enter]: Door,
+  [AreaTypeKeys.Exit]: Door,
 };

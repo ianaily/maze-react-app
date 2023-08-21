@@ -8,7 +8,7 @@ import { appLinks } from 'src/router/const';
 import { Modal } from 'src/components/modal';
 import { Panel } from 'src/components/panels';
 import { Button } from 'src/components/button';
-import { Container, FileInput, HeadControl, SettingsContainer, SettingsPanel } from './styled';
+import { Container, FileInput, HeadControl, Row, SettingsContainer, SettingsPanel } from './styled';
 import { readFile, writeFile } from './utils';
 import { useStore } from './store';
 
@@ -16,6 +16,7 @@ const Settings: React.FC = observer(() => {
   const navigate = useNavigate();
   const { mazeStore } = useStore();
   const [showSavesModal, setShowSavesModal] = React.useState(false);
+  const [showConfigModal, setShowConfigModal] = React.useState(false);
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const handleImport = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,12 +72,17 @@ const Settings: React.FC = observer(() => {
       </HeadControl>
       <SettingsContainer>
         <SettingsPanel>
-          <FileInput ref={inputRef} type="file" onChange={handleImport} />
-          <Button variant="green" onClick={() => inputRef.current?.click()}>
-            Import
-          </Button>
-          <Button variant="blue" onClick={() => setShowSavesModal(true)}>
-            Export
+          <Row>
+            <FileInput ref={inputRef} type="file" onChange={handleImport} />
+            <Button variant="green" onClick={() => inputRef.current?.click()}>
+              Import
+            </Button>
+            <Button variant="blue" onClick={() => setShowSavesModal(true)}>
+              Export
+            </Button>
+          </Row>
+          <Button variant="yellow" onClick={() => setShowConfigModal(true)}>
+            Add Texture Pack
           </Button>
         </SettingsPanel>
       </SettingsContainer>
@@ -87,6 +93,9 @@ const Settings: React.FC = observer(() => {
           onDelete={handleDelete}
           onCancel={() => setShowSavesModal(false)}
         />
+      )}
+      {showConfigModal && (
+        <Modal.Config onSave={console.log} onCancel={() => setShowConfigModal(false)} />
       )}
     </Container>
   );

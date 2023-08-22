@@ -25,6 +25,7 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
     canvasRef,
     canvasWidth,
     maze.size,
+    'width',
   );
   const [mouseHold, setMouseHold] = React.useState(false);
   const enableCoords = React.useMemo(() => areaSize > tooSmallAreaSize, [areaSize]);

@@ -15,6 +15,7 @@ export const useCanvasInit = (
   canvasRef: React.RefObject<HTMLCanvasElement>,
   canvasSize: number,
   territorySize: Size,
+  calculateBy: 'width' | 'height',
 ): UseCanvas => {
   const context = React.useMemo(() => {
     const context = canvasRef.current?.getContext('2d') || null;
@@ -24,7 +25,7 @@ export const useCanvasInit = (
     return context;
   }, [canvasRef.current]);
   const areaSize = React.useMemo(
-    () => canvasSize / Math.min(territorySize.width, territorySize.height),
+    () => canvasSize / (calculateBy === 'width' ? territorySize.width : territorySize.height),
     [territorySize.width, territorySize.height, canvasSize],
   );
   const canvasHeight = React.useMemo(

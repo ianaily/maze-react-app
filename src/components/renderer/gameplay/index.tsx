@@ -16,7 +16,11 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const canvasSize = maxCanvasWidth < maxCanvasHeight ? maxCanvasWidth : maxCanvasHeight;
-  const { context, drawPoint, areaSize = 0 } = useCanvasInit(canvasRef, canvasSize, camera.size);
+  const {
+    context,
+    drawPoint,
+    areaSize = 0,
+  } = useCanvasInit(canvasRef, canvasSize, camera.size, 'height');
   // todo redo
   const canvasWidth = React.useMemo(() => areaSize * camera.size.width, [canvasSize, areaSize]);
   const canvasHeight = React.useMemo(() => areaSize * camera.size.height, [canvasSize, areaSize]);

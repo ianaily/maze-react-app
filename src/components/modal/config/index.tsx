@@ -2,6 +2,7 @@ import React from 'react';
 import { AreaTypeKeys, AreaTypes } from 'src/types/maze';
 import { areaFillColors } from 'src/const/areaTypes';
 import { sprites, spritesMap } from 'src/const/spritesMap';
+import { UploadInput } from 'src/components/uploadInput';
 import { Button } from 'src/components/button';
 import { Modal } from '../base';
 import { ConfigModalProps } from './types';
@@ -21,6 +22,10 @@ import {
 export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) => {
   const handleSave = () => {
     onSave();
+  };
+
+  const handleImport = (item: string) => {
+    console.log(item);
   };
 
   return (
@@ -51,7 +56,9 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
                 <Sprite src={sprites.middleWall} />
               </MultiSprite>
             ) : (
-              <Sprite src={spritesMap[type.name]} />
+              <UploadInput onImport={handleImport} type="image/*">
+                <Sprite src={spritesMap[type.name]} />
+              </UploadInput>
             )}
           </AreaType>
         ))}

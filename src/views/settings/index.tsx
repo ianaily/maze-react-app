@@ -3,36 +3,30 @@ import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { Import } from 'src/types/save';
+import { writeFile } from 'src/utils/ioFiles';
 import { stringifyMaze } from 'src/utils/mazeUtils';
 import { appLinks } from 'src/router/const';
 import { Modal } from 'src/components/modal';
 import { Panel } from 'src/components/panels';
 import { Button } from 'src/components/button';
-import { Container, FileInput, HeadControl, Row, SettingsContainer, SettingsPanel } from './styled';
-import { readFile, writeFile } from './utils';
+import { UploadInput } from 'src/components/uploadInput';
 import { useStore } from './store';
+import { Container, HeadControl, SettingsContainer, SettingsPanel } from './styled';
 
 const Settings: React.FC = observer(() => {
   const navigate = useNavigate();
   const { mazeStore } = useStore();
   const [showSavesModal, setShowSavesModal] = React.useState(false);
   const [showConfigModal, setShowConfigModal] = React.useState(false);
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const handleImport = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) {
-      return;
+  const handleImport = async (content: string, name: string) => {
+    if (!name?.includes('.json')) {
+      toast.error('JSON configuration files only');
     }
 
-    try {
-      const content = await readFile(file);
-      const mazeImport = JSON.parse(content) as Import;
+    const mazeImport = JSON.parse(content) as Import;
 
-      mazeStore.importMaze(mazeImport);
-    } catch (error) {
-      toast.error(`Error reading file: ${error}`);
-    }
+    mazeStore.importMaze(mazeImport);
   };
 
   const handleExport = async (mazeId: string) => {
@@ -72,16 +66,15 @@ const Settings: React.FC = observer(() => {
       </HeadControl>
       <SettingsContainer>
         <SettingsPanel>
-          <Row>
-            <FileInput ref={inputRef} type="file" onChange={handleImport} />
-            <Button variant="green" onClick={() => inputRef.current?.click()}>
-              Import
+          <UploadInput onImport={handleImport} type=".json">
+            <Button variant="green" fullWidth>
+              Import Maze
             </Button>
-            <Button variant="blue" onClick={() => setShowSavesModal(true)}>
-              Export
-            </Button>
-          </Row>
-          <Button variant="yellow" onClick={() => setShowConfigModal(true)}>
+          </UploadInput>
+          <Button variant="blue" fullWidth onClick={() => setShowSavesModal(true)}>
+            Export Maze
+          </Button>
+          <Button variant="yellow" fullWidth onClick={() => setShowConfigModal(true)}>
             Add Texture Pack
           </Button>
         </SettingsPanel>

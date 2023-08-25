@@ -66,7 +66,7 @@ const Settings: React.FC = observer(() => {
       </HeadControl>
       <SettingsContainer>
         <SettingsPanel>
-          <UploadInput onImport={handleImport} type=".json">
+          <UploadInput onImport={handleImport} type=".json" fullWidth>
             <Button variant="green" fullWidth>
               Import Maze
             </Button>

@@ -67,7 +67,6 @@ export const AreaTypeData = styled.span`
 export const Sprite = styled.img`
   width: 32px;
   height: 32px;
-  border-radius: ${styles.borderRadius.m};
   cursor: pointer;
 `;
 
@@ -85,4 +84,14 @@ export const MultiSprite = styled.div`
     font-size: 16px;
     color: ${styles.colors.font.white};
   }
+`;
+
+export const MultiSpriteDropdown = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: ${styles.offsets.s};
+  width: calc(32px * 3 + ${styles.offsets.s} * 2);
+  margin: ${styles.offsets.s};
+  border-radius: ${styles.borderRadius.m};
 `;

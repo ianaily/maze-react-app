@@ -4,7 +4,12 @@ import { readFile } from 'src/utils/ioFiles';
 import { UploadInputProps } from './types';
 import { FileInput, ImportWrap } from './styled';
 
-export const UploadInput: React.FC<UploadInputProps> = ({ onImport, type, children }) => {
+export const UploadInput: React.FC<UploadInputProps> = ({
+  onImport,
+  type,
+  children,
+  fullWidth = false,
+}) => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const handleImport = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +27,7 @@ export const UploadInput: React.FC<UploadInputProps> = ({ onImport, type, childr
   };
 
   return (
-    <ImportWrap onClick={() => inputRef.current?.click()}>
+    <ImportWrap fullWidth={fullWidth} onClick={() => inputRef.current?.click()}>
       <FileInput ref={inputRef} type="file" accept={type} onChange={handleImport} />
       {children}
     </ImportWrap>

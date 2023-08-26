@@ -31,7 +31,7 @@ export const useCorrectPosition = (ref: React.RefObject<HTMLElement>, point: Poi
         y: isBottom ? point.y - ref.current.clientHeight : point.y,
       });
     }
-  }, [ref.current]);
+  }, [ref.current, point]);
 
   return position;
 };

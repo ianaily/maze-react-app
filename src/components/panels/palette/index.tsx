@@ -59,7 +59,12 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ areaType, areaTypes,
           </AreaInfo>
         </AreaPaletteBlock>
       )}
-      <Dropdown isOpened={palettesOpened} onHide={handleClosePalettes} triggerRef={triggerRef}>
+      <Dropdown
+        isOpened={palettesOpened}
+        onHide={handleClosePalettes}
+        triggerRef={triggerRef}
+        offsetTop="xm"
+      >
         <AreaTypeList>
           {areaTypes.map((type) => (
             <AreaPalette key={type.name} type={type.name} onClick={() => handleSelectArea(type)} />

@@ -94,4 +94,8 @@ export const MultiSpriteDropdown = styled.div`
   width: calc(32px * 3 + ${styles.offsets.s} * 2);
   margin: ${styles.offsets.s};
   border-radius: ${styles.borderRadius.m};
+
+  & ${Sprite} {
+    box-shadow: ${styles.boxShadow.regular};
+  }
 `;

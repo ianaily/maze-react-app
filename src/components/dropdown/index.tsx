@@ -10,6 +10,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
   triggerRef,
   children,
   customPosition,
+  offsetTop,
+  offsetLeft,
   theme = 'light',
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -24,6 +26,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
       isOpened={isOpened}
       x={correctedPosition.x}
       y={correctedPosition.y}
+      offsetTop={offsetTop}
+      offsetLeft={offsetLeft}
       theme={theme}
     >
       {children}

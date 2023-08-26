@@ -83,9 +83,11 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
     [customTypes],
   );
 
+  const isValidShort = (value: string) => isUniq('short', value) && value !== '&';
+
   const isUniqRow = React.useCallback(
     (item: AreaConfig) =>
-      isUniq('name', item.name) && isUniq('short', item.short) && isUniq('color', item.color),
+      isUniq('name', item.name) && isValidShort(item.short) && isUniq('color', item.color),
     [isUniq],
   );
 
@@ -162,7 +164,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
               <DropdownInput
                 required
                 maxlength={1}
-                invalid={(value) => !isUniq('short', value)}
+                invalid={(value) => !isValidShort(value)}
                 initialValue={type.short}
                 onAccept={(short) => handleChangeCustomType(index, 'short', short)}
               >

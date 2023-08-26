@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { styles } from 'src/styles/styles';
+import { Button } from 'src/components/button';
 
 export const ControlContainer = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ export const AreaType = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   gap: ${styles.offsets.s};
 `;
 
@@ -30,20 +32,35 @@ export const AreaTypeInfo = styled.div`
   gap: ${styles.offsets.s};
 `;
 
-export const AreaTypeColor = styled.div<{ type: string }>`
+export const AreaTypeColor = styled.div<{ color: string; invalid?: boolean }>`
   width: 32px;
   height: 32px;
   border-radius: ${styles.borderRadius.m};
-  background-color: ${({ type }) => type};
+  background-color: ${({ color }) => color};
+
+  ${({ invalid }) =>
+    invalid &&
+    css`
+      border: 1px solid ${styles.colors.general.darkRed};
+    `}
 `;
 
-export const AreaTypeName = styled.span`
+export const AreaTypeName = styled.span<{ invalid?: boolean }>`
   width: 50px;
+  padding: ${styles.offsets.s};
+  border-radius: ${styles.borderRadius.m};
   font-family: monospace;
   color: ${styles.colors.font.black};
+
+  ${({ invalid }) =>
+    invalid &&
+    css`
+      border: 1px solid ${styles.colors.general.darkRed};
+      background-color: ${styles.colors.transparent.darkRed};
+    `}
 `;
 
-export const AreaTypeShort = styled.pre`
+export const AreaTypeShort = styled.pre<{ invalid?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,9 +70,16 @@ export const AreaTypeShort = styled.pre`
   border-radius: ${styles.borderRadius.m};
   background-color: ${styles.colors.transparent.dark1};
   color: ${styles.colors.font.black};
+
+  ${({ invalid }) =>
+    invalid &&
+    css`
+      border: 1px solid ${styles.colors.general.darkRed};
+      background-color: ${styles.colors.transparent.darkRed};
+    `}
 `;
 
-export const AreaTypeData = styled.span`
+export const AreaTypePassable = styled.span`
   width: 112px;
   padding: ${styles.offsets.s};
   font-family: monospace;
@@ -98,4 +122,34 @@ export const MultiSpriteDropdown = styled.div`
   & ${Sprite} {
     box-shadow: ${styles.boxShadow.regular};
   }
+`;
+
+export const RightSide = styled.div`
+  display: flex;
+  gap: ${styles.offsets.s};
+`;
+
+export const CustomAreaType = styled(AreaType)<{ invalid: boolean }>`
+  border-radius: ${styles.borderRadius.m};
+  background-color: ${({ invalid }) =>
+    invalid ? styles.colors.transparent.darkRed : styles.colors.transparent.darkGreen};
+
+  & ${AreaTypeColor}, & ${AreaTypeShort}, & ${AreaTypeName}, & ${AreaTypePassable} {
+    cursor: pointer;
+  }
+`;
+
+export const DeleteButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: ${styles.colors.general.darkRed};
+`;
+
+export const AddTypeContainer = styled.div`
+  margin-top: ${styles.offsets.xm};
+  text-align: center;
 `;

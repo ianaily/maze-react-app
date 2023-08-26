@@ -31,7 +31,7 @@ export const AreaInfo = styled.div`
   }
 `;
 
-export const AreaPalette = styled.div<{ type: AreaTypeKeys }>`
+export const AreaPalette = styled.div<{ type: AreaTypeKeys | string }>`
   display: block;
   width: 42px;
   height: 42px;

@@ -19,7 +19,9 @@ export const UploadInput: React.FC<UploadInputProps> = ({
     }
 
     try {
-      const content = await readFile(file);
+      const isImage = type.includes('image');
+      const content = await readFile(file, isImage);
+
       onImport(content, file.name || '');
     } catch (error) {
       toast.error(`Error reading file: ${error}`);

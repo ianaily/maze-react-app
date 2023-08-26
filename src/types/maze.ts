@@ -24,7 +24,7 @@ export enum AreaTypeKeys {
 }
 
 export interface AreaType {
-  name: AreaTypeKeys;
+  name: AreaTypeKeys | string;
   short: string;
   passable: boolean;
   rewritable: boolean;

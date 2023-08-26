@@ -40,6 +40,6 @@ export const initialCustomType: AreaConfig = {
   short: '-',
   rewritable: false,
   passable: false,
-  color: 'black',
+  color: '#000',
   sprite: walls.narrowMiddle,
 };

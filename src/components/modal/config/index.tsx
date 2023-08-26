@@ -85,9 +85,15 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
 
   const isValidShort = (value: string) => isUniq('short', value) && value !== '&';
 
+  const isValidColor = (value: string) => {
+    const colorHexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+
+    return isUniq('color', value) && colorHexRegex.test(value);
+  };
+
   const isUniqRow = React.useCallback(
     (item: AreaConfig) =>
-      isUniq('name', item.name) && isValidShort(item.short) && isUniq('color', item.color),
+      isUniq('name', item.name) && isValidShort(item.short) && isValidColor(item.color),
     [isUniq],
   );
 
@@ -155,11 +161,11 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
             <AreaTypeInfo>
               <DropdownInput
                 required
-                invalid={(value) => !isUniq('color', value)}
+                invalid={(value) => !isValidColor(value)}
                 initialValue={type.color}
                 onAccept={(color) => handleChangeCustomType(index, 'color', color)}
               >
-                <AreaTypeColor color={type.color} invalid={!isUniq('color', type.color)} />
+                <AreaTypeColor color={type.color} invalid={!isValidColor(type.color)} />
               </DropdownInput>
               <DropdownInput
                 required
@@ -168,7 +174,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
                 initialValue={type.short}
                 onAccept={(short) => handleChangeCustomType(index, 'short', short)}
               >
-                <AreaTypeShort invalid={!isUniq('short', type.short)}>{type.short}</AreaTypeShort>
+                <AreaTypeShort invalid={!isValidShort(type.short)}>{type.short}</AreaTypeShort>
               </DropdownInput>
               <DropdownInput
                 required

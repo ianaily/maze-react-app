@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
       color: ${styles.colors.font.white};
       box-shadow: none;
     }
-  
+
     &:disabled:hover {
       background-color: ${styles.colors.disabled.button};
       color: ${styles.colors.font.white};

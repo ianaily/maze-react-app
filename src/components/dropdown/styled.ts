@@ -29,9 +29,10 @@ export const Container = styled.div<{
     theme === 'light' ? styles.colors.transparent.light4 : styles.colors.transparent.dark5};
   box-shadow: ${styles.boxShadow.regular};
   opacity: 1;
-  backdrop-filter: blur(4px);
+  backdrop-filter: ${styles.backdropBlur.s};
   z-index: ${styles.zIndex.above};
   transition: height ${styles.transition.ease}, opacity ${styles.transition.ease};
+  cursor: initial;
 
   ${({ x, y }) => css`
     top: ${y}px;

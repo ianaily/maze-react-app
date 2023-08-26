@@ -11,7 +11,7 @@ export const ModalBackdrop = styled.div`
   bottom: 0;
   left: 0;
   background-color: ${styles.colors.transparent.dark1};
-  backdrop-filter: blur(8px);
+  backdrop-filter: ${styles.backdropBlur.m};
   z-index: ${styles.zIndex.above};
   transition: ${styles.transition.background};
 `;

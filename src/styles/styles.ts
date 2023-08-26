@@ -29,6 +29,10 @@ export const styles = {
     underlineBlue: `inset 0 -4px 0 0 ${colors.general.blue}`,
     regular: '0 4px 16px rgba(0, 20, 40, 0.2)',
   },
+  backdropBlur: {
+    s: 'blur(4px)',
+    m: 'blur(8px)',
+  },
   transition: {
     background: 'background-color ease 0.2s',
     boxShadow: 'box-shadow ease 0.2s',

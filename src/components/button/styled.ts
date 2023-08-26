@@ -48,3 +48,12 @@ export const GreyButton = styled(Button)`
     background-color: ${styles.colors.disabled.dark};
   }
 `;
+
+export const TransparentButton = styled(Button)`
+  background-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    background-color: transparent;
+  }
+`;

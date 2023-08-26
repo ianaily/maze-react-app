@@ -80,6 +80,10 @@ export const AreaTypeShort = styled.pre<{ invalid?: boolean }>`
 `;
 
 export const AreaTypePassable = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${styles.offsets.s};
   width: 112px;
   padding: ${styles.offsets.s};
   font-family: monospace;

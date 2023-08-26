@@ -54,7 +54,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
     setWalls({ ...walls, [wallName]: content });
   };
 
-  const handleChangeCustomType = (index: number, key: string, value: string) => {
+  const handleChangeCustomType = (index: number, key: string, value: string | boolean) => {
     const types = [...customTypes];
 
     types[index][key] = value;
@@ -177,7 +177,14 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
                 <AreaTypeName invalid={!isUniq('name', type.name)}>{type.name}</AreaTypeName>
               </DropdownInput>
             </AreaTypeInfo>
-            <AreaTypePassable>passable: {type.passable ? 'yes' : 'no'}</AreaTypePassable>
+            <AreaTypePassable>
+              passable:{' '}
+              <input
+                type="checkbox"
+                checked={type.passable}
+                onChange={() => handleChangeCustomType(index, 'passable', !type.passable)}
+              />
+            </AreaTypePassable>
             <RightSide>
               <UploadInput
                 onImport={(content) => handleCustomImport(index, content)}

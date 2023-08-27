@@ -13,9 +13,12 @@ export const InputContainer = styled.div`
   padding: ${styles.offsets.xs};
 `;
 
-export const InlineInput = styled(Input)`
+export const InlineInput = styled(Input).attrs(() => ({
+  style: {
+    padding: styles.offsets.s,
+  },
+}))`
   width: 128px;
-  padding: ${styles.offsets.s} !important;
 `;
 
 export const AcceptButton = styled(Button)`

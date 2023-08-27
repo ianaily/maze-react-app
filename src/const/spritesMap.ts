@@ -1,3 +1,4 @@
+import { WallDirections } from 'src/types/direction';
 import BL from 'src/assets/sprites/walls/bottom-left.png';
 import BM from 'src/assets/sprites/walls/bottom-middle.png';
 import BR from 'src/assets/sprites/walls/bottom-right.png';
@@ -20,22 +21,22 @@ import CharRight from 'src/assets/sprites/char-r.png';
 import { AreaTypeKeys } from '../types/maze';
 
 export const walls = {
-  topLeft: TL as string,
-  topMiddle: TM as string,
-  topRight: TR as string,
-  middleLeft: ML as string,
-  middleMiddle: MM as string,
-  middleRight: MR as string,
-  bottomLeft: BL as string,
-  bottomMiddle: BM as string,
-  bottomRight: BR as string,
-  narrowTop: NT as string,
-  narrowRight: NR as string,
-  narrowBottom: NB as string,
-  narrowLeft: NL as string,
-  narrowHorizontal: NH as string,
-  narrowVertical: NV as string,
-  narrowMiddle: NM as string,
+  [WallDirections.topLeft]: TL as string,
+  [WallDirections.topMiddle]: TM as string,
+  [WallDirections.topRight]: TR as string,
+  [WallDirections.middleLeft]: ML as string,
+  [WallDirections.middleMiddle]: MM as string,
+  [WallDirections.middleRight]: MR as string,
+  [WallDirections.bottomLeft]: BL as string,
+  [WallDirections.bottomMiddle]: BM as string,
+  [WallDirections.bottomRight]: BR as string,
+  [WallDirections.narrowTop]: NT as string,
+  [WallDirections.narrowRight]: NR as string,
+  [WallDirections.narrowBottom]: NB as string,
+  [WallDirections.narrowLeft]: NL as string,
+  [WallDirections.narrowHorizontal]: NH as string,
+  [WallDirections.narrowVertical]: NV as string,
+  [WallDirections.narrowMiddle]: NM as string,
 };
 
 export const sprites = {

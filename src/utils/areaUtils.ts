@@ -1,6 +1,6 @@
 import { AreaType, AreaTypeKeys, AreaTypes } from 'src/types/maze';
 
-const areaTypes = Object.keys(AreaTypes) as AreaTypeKeys[];
+const areaTypes = Object.keys(AreaTypes) as (AreaTypeKeys | string)[];
 
 export const getNextAreaType = (type: AreaType): AreaType => {
   const typeIndex = areaTypes.indexOf(type.name);

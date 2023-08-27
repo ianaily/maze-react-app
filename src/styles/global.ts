@@ -61,6 +61,10 @@ export const GlobalStyle = createGlobalStyle`
     transition: ${styles.transition.background}, ${styles.transition.boxShadow};
   }
 
+  input[type=checkbox] {
+    cursor: pointer;
+  }
+
   ::-webkit-scrollbar {
     width: ${styles.offsets.s};
     height: ${styles.offsets.s};

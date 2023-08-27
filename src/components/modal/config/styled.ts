@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { styles } from 'src/styles/styles';
 import { Button } from 'src/components/button';
+import { Input } from 'src/components/input';
 
 export const ControlContainer = styled.div`
   display: flex;
@@ -15,6 +16,10 @@ export const Container = styled.div`
   gap: ${styles.offsets.s};
   max-height: 75vh;
   overflow: auto;
+`;
+
+export const ConfigNameInput = styled(Input)`
+  margin-bottom: ${styles.offsets.s};
 `;
 
 export const AreaType = styled.div`
@@ -138,7 +143,7 @@ export const CustomAreaType = styled(AreaType)<{ invalid: boolean }>`
   background-color: ${({ invalid }) =>
     invalid ? styles.colors.transparent.darkRed : styles.colors.transparent.darkGreen};
 
-  & ${AreaTypeColor}, & ${AreaTypeShort}, & ${AreaTypeName}, & ${AreaTypePassable} {
+  & ${AreaTypeColor}, & ${AreaTypeShort}, & ${AreaTypeName} {
     cursor: pointer;
   }
 `;

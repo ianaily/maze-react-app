@@ -1,5 +1,4 @@
 import React from 'react';
-import { AreaConfig } from 'src/types/config';
 import { AreaTypeKeys, AreaTypes } from 'src/types/maze';
 import { areaFillColors } from 'src/const/areaTypes';
 import { sprites } from 'src/const/spritesMap';
@@ -25,22 +24,38 @@ import {
   MultiSpriteDropdown,
   RightSide,
   Sprite,
+  ConfigNameInput,
 } from './styled';
 import { initialCustomType, initialCustomTypes, initialTypes, initialWalls } from './const';
+import { useValidate } from './hooks';
 
 export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) => {
   const triggerRef = React.useRef<HTMLDivElement>(null);
   const [wallsOpened, setWallsOpened] = React.useState(false);
-  const [types, setTypes] = React.useState({ ...initialTypes });
+  const [configName, setConfigName] = React.useState('New Config Name');
+  const [types, setTypes] = React.useState([...initialTypes]);
   const [walls, setWalls] = React.useState({ ...initialWalls });
   const [customTypes, setCustomTypes] = React.useState([...initialCustomTypes]);
+  const { isValidName, isValidShort, isValidColor, isValidType, isValid } = useValidate(
+    configName,
+    types,
+    customTypes,
+  );
 
   const handleSave = () => {
-    onSave();
+    onSave({
+      name: configName,
+      types,
+      wallSprites: walls,
+      customTypes,
+    });
   };
 
-  const handleImport = (item: AreaConfig, content: string) => {
-    setTypes({ ...types, [item.name]: { ...types[item.name], sprite: content } });
+  const handleImport = (index: number, content: string) => {
+    const typesCopy = [...types];
+    typesCopy[index].sprite = content;
+
+    setTypes(typesCopy);
   };
 
   const handleCustomImport = (index: number, content: string) => {
@@ -73,32 +88,6 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
     setCustomTypes(types);
   };
 
-  const isUniq = React.useCallback(
-    (key: string, value: string) => {
-      const customUniq = customTypes.filter((type) => type[key] === value);
-      const typesUniq = Object.values(types).filter((type) => type[key] === value);
-
-      return typesUniq.length === 0 && customUniq.length <= 1;
-    },
-    [customTypes],
-  );
-
-  const isValidShort = (value: string) => isUniq('short', value) && value !== '&';
-
-  const isValidColor = (value: string) => {
-    const colorHexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
-
-    return isUniq('color', value) && colorHexRegex.test(value);
-  };
-
-  const isUniqRow = React.useCallback(
-    (item: AreaConfig) =>
-      isUniq('name', item.name) && isValidShort(item.short) && isValidColor(item.color),
-    [isUniq],
-  );
-
-  const isValid = React.useMemo(() => customTypes.every((type) => isUniqRow(type)), [customTypes]);
-
   return (
     <Modal
       title="Create config"
@@ -114,6 +103,13 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
       }
     >
       <Container>
+        <ConfigNameInput
+          type="text"
+          invalid={!configName.length}
+          placeholder="input config name..."
+          value={configName}
+          onChange={({ target }) => setConfigName(target.value)}
+        />
         <AreaType>
           <AreaTypeInfo>
             <AreaTypeColor color={areaFillColors[AreaTypeKeys.Wall]} />
@@ -143,7 +139,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
             </Dropdown>
           </MultiSprite>
         </AreaType>
-        {Object.values(types).map((type) => (
+        {types.map((type, index) => (
           <AreaType key={type.short}>
             <AreaTypeInfo>
               <AreaTypeColor color={type.color} />
@@ -151,13 +147,13 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
               <AreaTypeName>{type.name}</AreaTypeName>
             </AreaTypeInfo>
             <AreaTypePassable>passable: {type.passable ? 'yes' : 'no'}</AreaTypePassable>
-            <UploadInput onImport={(content) => handleImport(type, content)} type="image/*">
+            <UploadInput onImport={(content) => handleImport(index, content)} type="image/*">
               <Sprite src={type.sprite} />
             </UploadInput>
           </AreaType>
         ))}
         {customTypes.map((type, index) => (
-          <CustomAreaType key={type.short} invalid={!isUniqRow(type)}>
+          <CustomAreaType key={type.short} invalid={!isValidType(type)}>
             <AreaTypeInfo>
               <DropdownInput
                 required
@@ -178,11 +174,11 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
               </DropdownInput>
               <DropdownInput
                 required
-                invalid={(value) => !isUniq('name', value)}
+                invalid={(value) => !isValidName(value)}
                 initialValue={type.name}
                 onAccept={(name) => handleChangeCustomType(index, 'name', name)}
               >
-                <AreaTypeName invalid={!isUniq('name', type.name)}>{type.name}</AreaTypeName>
+                <AreaTypeName invalid={!isValidName(type.name)}>{type.name}</AreaTypeName>
               </DropdownInput>
             </AreaTypeInfo>
             <AreaTypePassable>

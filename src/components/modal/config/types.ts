@@ -1,4 +1,6 @@
+import { Config } from 'src/types/config';
+
 export interface ConfigModalProps {
-  onSave: VoidFunction;
+  onSave: (config: Config) => void;
   onCancel: VoidFunction;
 }

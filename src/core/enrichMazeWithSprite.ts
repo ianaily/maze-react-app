@@ -114,4 +114,5 @@ const neighborsAreWall = (areas: AreaType[]) => areas.every((area) => isWall(are
 const neighborsAreNotWall = (areas: AreaType[]) => areas.every((area) => !isWall(area));
 
 const isWall = (area?: AreaType) =>
-  area && [AreaTypeKeys.Wall, AreaTypeKeys.Enter, AreaTypeKeys.Exit].includes(area.name);
+  area &&
+  ([AreaTypeKeys.Wall, AreaTypeKeys.Enter, AreaTypeKeys.Exit] as string[]).includes(area.name);

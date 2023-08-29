@@ -1,6 +1,7 @@
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import { join } from 'path';
+import { saveConfig } from './io';
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -21,6 +22,10 @@ function createWindow() {
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
     return { action: 'deny' };
+  });
+
+  ipcMain.handle('app:save-config', (_, config) => {
+    return saveConfig(config);
   });
 
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {

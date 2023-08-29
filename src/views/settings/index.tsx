@@ -3,8 +3,10 @@ import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { Import } from 'src/types/save';
+import { Config } from 'src/types/config';
 import { writeFile } from 'src/utils/ioFiles';
 import { stringifyMaze } from 'src/utils/mazeUtils';
+import { useIsElectron } from 'src/hooks/useIsElectron';
 import { appLinks } from 'src/router/const';
 import { Modal } from 'src/components/modal';
 import { Panel } from 'src/components/panels';
@@ -15,9 +17,20 @@ import { Container, HeadControl, SettingsContainer, SettingsPanel } from './styl
 
 const Settings: React.FC = observer(() => {
   const navigate = useNavigate();
+  const isElectron = useIsElectron();
   const { mazeStore } = useStore();
   const [showSavesModal, setShowSavesModal] = React.useState(false);
   const [showConfigModal, setShowConfigModal] = React.useState(false);
+
+  const handleSave = async (config: Config) => {
+    try {
+      await window.electronAPI.saveConfig(config);
+      toast.success(`Config ${config.name} was saved`);
+      setShowConfigModal(false);
+    } catch {
+      toast.error(`Error while saving config ${config.name}`);
+    }
+  };
 
   const handleImport = async (content: string, name: string) => {
     if (!name?.includes('.json')) {
@@ -27,6 +40,7 @@ const Settings: React.FC = observer(() => {
     const mazeImport = JSON.parse(content) as Import;
 
     mazeStore.importMaze(mazeImport);
+    toast.success(`Maze ${mazeImport.id} was import`);
   };
 
   const handleExport = async (mazeId: string) => {
@@ -74,9 +88,11 @@ const Settings: React.FC = observer(() => {
           <Button variant="blue" fullWidth onClick={() => setShowSavesModal(true)}>
             Export Maze
           </Button>
-          <Button variant="yellow" fullWidth onClick={() => setShowConfigModal(true)}>
-            Add Texture Pack
-          </Button>
+          {isElectron && (
+            <Button variant="yellow" fullWidth onClick={() => setShowConfigModal(true)}>
+              Add Texture Pack
+            </Button>
+          )}
         </SettingsPanel>
       </SettingsContainer>
       {showSavesModal && (
@@ -88,7 +104,7 @@ const Settings: React.FC = observer(() => {
         />
       )}
       {showConfigModal && (
-        <Modal.Config onSave={console.log} onCancel={() => setShowConfigModal(false)} />
+        <Modal.Config onSave={handleSave} onCancel={() => setShowConfigModal(false)} />
       )}
     </Container>
   );

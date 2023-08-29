@@ -21,6 +21,7 @@ const Settings: React.FC = observer(() => {
   const { mazeStore } = useStore();
   const [showSavesModal, setShowSavesModal] = React.useState(false);
   const [showConfigModal, setShowConfigModal] = React.useState(false);
+  const [showSetConfigModal, setShowSetConfigModal] = React.useState(false);
 
   const handleSave = async (config: Config) => {
     try {
@@ -93,6 +94,11 @@ const Settings: React.FC = observer(() => {
               Add Texture Pack
             </Button>
           )}
+          {isElectron && (
+            <Button variant="green" fullWidth onClick={() => setShowSetConfigModal(true)}>
+              Set Texture Pack
+            </Button>
+          )}
         </SettingsPanel>
       </SettingsContainer>
       {showSavesModal && (
@@ -105,6 +111,14 @@ const Settings: React.FC = observer(() => {
       )}
       {showConfigModal && (
         <Modal.Config onSave={handleSave} onCancel={() => setShowConfigModal(false)} />
+      )}
+      {showSetConfigModal && (
+        <Modal.SelectConfig
+          configs={[]}
+          onSelect={console.log}
+          onDelete={console.log}
+          onCancel={() => setShowSetConfigModal(false)}
+        />
       )}
     </Container>
   );

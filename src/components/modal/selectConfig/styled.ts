@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { styles } from 'src/styles/styles';
 
 export const ControlContainer = styled.div`
@@ -9,24 +9,43 @@ export const ControlContainer = styled.div`
 `;
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-  gap: ${styles.offsets.s};
-  max-height: 75vh;
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ConfigList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${styles.offsets.s};
+  gap: ${styles.offsets.xs};
 `;
 
-export const ConfigItem = styled.div`
+export const ConfigItem = styled.div<{ selected: boolean; toDelete: boolean }>`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: ${styles.offsets.s};
+  padding: ${styles.offsets.m} ${styles.offsets.l};
+  border-radius: ${styles.borderRadius.m};
   cursor: pointer;
+  ${({ selected, toDelete }) =>
+    selected &&
+    css`
+      background-color: ${toDelete
+        ? styles.colors.general.darkRed
+        : styles.colors.transparent.dark4};
+    `}
+
+  &:hover {
+    ${({ selected }) =>
+      !selected &&
+      css`
+        background-color: ${styles.colors.transparent.dark2};
+      `};
+  }
+`;
+
+export const ConfigName = styled.span`
+  color: ${styles.colors.font.black};
 `;
 
 export const MetaInfo = styled.span`

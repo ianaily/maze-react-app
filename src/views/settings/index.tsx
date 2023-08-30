@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { Import } from 'src/types/save';
-import { Config } from 'src/types/config';
+import { Config, ConfigInfo } from 'src/types/config';
 import { writeFile } from 'src/utils/ioFiles';
 import { stringifyMaze } from 'src/utils/mazeUtils';
 import { useIsElectron } from 'src/hooks/useIsElectron';
@@ -13,19 +13,19 @@ import { Panel } from 'src/components/panels';
 import { Button } from 'src/components/button';
 import { UploadInput } from 'src/components/uploadInput';
 import { useStore } from './store';
-import { Container, HeadControl, SettingsContainer, SettingsPanel } from './styled';
+import { ButtonsBlock, Container, HeadControl, SettingsContainer, SettingsPanel } from './styled';
 
 const Settings: React.FC = observer(() => {
   const navigate = useNavigate();
   const isElectron = useIsElectron();
-  const { mazeStore } = useStore();
+  const { mazeStore, configStore } = useStore();
   const [showSavesModal, setShowSavesModal] = React.useState(false);
   const [showConfigModal, setShowConfigModal] = React.useState(false);
   const [showSetConfigModal, setShowSetConfigModal] = React.useState(false);
 
   const handleSave = async (config: Config) => {
     try {
-      await window.electronAPI.saveConfig(config);
+      await configStore.saveConfig(config);
       toast.success(`Config ${config.name} was saved`);
       setShowConfigModal(false);
     } catch {
@@ -57,6 +57,7 @@ const Settings: React.FC = observer(() => {
         maze,
       });
       await writeFile(`${mazeId}.json`, save);
+      toast.success(`Maze ${mazeId} was export`);
     } catch (error) {
       toast.error(`'Error exporting file:'${error}`);
     }
@@ -68,10 +69,23 @@ const Settings: React.FC = observer(() => {
     });
   };
 
+  const handleLoadConfig = async (configInfo: ConfigInfo) => {
+    await configStore.loadConfig(configInfo.configPath);
+    toast.success(`Config ${configInfo.name} was load`);
+    setShowSetConfigModal(false);
+  };
+
+  const handleDeleteConfig = async (configInfo: ConfigInfo) => {
+    await configStore.deleteConfig(configInfo.configPath);
+    toast(`Config ${configInfo.name} Deleted!`);
+    setShowSetConfigModal(false);
+  };
+
   const handleBack = () => navigate(appLinks.mainMenu, { replace: true });
 
   React.useEffect(() => {
     mazeStore.loadMazeList().then();
+    configStore.loadConfigs().then();
   }, []);
 
   return (
@@ -81,24 +95,28 @@ const Settings: React.FC = observer(() => {
       </HeadControl>
       <SettingsContainer>
         <SettingsPanel>
-          <UploadInput onImport={handleImport} type=".json" fullWidth>
-            <Button variant="green" fullWidth>
-              Import Maze
+          <ButtonsBlock>
+            <UploadInput onImport={handleImport} type=".json" fullWidth>
+              <Button variant="green" fullWidth>
+                Import Maze
+              </Button>
+            </UploadInput>
+            <Button variant="blue" fullWidth onClick={() => setShowSavesModal(true)}>
+              Export Maze
             </Button>
-          </UploadInput>
-          <Button variant="blue" fullWidth onClick={() => setShowSavesModal(true)}>
-            Export Maze
-          </Button>
-          {isElectron && (
-            <Button variant="yellow" fullWidth onClick={() => setShowConfigModal(true)}>
-              Add Texture Pack
-            </Button>
-          )}
-          {isElectron && (
-            <Button variant="green" fullWidth onClick={() => setShowSetConfigModal(true)}>
-              Set Texture Pack
-            </Button>
-          )}
+          </ButtonsBlock>
+          <ButtonsBlock>
+            {isElectron && (
+              <Button variant="yellow" fullWidth onClick={() => setShowConfigModal(true)}>
+                Add Texture Pack
+              </Button>
+            )}
+            {isElectron && (
+              <Button variant="green" fullWidth onClick={() => setShowSetConfigModal(true)}>
+                Set Texture Pack
+              </Button>
+            )}
+          </ButtonsBlock>
         </SettingsPanel>
       </SettingsContainer>
       {showSavesModal && (
@@ -114,9 +132,9 @@ const Settings: React.FC = observer(() => {
       )}
       {showSetConfigModal && (
         <Modal.SelectConfig
-          configs={[]}
-          onSelect={console.log}
-          onDelete={console.log}
+          configs={configStore.configsInfo}
+          onSelect={handleLoadConfig}
+          onDelete={handleDeleteConfig}
           onCancel={() => setShowSetConfigModal(false)}
         />
       )}

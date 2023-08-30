@@ -1,8 +1,8 @@
-import { Config } from 'src/types/config';
+import { ConfigInfo } from 'src/types/config';
 
 export interface SelectConfigModalProps {
-  configs: Config[];
-  onSelect: (config: Config) => void;
-  onDelete: (config: Config) => void;
+  configs: ConfigInfo[];
+  onSelect: (config: ConfigInfo) => void;
+  onDelete: (config: ConfigInfo) => void;
   onCancel: VoidFunction;
 }

@@ -1,8 +1,15 @@
 import React from 'react';
-import { Config } from 'src/types/config';
+import { ConfigInfo } from 'src/types/config';
 import { Button } from 'src/components/button';
 import { Modal } from '../base';
-import { ConfigItem, ConfigList, Container, ControlContainer, MetaInfo } from './styled';
+import {
+  ConfigItem,
+  ConfigList,
+  ConfigName,
+  Container,
+  ControlContainer,
+  MetaInfo,
+} from './styled';
 import { SelectConfigModalProps } from './types';
 
 export const SelectConfig: React.FC<SelectConfigModalProps> = ({
@@ -11,7 +18,8 @@ export const SelectConfig: React.FC<SelectConfigModalProps> = ({
   onDelete,
   onCancel,
 }) => {
-  const [currentConfig, setCurrentConfig] = React.useState<Config | null>(null);
+  const [currentConfig, setCurrentConfig] = React.useState<ConfigInfo | null>(null);
+  const [toDelete, setToDelete] = React.useState<boolean>(false);
 
   return (
     <Modal
@@ -24,6 +32,8 @@ export const SelectConfig: React.FC<SelectConfigModalProps> = ({
           <Button
             variant="red"
             onClick={() => currentConfig && onDelete(currentConfig)}
+            onMouseEnter={() => setToDelete(true)}
+            onMouseLeave={() => setToDelete(false)}
             disabled={!currentConfig}
           >
             Delete
@@ -41,9 +51,14 @@ export const SelectConfig: React.FC<SelectConfigModalProps> = ({
       <Container>
         <ConfigList>
           {configs.map((config) => (
-            <ConfigItem key={config.name} onClick={() => setCurrentConfig(config)}>
-              {config.name}
-              <MetaInfo>[custom areas: {config.customTypes.length}]</MetaInfo>
+            <ConfigItem
+              key={config.name}
+              selected={config.name === currentConfig?.name}
+              toDelete={toDelete}
+              onClick={() => setCurrentConfig(config)}
+            >
+              <ConfigName>{config.name}</ConfigName>
+              <MetaInfo>[custom areas: {config.customTypesCount}]</MetaInfo>
             </ConfigItem>
           ))}
         </ConfigList>

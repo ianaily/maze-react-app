@@ -12,3 +12,9 @@ export interface Config {
   wallSprites: { [key in WallDirections]: string };
   customTypes: AreaConfig[];
 }
+
+export interface ConfigInfo {
+  name: string;
+  configPath: string;
+  customTypesCount: number;
+}

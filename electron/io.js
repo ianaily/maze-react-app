@@ -1,13 +1,15 @@
 import fs from 'fs-extra';
 import path from 'path';
 
+const relativeDir = path.relative(process.cwd(), __dirname);
+const configsPath = path.join(relativeDir, 'configs');
+
 export const saveConfig = async (_config) => {
   const config = { ..._config };
-  const relativeDir = path.relative(process.cwd(), __dirname);
   const [datePostfix] = new Date().toLocaleString().split(',');
   const name = `${config.name.replace(/ /g, '_')}_${datePostfix}`;
 
-  const configPath = path.join(relativeDir, 'configs', name);
+  const configPath = path.join(configsPath, name);
   const spritesPath = path.join(configPath, 'sprites');
   const typesSpritesPath = path.join(spritesPath, 'types');
   const customTypesSpritesPath = path.join(spritesPath, 'customTypes');
@@ -40,4 +42,43 @@ export const saveConfig = async (_config) => {
   });
 
   await fs.writeJson(path.join(configPath, 'config.json'), config);
+};
+
+const getConfigPacks = async () =>
+  new Promise((resolve) => {
+    fs.readdir(configsPath, { withFileTypes: true }, (err, files = []) => {
+      if (err) {
+        fs.ensureDir(configsPath);
+        resolve([]);
+      }
+
+      resolve(files.filter((file) => file.isDirectory()));
+    });
+  });
+
+const getConfigFiles = async (configDirs) =>
+  Promise.all(configDirs.map((configDir) => loadConfig(path.join(configsPath, configDir.name))));
+
+const getConfig = (configPath) =>
+  new Promise((resolve, reject) => {
+    fs.readdir(configPath, { withFileTypes: true }, (err, files = []) => {
+      err && reject(err);
+
+      const configFile = files.find((file) => file.name === 'config.json');
+
+      fs.readJson(path.join(configPath, configFile.name)).then((config) => {
+        resolve({ config, configPath });
+      });
+    });
+  });
+
+export const loadConfigs = async () => {
+  const configPacks = await getConfigPacks();
+  return await getConfigFiles(configPacks);
+};
+
+export const loadConfig = async (configPath) => getConfig(configPath);
+
+export const deleteConfig = async (configPath) => {
+  await fs.remove(configPath);
 };

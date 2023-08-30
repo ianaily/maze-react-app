@@ -9,6 +9,9 @@ if (process.contextIsolated) {
     contextBridge.exposeInMainWorld('api', api);
     contextBridge.exposeInMainWorld('electronAPI', {
       saveConfig: (config) => ipcRenderer.invoke('app:save-config', config),
+      loadConfig: (configPath) => ipcRenderer.invoke('app:load-config', configPath),
+      loadConfigs: () => ipcRenderer.invoke('app:load-configs'),
+      deleteConfig: (configPath) => ipcRenderer.invoke('app:delete-config', configPath),
     });
   } catch (error) {
     console.error(error);

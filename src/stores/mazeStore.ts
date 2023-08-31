@@ -5,12 +5,14 @@ import { generateMaze } from 'src/core/generateMaze';
 import { getAreaDifficult, mazeUtils, parseMaze } from 'src/utils/mazeUtils';
 import { random, randomId } from 'src/utils/random';
 import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze';
-import { AreaType, AreaTypes, Maze } from 'src/types/maze';
+import { initialWallType } from 'src/const/config';
+import { Difficult } from 'src/types/game';
+import { AreaConfig } from 'src/types/config';
+import { Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { Size } from 'src/types/size';
 import { Import, Save } from 'src/types/save';
 import * as dump from 'src/assets/presets.json';
-import { Difficult } from '../types/game';
 
 export class MazeStore {
   constructor() {
@@ -18,7 +20,6 @@ export class MazeStore {
       maze: observable,
       fillAreaType: observable,
       mazeList: observable,
-      areaTypes: observable,
       utils: computed,
       isEmpty: computed,
       generate: action,
@@ -37,10 +38,9 @@ export class MazeStore {
 
   size = defaultMazeSize;
   maze: Maze = buildMazePots(this.size);
-  fillAreaType: AreaType = AreaTypes.Wall;
+  fillAreaType: AreaConfig = initialWallType;
   mazeId: string | null = null;
   mazeList: Save[] = [];
-  areaTypes = Object.values(AreaTypes);
 
   get utils() {
     return mazeUtils({ ...this.maze });
@@ -61,12 +61,12 @@ export class MazeStore {
     this.maze.name = name;
   };
 
-  changeAreaType = (point: Point, type: AreaType = this.fillAreaType) => {
+  changeAreaType = (point: Point, type: AreaConfig = this.fillAreaType) => {
     this.maze = this.utils.setAreaType(point, type, true);
     this.setFillAreaType(type);
   };
 
-  setFillAreaType = (type: AreaType) => {
+  setFillAreaType = (type: AreaConfig) => {
     this.fillAreaType = type;
   };
 

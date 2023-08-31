@@ -4,10 +4,11 @@ import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router';
 import { checkMazePassable } from 'src/core/checkMazePassable';
-import { getNextAreaType } from 'src/utils/areaUtils';
-import { defaultMazeSize } from 'src/const/maze';
 import { Point } from 'src/types/point';
-import { AreaType, AreaTypes } from 'src/types/maze';
+import { AreaConfig } from 'src/types/config';
+import { AreaTypes } from 'src/const/areaTypes';
+import { defaultMazeSize } from 'src/const/maze';
+import { getNextAreaType } from 'src/utils/areaUtils';
 import { appLinks } from 'src/router/const';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { Renderer } from 'src/components/renderer';
@@ -19,7 +20,7 @@ import { Container, HeadControl, LeftHeadControl } from './styled';
 
 const MazeRedactor: React.FC = observer(() => {
   const navigate = useNavigate();
-  const { mazeStore, cursorStore } = useStore();
+  const { mazeStore, cursorStore, configStore } = useStore();
   const [route, setRoute] = React.useState<Point[]>([]);
   const [showLoadModal, setShowLoadModal] = React.useState(false);
   const [contextMenuData, setContextMenuData] = React.useState<{
@@ -42,8 +43,13 @@ const MazeRedactor: React.FC = observer(() => {
 
   const fillWithNextType = () => {
     const type = mazeStore.utils.getAreaType(cursorStore.cursor.point);
-    const nextType = getNextAreaType(type);
+    const areaConfig = configStore.getAreaConfigByType(type);
 
+    if (!areaConfig) {
+      return;
+    }
+
+    const nextType = getNextAreaType(areaConfig);
     mazeStore.changeAreaType(cursorStore.cursor.point, nextType);
   };
 
@@ -85,12 +91,12 @@ const MazeRedactor: React.FC = observer(() => {
     setContextMenuData({ area, offset });
   };
 
-  const handleFillArea = (type: AreaType) => {
+  const handleFillArea = (type: AreaConfig) => {
     mazeStore.setFillAreaType(type);
     contextMenuData && mazeStore.changeAreaType(contextMenuData.area);
   };
 
-  const handleSelectType = (type: AreaType) => {
+  const handleSelectType = (type: AreaConfig) => {
     mazeStore.setFillAreaType(type);
   };
 
@@ -146,7 +152,7 @@ const MazeRedactor: React.FC = observer(() => {
           <Panel.Navigation onBack={handleBack} />
           <Panel.Palette
             areaType={mazeStore.fillAreaType}
-            areaTypes={mazeStore.areaTypes}
+            areaTypes={configStore.areaTypes}
             onSelect={handleSelectType}
           />
         </LeftHeadControl>
@@ -155,6 +161,7 @@ const MazeRedactor: React.FC = observer(() => {
       <Renderer.MazeRedactor
         maze={mazeStore.maze}
         cursor={toJS(cursorStore.cursor)}
+        config={configStore.config}
         route={route}
         canvasWidth={window.innerWidth - 80}
         onAreaClick={handleAreaClick}
@@ -183,7 +190,7 @@ const MazeRedactor: React.FC = observer(() => {
       {contextMenuData && (
         <ContextMenu.Redactor
           {...contextMenuData.offset}
-          areaTypes={mazeStore.areaTypes}
+          areaTypes={configStore.areaTypes}
           onSelectAreaType={handleFillArea}
           onClose={() => setContextMenuData(null)}
         />

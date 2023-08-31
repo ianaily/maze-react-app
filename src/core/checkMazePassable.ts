@@ -1,7 +1,8 @@
 import { Fork } from 'src/types/fork';
 import { Point } from 'src/types/point';
 import { Direction } from 'src/types/direction';
-import { AreaType, AreaTypes, Maze } from 'src/types/maze';
+import { AreaType, Maze } from 'src/types/maze';
+import { AreaTypes } from 'src/const/areaTypes';
 import { toDirection } from 'src/utils/pointUtils';
 import { addDirections, isNoWayFork, popFork } from 'src/utils/forkUtils';
 import { mazeUtils } from 'src/utils/mazeUtils';

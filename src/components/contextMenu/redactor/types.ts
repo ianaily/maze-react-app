@@ -1,9 +1,9 @@
-import { AreaType } from 'src/types/maze';
+import { AreaConfig } from 'src/types/config';
 
 export interface RedactorContextMenuProps {
   x: number;
   y: number;
-  areaTypes: AreaType[];
-  onSelectAreaType: (areaType: AreaType) => void;
+  areaTypes: AreaConfig[];
+  onSelectAreaType: (areaType: AreaConfig) => void;
   onClose: VoidFunction;
 }

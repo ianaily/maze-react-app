@@ -1,6 +1,6 @@
 import React from 'react';
 import { AreaConfig } from 'src/types/config';
-import { initialWallType } from './const';
+import { initialWallType } from 'src/const/config';
 
 export const useValidate = (configName, types, customTypes) => {
   const isUniq = React.useCallback(

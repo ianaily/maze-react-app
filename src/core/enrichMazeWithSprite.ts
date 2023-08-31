@@ -1,16 +1,17 @@
-import { spritesMap, walls } from 'src/const/spritesMap';
+import { Config } from 'src/types/config';
+import { Area, AreaType, AreaTypeKeys, Maze } from 'src/types/maze';
 import { mazeUtils } from 'src/utils/mazeUtils';
 import { toDirection } from 'src/utils/pointUtils';
-import { Area, AreaType, AreaTypeKeys, Maze } from 'src/types/maze';
+import { getAreaConfigByType } from 'src/utils/configUtils';
 
-export const enrichMazeWithSprite = (maze: Maze) => {
+export const enrichMazeWithSprite = (maze: Maze, config: Config) => {
   const { getAreaType } = mazeUtils(maze);
 
   const enrich = () => {
     return maze.areas.map((area) => {
-      const sprite = spritesMap[area.type.name];
+      const sprite = getAreaConfigByType(config, area.type)?.sprite || '';
 
-      if (sprite) {
+      if (area.type.name !== AreaTypeKeys.Wall) {
         return { ...area, sprite };
       } else {
         return { ...area, sprite: getWallSprite(area) };
@@ -23,6 +24,7 @@ export const enrichMazeWithSprite = (maze: Maze) => {
     const neighborRight = getAreaType(toDirection(area, 'right'));
     const neighborBottom = getAreaType(toDirection(area, 'bottom'));
     const neighborLeft = getAreaType(toDirection(area, 'left'));
+    const walls = config.wallSprites;
 
     return (
       enrichWithWallByOrientation(

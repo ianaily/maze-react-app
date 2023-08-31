@@ -1,6 +1,7 @@
 import { action, makeObservable, observable } from 'mobx';
 import { Size } from 'src/types/size';
 import { Point } from 'src/types/point';
+import { Config } from 'src/types/config';
 import { AreaSprite, Camera } from 'src/types/camera';
 import { Maze } from 'src/types/maze';
 import { enrichMazeWithSprite } from 'src/core/enrichMazeWithSprite';
@@ -15,9 +16,9 @@ export class CameraStore {
   mazeSize = { width: 0, height: 0 };
   areas: AreaSprite[] = [];
 
-  setMaze = (maze: Maze) => {
+  setMaze = (maze: Maze, config: Config) => {
     this.mazeSize = maze.size;
-    this.areas = enrichMazeWithSprite(maze);
+    this.areas = enrichMazeWithSprite(maze, config);
     this.setCameraPoint(maze.enter);
   };
 

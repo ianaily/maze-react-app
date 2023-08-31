@@ -1,8 +1,9 @@
 import { squareEasy, squareNormal } from 'src/const/maze';
-import { Area, AreaType, AreaTypes, Maze } from 'src/types/maze';
+import { Area, AreaType, Maze } from 'src/types/maze';
 import { Size } from 'src/types/size';
 import { Point } from 'src/types/point';
 import { Difficult } from 'src/types/game';
+import { AreaTypes } from 'src/const/areaTypes';
 import { areaTypeByShort } from './areaUtils';
 
 // prettier-ignore

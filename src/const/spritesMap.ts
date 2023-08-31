@@ -1,3 +1,4 @@
+import { AreaTypeKeys } from 'src/types/maze';
 import { WallDirections } from 'src/types/direction';
 import BL from 'src/assets/sprites/walls/bottom-left.png';
 import BM from 'src/assets/sprites/walls/bottom-middle.png';
@@ -18,7 +19,6 @@ import NM from 'src/assets/sprites/walls/narrow.png';
 import Way from 'src/assets/sprites/way.png';
 import Door from 'src/assets/sprites/door.png';
 import CharRight from 'src/assets/sprites/char-r.png';
-import { AreaTypeKeys } from '../types/maze';
 
 export const walls = {
   [WallDirections.topLeft]: TL as string,
@@ -47,6 +47,7 @@ export const sprites = {
 };
 
 export const spritesMap: { [key: string]: string } = {
+  [AreaTypeKeys.Wall]: MM,
   [AreaTypeKeys.Way]: Way,
   [AreaTypeKeys.Thread]: Way,
   [AreaTypeKeys.Center]: Way,

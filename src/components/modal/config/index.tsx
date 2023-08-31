@@ -1,6 +1,7 @@
 import React from 'react';
-import { AreaTypeKeys, AreaTypes } from 'src/types/maze';
-import { areaFillColors } from 'src/const/areaTypes';
+import { AreaTypeKeys } from 'src/types/maze';
+import { initialTypes, initialWalls, initialWallType } from 'src/const/config';
+import { areaFillColors, AreaTypes } from 'src/const/areaTypes';
 import { sprites } from 'src/const/spritesMap';
 import { DropdownInput } from 'src/components/dropdownInput';
 import { UploadInput } from 'src/components/uploadInput';
@@ -26,7 +27,7 @@ import {
   Sprite,
   ConfigNameInput,
 } from './styled';
-import { initialCustomType, initialCustomTypes, initialTypes, initialWalls } from './const';
+import { initialCustomType, initialCustomTypes } from './const';
 import { useValidate } from './hooks';
 
 export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) => {
@@ -45,7 +46,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
   const handleSave = () => {
     onSave({
       name: configName,
-      types,
+      types: [...types, initialWallType],
       wallSprites: walls,
       customTypes,
     });

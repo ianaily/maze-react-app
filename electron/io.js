@@ -1,13 +1,11 @@
 import fs from 'fs-extra';
 import path from 'path';
 
-const relativeDir = path.relative(process.cwd(), __dirname);
-const configsPath = path.join(relativeDir, 'configs');
+const configsPath = path.join(__dirname, 'configs');
 
 export const saveConfig = async (_config) => {
   const config = { ..._config };
-  const [datePostfix] = new Date().toLocaleString().split(',');
-  const name = `${config.name.replace(/ /g, '_')}_${datePostfix}`;
+  const name = config.name.replace(/ /g, '_');
 
   const configPath = path.join(configsPath, name);
   const spritesPath = path.join(configPath, 'sprites');

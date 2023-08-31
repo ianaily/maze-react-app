@@ -2,8 +2,8 @@ import React from 'react';
 import { Area } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { tooSmallAreaSize } from 'src/const/maze';
-import { areaFillColors } from 'src/const/areaTypes';
 import { mazeUtils } from 'src/utils/mazeUtils';
+import { getAreaConfigByType } from 'src/utils/configUtils';
 import { Loading } from 'src/components/loading/styled';
 import { coordsStyle, cursorStyle, routePointStyle } from '../const';
 import { useCanvasInit } from '../hooks';
@@ -13,6 +13,7 @@ import { Canvas, Container } from './styled';
 export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   maze,
   cursor,
+  config,
   route,
   canvasWidth,
   onAreaClick,
@@ -31,7 +32,9 @@ export const MazeRedactorRenderer: React.FC<MazeRedactorRendererProps> = ({
   const { getAreaType } = React.useMemo(() => mazeUtils(maze), [maze]);
 
   const drawArea = ({ x, y, type }: Area) => {
-    drawPoint({ x, y }, { fill: areaFillColors[type.name] });
+    const areaConfig = getAreaConfigByType(config, type);
+
+    drawPoint({ x, y }, { fill: areaConfig?.color || '' });
   };
 
   const drawCoords = ({ x, y }: Point) => {

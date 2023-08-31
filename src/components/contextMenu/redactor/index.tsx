@@ -1,5 +1,5 @@
 import React from 'react';
-import { AreaType } from 'src/types/maze';
+import { AreaConfig } from 'src/types/config';
 import { useOutsideClick } from 'src/hooks/useOutsideClick';
 import { Dropdown } from 'src/components/dropdown';
 import { RedactorContextMenuProps } from './types';
@@ -14,7 +14,7 @@ export const RedactorContextMenu: React.FC<RedactorContextMenuProps> = ({
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
-  const handleRowClick = (areaType: AreaType) => {
+  const handleRowClick = (areaType: AreaConfig) => {
     onSelectAreaType(areaType);
     onClose();
   };
@@ -26,7 +26,7 @@ export const RedactorContextMenu: React.FC<RedactorContextMenuProps> = ({
       <Container ref={ref}>
         {areaTypes.map((type) => (
           <AreaTypeRow key={type.name} onClick={() => handleRowClick(type)}>
-            <AreaTypePalette type={type.name} />
+            <AreaTypePalette color={type.color} />
             <span>{type.name}</span>
           </AreaTypeRow>
         ))}

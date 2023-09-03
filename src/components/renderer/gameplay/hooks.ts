@@ -5,7 +5,7 @@ import Char from 'src/assets/sprites/char-r.png';
 export const useSprite = (config: Config) => {
   const getImage = (src: string) => {
     const image = new Image();
-    image.src = 'file://' + src;
+    image.src = src;
     image.onload = () => setLoadedSpriteCount((prev) => prev + 1);
 
     return image;

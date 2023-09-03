@@ -65,6 +65,17 @@ const getConfig = (configPath) =>
       const configFile = files.find((file) => file.name === 'config.json');
 
       fs.readJson(path.join(configPath, configFile.name)).then((config) => {
+        config.types = config.types.map((type) => {
+          type.sprite = fs.readFileSync(type.sprite, 'utf8');
+          return type;
+        });
+        config.customTypes = config.customTypes.map((type) => {
+          type.sprite = fs.readFileSync(type.sprite, 'utf8');
+          return type;
+        });
+        Object.keys(config.wallSprites).forEach(
+          (key) => (config.wallSprites[key] = fs.readFileSync(config.wallSprites[key], 'utf8')),
+        );
         resolve({ config, configPath });
       });
     });

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Config } from 'src/types/config';
-import Char from 'src/assets/sprites/char-r.png';
 
 export const useSprite = (config: Config) => {
   const getImage = (src: string) => {
@@ -18,7 +17,10 @@ export const useSprite = (config: Config) => {
       (direction) =>
         (sprites[config.wallSprites[direction]] = getImage(config.wallSprites[direction])),
     );
-    sprites[Char] = getImage(Char);
+    Object.keys(config.charSprites).forEach(
+      (direction) =>
+        (sprites[config.charSprites[direction]] = getImage(config.charSprites[direction])),
+    );
 
     return sprites;
   }, []);

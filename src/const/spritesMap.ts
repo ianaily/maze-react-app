@@ -39,6 +39,13 @@ export const walls = {
   [WallDirections.narrowMiddle]: NM as string,
 };
 
+export const chars = {
+  left: CharRight as string,
+  top: CharRight as string,
+  right: CharRight as string,
+  bottom: CharRight as string,
+};
+
 export const sprites = {
   middleWall: MM,
   way: Way,

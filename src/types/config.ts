@@ -1,5 +1,5 @@
 import { AreaType } from './maze';
-import { WallDirections } from './direction';
+import { Direction, WallDirections } from './direction';
 
 export interface AreaConfig extends AreaType {
   color: string;
@@ -9,8 +9,9 @@ export interface AreaConfig extends AreaType {
 export interface Config {
   name: string;
   types: AreaConfig[];
-  wallSprites: { [key in WallDirections]: string };
   customTypes: AreaConfig[];
+  wallSprites: { [key in WallDirections]: string };
+  charSprites: { [key in Direction]: string };
 }
 
 export interface ConfigInfo {

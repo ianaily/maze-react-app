@@ -2,7 +2,7 @@ import { AreaTypeKeys } from 'src/types/maze';
 import { WallDirections } from 'src/types/direction';
 import { Config } from 'src/types/config';
 import { areaFillColors, AreaTypes } from './areaTypes';
-import { walls } from './spritesMap';
+import { chars, walls } from './spritesMap';
 
 export const selectedConfigKey = 'selectedConfig';
 
@@ -21,10 +21,12 @@ export const initialWallType = {
 };
 
 export const initialWalls = { ...walls };
+export const initialChars = { ...chars };
 
 export const defaultConfig: Config = {
   name: 'default',
   customTypes: [],
   types: [...initialTypes, initialWallType],
   wallSprites: initialWalls,
+  charSprites: initialChars,
 };

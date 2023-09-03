@@ -1,6 +1,6 @@
 import React from 'react';
 import { AreaTypeKeys } from 'src/types/maze';
-import { initialTypes, initialWalls, initialWallType } from 'src/const/config';
+import { initialChars, initialTypes, initialWalls, initialWallType } from 'src/const/config';
 import { areaFillColors, AreaTypes } from 'src/const/areaTypes';
 import { sprites } from 'src/const/spritesMap';
 import { DropdownInput } from 'src/components/dropdownInput';
@@ -31,11 +31,14 @@ import { initialCustomType, initialCustomTypes } from './const';
 import { useValidate } from './hooks';
 
 export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) => {
-  const triggerRef = React.useRef<HTMLDivElement>(null);
+  const wallsTriggerRef = React.useRef<HTMLDivElement>(null);
+  const charTriggerRef = React.useRef<HTMLDivElement>(null);
   const [wallsOpened, setWallsOpened] = React.useState(false);
+  const [charsOpened, setCharsOpened] = React.useState(false);
   const [configName, setConfigName] = React.useState('New Config Name');
   const [types, setTypes] = React.useState([...initialTypes]);
   const [walls, setWalls] = React.useState({ ...initialWalls });
+  const [chars, setChars] = React.useState({ ...initialChars });
   const [customTypes, setCustomTypes] = React.useState([...initialCustomTypes]);
   const { isValidName, isValidShort, isValidColor, isValidType, isValid } = useValidate(
     configName,
@@ -48,6 +51,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
       name: configName,
       types: [...types, initialWallType],
       wallSprites: walls,
+      charSprites: chars,
       customTypes,
     });
   };
@@ -68,6 +72,10 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
 
   const handleWallImport = (wallName: string, content: string) => {
     setWalls({ ...walls, [wallName]: content });
+  };
+
+  const handleCharImport = (charDirect: string, content: string) => {
+    setChars({ ...chars, [charDirect]: content });
   };
 
   const handleChangeCustomType = (index: number, key: string, value: string | boolean) => {
@@ -112,19 +120,43 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ onCancel, onSave }) =>
           onChange={({ target }) => setConfigName(target.value)}
         />
         <AreaType>
+          <AreaTypeName>Character</AreaTypeName>
+          <MultiSprite ref={charTriggerRef} onClick={() => setCharsOpened((prev) => !prev)}>
+            <Sprite src={sprites.char} />
+            <Dropdown
+              theme="dark"
+              isOpened={charsOpened}
+              onHide={() => setCharsOpened(false)}
+              triggerRef={charTriggerRef}
+            >
+              <MultiSpriteDropdown>
+                {Object.keys(chars).map((charDirect) => (
+                  <UploadInput
+                    key={charDirect}
+                    onImport={(content) => handleCharImport(charDirect, content)}
+                    type="image/*"
+                  >
+                    <Sprite src={chars[charDirect]} />
+                  </UploadInput>
+                ))}
+              </MultiSpriteDropdown>
+            </Dropdown>
+          </MultiSprite>
+        </AreaType>
+        <AreaType>
           <AreaTypeInfo>
             <AreaTypeColor color={areaFillColors[AreaTypeKeys.Wall]} />
             <AreaTypeShort>{AreaTypes.Wall.short}</AreaTypeShort>
             <AreaTypeName>{AreaTypes.Wall.name}</AreaTypeName>
           </AreaTypeInfo>
           <AreaTypePassable>passable: no</AreaTypePassable>
-          <MultiSprite ref={triggerRef} onClick={() => setWallsOpened((prev) => !prev)}>
+          <MultiSprite ref={wallsTriggerRef} onClick={() => setWallsOpened((prev) => !prev)}>
             <Sprite src={sprites.middleWall} />
             <Dropdown
               theme="dark"
               isOpened={wallsOpened}
               onHide={() => setWallsOpened(false)}
-              triggerRef={triggerRef}
+              triggerRef={wallsTriggerRef}
             >
               <MultiSpriteDropdown>
                 {Object.keys(walls).map((wallName) => (

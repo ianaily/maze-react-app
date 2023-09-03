@@ -12,11 +12,13 @@ export const saveConfig = async (_config) => {
   const typesSpritesPath = path.join(spritesPath, 'types');
   const customTypesSpritesPath = path.join(spritesPath, 'customTypes');
   const wallsSpritesPath = path.join(spritesPath, 'walls');
+  const charSpritesPath = path.join(spritesPath, 'char');
 
   await fs.ensureDir(spritesPath);
   await fs.ensureDir(typesSpritesPath);
   await fs.ensureDir(customTypesSpritesPath);
   await fs.ensureDir(wallsSpritesPath);
+  await fs.ensureDir(charSpritesPath);
 
   config.types.forEach((type, index) => {
     const spritePath = path.join(typesSpritesPath, type.name);
@@ -37,6 +39,13 @@ export const saveConfig = async (_config) => {
     fs.writeFile(spritePath, config.wallSprites[wallDirection]);
 
     config.wallSprites[wallDirection] = spritePath;
+  });
+
+  Object.keys(config.charSprites).map((charDirection) => {
+    const spritePath = path.join(charSpritesPath, charDirection);
+    fs.writeFile(spritePath, config.charSprites[charDirection]);
+
+    config.charSprites[charDirection] = spritePath;
   });
 
   await fs.writeJson(path.join(configPath, 'config.json'), config);
@@ -62,7 +71,11 @@ const getConfig = (configPath) =>
     fs.readdir(configPath, { withFileTypes: true }, (err, files = []) => {
       err && reject(err);
 
-      const configFile = files.find((file) => file.name === 'config.json');
+      const configFile = files.find((file) => file?.name === 'config.json');
+
+      if (!configFile) {
+        return;
+      }
 
       fs.readJson(path.join(configPath, configFile.name)).then((config) => {
         config.types = config.types.map((type) => {
@@ -75,6 +88,9 @@ const getConfig = (configPath) =>
         });
         Object.keys(config.wallSprites).forEach(
           (key) => (config.wallSprites[key] = fs.readFileSync(config.wallSprites[key], 'utf8')),
+        );
+        Object.keys(config.charSprites).forEach(
+          (key) => (config.charSprites[key] = fs.readFileSync(config.charSprites[key], 'utf8')),
         );
         resolve({ config, configPath });
       });

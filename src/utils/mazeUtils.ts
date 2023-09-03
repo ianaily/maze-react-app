@@ -57,7 +57,7 @@ export const getAreaDifficult = ({ width, height }: Size): Difficult => {
 };
 
 export const stringifyMaze = (maze: Maze): string => {
-  const infoParsed = encodeURIComponent(maze.name);
+  const infoParsed = `${encodeURIComponent(maze.name)}:${encodeURIComponent(maze.configName)}`;
   const sizeParsed = `${maze.size.width}:${maze.size.height}`;
   const metaParsed = [
     `${stringifyPoint(maze.enter)}`,
@@ -74,8 +74,9 @@ export const stringifyMaze = (maze: Maze): string => {
 };
 
 export const parseMaze = (parsed: string): Maze => {
-  const [name, sizeString, metaString, areasString] = parsed.split('&');
+  const [infoString, sizeString, metaString, areasString] = parsed.split('&');
 
+  const [name, configName] = infoString.split(':');
   const [width, height] = sizeString.split(':');
   const [enter, center, exit] = metaString.split(';');
   const areas: Area[] = [];
@@ -95,6 +96,7 @@ export const parseMaze = (parsed: string): Maze => {
 
   return {
     name: decodeURIComponent(name),
+    configName: decodeURIComponent(configName),
     size: { width: +width, height: +height },
     enter: parsePoint(enter, AreaTypes.Enter),
     center: parsePoint(center, AreaTypes.Center),

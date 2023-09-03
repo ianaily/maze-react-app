@@ -2,11 +2,13 @@ import { Size } from 'src/types/size';
 import { Point } from 'src/types/point';
 import { Area, Maze } from 'src/types/maze';
 import { AreaTypes } from 'src/const/areaTypes';
+import { defaultConfig } from 'src/const/config';
 import { random, randomBoolean } from 'src/utils/random';
 
 export const buildMazePots = ({ width, height }: Size, name?: string): Maze => {
   return {
     name: name || '_',
+    configName: defaultConfig.name,
     size: { width, height },
     areas: [],
     center: buildCenterArea(),

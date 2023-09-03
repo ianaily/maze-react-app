@@ -124,7 +124,7 @@ export class MazeStore {
     this.mazeId = save.id;
     const maze = parseMaze(save.maze);
     this.setMaze(maze);
-    this.save().then();
+    this.save(maze.configName).then();
   };
 
   loadMazeList = (): Promise<Save[]> => {
@@ -168,9 +168,10 @@ export class MazeStore {
     this.setMaze(maze);
   };
 
-  save = async (): Promise<void> => {
+  save = async (configName: string): Promise<void> => {
     this.mazeId = this.mazeId || `${mazeSaveKeyPrefix}${randomId()}`;
     await this.loadMazeList();
+    this.maze.configName = configName;
     await localforage.setItem(this.mazeId, toJS(this.maze));
     await this.saveMazeList();
   };

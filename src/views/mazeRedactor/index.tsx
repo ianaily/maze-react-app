@@ -113,7 +113,7 @@ const MazeRedactor: React.FC = observer(() => {
   };
 
   const handleSave = () => {
-    mazeStore.save().then(() => toast('Saved!'));
+    mazeStore.save(configStore.config.name).then(() => toast('Saved!'));
   };
 
   const handleLoad = (mazeId: string) => {

@@ -3,6 +3,7 @@ import { Point } from './point';
 
 export interface Maze {
   name: string;
+  configName: string;
   areas: Area[];
   enter: Area;
   exit: Area;

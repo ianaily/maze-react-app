@@ -28,9 +28,7 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
   const { spritesLoaded, getSpite } = useSprite(config);
 
   const drawArea = (area: AreaSprite, point: Point) => {
-    console.log('before fail', getSpite(area.sprite));
     drawPoint(point, { image: getSpite(area.sprite) });
-    console.log('after fail');
   };
 
   const drawPlayer = () => {

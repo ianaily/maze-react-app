@@ -13,6 +13,7 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
   maxCanvasHeight,
   player,
   camera,
+  config,
 }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null);
   const canvasSize = maxCanvasWidth < maxCanvasHeight ? maxCanvasWidth : maxCanvasHeight;
@@ -24,10 +25,12 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
   // todo redo
   const canvasWidth = React.useMemo(() => areaSize * camera.size.width, [canvasSize, areaSize]);
   const canvasHeight = React.useMemo(() => areaSize * camera.size.height, [canvasSize, areaSize]);
-  const { spritesLoaded, getSpite } = useSprite();
+  const { spritesLoaded, getSpite } = useSprite(config);
 
   const drawArea = (area: AreaSprite, point: Point) => {
+    console.log('before fail', getSpite(area.sprite));
     drawPoint(point, { image: getSpite(area.sprite) });
+    console.log('after fail');
   };
 
   const drawPlayer = () => {

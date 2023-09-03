@@ -8,6 +8,7 @@ import { Renderer } from 'src/components/renderer';
 import { Modal } from 'src/components/modal';
 import { Container } from './styled';
 import { useStore } from './store';
+import configStore from '../../stores/configStore';
 
 const Gameplay: React.FC = observer(() => {
   const { mazeStore, playerStore, cameraStore } = useStore();
@@ -50,9 +51,9 @@ const Gameplay: React.FC = observer(() => {
 
   const initMaze = async () => {
     mazeStore.isEmpty && (await mazeStore.getRandomSavedMaze());
-    playerStore.setMaze(mazeStore.maze);
-    cameraStore.setMaze(mazeStore.maze);
+    cameraStore.setMaze(mazeStore.maze, configStore.config);
     cameraStore.setCameraSize(cameraSize);
+    playerStore.setMaze(mazeStore.maze);
   };
 
   useKeyboard(handleKeyDown);
@@ -73,6 +74,7 @@ const Gameplay: React.FC = observer(() => {
         maxCanvasHeight={height}
         camera={cameraStore.camera}
         player={playerStore.player}
+        config={configStore.config}
       />
       {showPauseModal && (
         <Modal.Pause onMainMenu={handleMainMenu} onCancel={() => setShowPauseModal(false)} />

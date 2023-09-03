@@ -1,6 +1,7 @@
 import { Size } from 'src/types/size';
 import { Point } from 'src/types/point';
-import { Area, AreaTypes, Maze } from 'src/types/maze';
+import { Area, Maze } from 'src/types/maze';
+import { AreaTypes } from 'src/const/areaTypes';
 import { random, randomBoolean } from 'src/utils/random';
 
 export const buildMazePots = ({ width, height }: Size, name?: string): Maze => {

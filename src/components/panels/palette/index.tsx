@@ -1,5 +1,5 @@
 import React from 'react';
-import { AreaType } from 'src/types/maze';
+import { AreaConfig } from 'src/types/config';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { Dropdown } from 'src/components/dropdown';
 import { PalettePanelProps } from './types';
@@ -7,7 +7,7 @@ import { AreaPaletteBlock, AreaInfo, AreaPalette, AreaTypeList, Container } from
 
 export const PalettePanel: React.FC<PalettePanelProps> = ({ areaType, areaTypes, onSelect }) => {
   const [palettesOpened, setPalettesOpened] = React.useState(false);
-  const [history, setHistory] = React.useState<AreaType[]>([]);
+  const [history, setHistory] = React.useState<AreaConfig[]>([]);
   const prev = React.useMemo(() => history?.[0] || null, [history]);
   const triggerRef = React.useRef<HTMLDivElement>(null);
 
@@ -23,7 +23,7 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ areaType, areaTypes,
     setPalettesOpened(false);
   };
 
-  const handleSelectArea = (areaType: AreaType) => {
+  const handleSelectArea = (areaType: AreaConfig) => {
     setPalettesOpened(false);
     onSelect(areaType);
   };
@@ -44,7 +44,7 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ areaType, areaTypes,
   return (
     <Container>
       <AreaPaletteBlock ref={triggerRef}>
-        <AreaPalette type={areaType.name} onClick={handleSwitchShowPalettes} />
+        <AreaPalette color={areaType.color} onClick={handleSwitchShowPalettes} />
         <AreaInfo>
           <span>{areaType.name}</span>
           <span>passable: {areaType.passable ? 'yes' : 'no'}</span>
@@ -52,17 +52,26 @@ export const PalettePanel: React.FC<PalettePanelProps> = ({ areaType, areaTypes,
       </AreaPaletteBlock>
       {prev && (
         <AreaPaletteBlock>
-          <AreaPalette type={prev.name} onClick={handleSelectPrevArea} />
+          <AreaPalette color={prev.color} onClick={handleSelectPrevArea} />
           <AreaInfo>
             <span>{prev.name}</span>
             <span>passable: {prev.passable ? 'yes' : 'no'}</span>
           </AreaInfo>
         </AreaPaletteBlock>
       )}
-      <Dropdown isOpened={palettesOpened} onHide={handleClosePalettes} triggerRef={triggerRef}>
+      <Dropdown
+        isOpened={palettesOpened}
+        onHide={handleClosePalettes}
+        triggerRef={triggerRef}
+        offsetTop="xm"
+      >
         <AreaTypeList>
           {areaTypes.map((type) => (
-            <AreaPalette key={type.name} type={type.name} onClick={() => handleSelectArea(type)} />
+            <AreaPalette
+              key={type.name}
+              color={type.color}
+              onClick={() => handleSelectArea(type)}
+            />
           ))}
         </AreaTypeList>
       </Dropdown>

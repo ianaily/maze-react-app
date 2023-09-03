@@ -6,6 +6,9 @@ import viteCompression from 'vite-plugin-compression';
 import * as path from 'path';
 
 export default defineConfig({
+  define: {
+    process: process,
+  },
   plugins: [
     react(),
     viteSvgr(),

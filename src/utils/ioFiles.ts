@@ -1,4 +1,4 @@
-export async function readFile(file: File): Promise<string> {
+export async function readFile(file: File, isImage: boolean): Promise<string> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -7,7 +7,8 @@ export async function readFile(file: File): Promise<string> {
     reader.onerror = (event) => {
       reject(event.target?.error);
     };
-    reader.readAsText(file);
+    isImage && reader.readAsDataURL(file);
+    !isImage && reader.readAsText(file);
   });
 }
 

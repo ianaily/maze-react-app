@@ -1,16 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { styles } from 'src/styles/styles';
-import { Container as DropdownContainer } from 'src/components/dropdown/styled';
 import { AreaPalette } from 'src/components/panels/palette/styled';
 
-export const ContextDropdown = styled(DropdownContainer)<{ top: number; left: number }>`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  ${({ top, left }) => css`
-    top: ${top}px;
-    left: ${left}px;
-  `})
 `;
 
 export const AreaTypeRow = styled.div`

@@ -42,5 +42,7 @@ export const colors = {
     light6: 'rgba(224, 242, 255, .6)',
     light7: 'rgba(224, 242, 255, .7)',
     darkRed: 'rgba(224, 80, 100, .2)',
+    darkBlue: 'rgba(60, 140, 224, .2)',
+    darkGreen: 'rgba(60, 224, 140, .2)',
   },
 };

@@ -11,7 +11,7 @@ export const ModalBackdrop = styled.div`
   bottom: 0;
   left: 0;
   background-color: ${styles.colors.transparent.dark1};
-  backdrop-filter: blur(8px);
+  backdrop-filter: ${styles.backdropBlur.m};
   z-index: ${styles.zIndex.above};
   transition: ${styles.transition.background};
 `;
@@ -43,6 +43,7 @@ export const ModalHeader = styled.div`
 export const ModalBody = styled.div`
   width: 100%;
   min-height: 56px;
+  max-height: 75vh;
   padding: ${styles.offsets.m};
   background-color: ${styles.colors.transparent.light5};
 `;

@@ -1,7 +1,7 @@
-import { AreaType } from 'src/types/maze';
+import { AreaConfig } from 'src/types/config';
 
 export interface PalettePanelProps {
-  areaType: AreaType;
-  areaTypes: AreaType[];
-  onSelect: (areaType: AreaType) => void;
+  areaType: AreaConfig;
+  areaTypes: AreaConfig[];
+  onSelect: (areaType: AreaConfig) => void;
 }

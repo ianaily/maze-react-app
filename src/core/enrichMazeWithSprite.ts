@@ -1,26 +1,17 @@
-import { walls } from 'src/const/spritesMap';
+import { Config } from 'src/types/config';
+import { Area, AreaType, AreaTypeKeys, Maze } from 'src/types/maze';
 import { mazeUtils } from 'src/utils/mazeUtils';
 import { toDirection } from 'src/utils/pointUtils';
-import { Area, AreaType, AreaTypeKeys, Maze } from 'src/types/maze';
-import Way from 'src/assets/sprites/way.png';
-import Door from 'src/assets/sprites/door.png';
+import { getAreaConfigByType } from 'src/utils/configUtils';
 
-const spritesMap: { [key: string]: string } = {
-  [AreaTypeKeys.Way]: Way,
-  [AreaTypeKeys.Thread]: Way,
-  [AreaTypeKeys.Center]: Way,
-  [AreaTypeKeys.Enter]: Door,
-  [AreaTypeKeys.Exit]: Door,
-};
-
-export const enrichMazeWithSprite = (maze: Maze) => {
+export const enrichMazeWithSprite = (maze: Maze, config: Config) => {
   const { getAreaType } = mazeUtils(maze);
 
   const enrich = () => {
     return maze.areas.map((area) => {
-      const sprite = spritesMap[area.type.name];
+      const sprite = getAreaConfigByType(config, area.type)?.sprite || '';
 
-      if (sprite) {
+      if (area.type.name !== AreaTypeKeys.Wall) {
         return { ...area, sprite };
       } else {
         return { ...area, sprite: getWallSprite(area) };
@@ -33,6 +24,7 @@ export const enrichMazeWithSprite = (maze: Maze) => {
     const neighborRight = getAreaType(toDirection(area, 'right'));
     const neighborBottom = getAreaType(toDirection(area, 'bottom'));
     const neighborLeft = getAreaType(toDirection(area, 'left'));
+    const walls = config.wallSprites;
 
     return (
       enrichWithWallByOrientation(
@@ -124,4 +116,5 @@ const neighborsAreWall = (areas: AreaType[]) => areas.every((area) => isWall(are
 const neighborsAreNotWall = (areas: AreaType[]) => areas.every((area) => !isWall(area));
 
 const isWall = (area?: AreaType) =>
-  area && [AreaTypeKeys.Wall, AreaTypeKeys.Enter, AreaTypeKeys.Exit].includes(area.name);
+  area &&
+  ([AreaTypeKeys.Wall, AreaTypeKeys.Enter, AreaTypeKeys.Exit] as string[]).includes(area.name);

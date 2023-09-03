@@ -22,12 +22,14 @@ export const SettingsContainer = styled.div`
 export const SettingsPanel = styled(Panel)`
   display: flex;
   flex-direction: column;
-  gap: ${styles.offsets.s};
+  gap: ${styles.offsets.m};
   width: 100%;
   max-width: 384px;
   padding: ${styles.offsets.l};
 `;
 
-export const FileInput = styled.input`
-  display: none;
+export const ButtonsBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${styles.offsets.s};
 `;

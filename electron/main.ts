@@ -1,6 +1,7 @@
-import { app, BrowserWindow, shell } from 'electron';
+import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import { join } from 'path';
+import { deleteConfig, loadConfig, loadConfigs, saveConfig } from './io';
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
@@ -10,7 +11,9 @@ function createWindow() {
     autoHideMenuBar: true,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
+      webSecurity: false,
       sandbox: false,
+      enableWebSQL: true,
     },
   });
 
@@ -21,6 +24,22 @@ function createWindow() {
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
     return { action: 'deny' };
+  });
+
+  ipcMain.handle('app:save-config', (_, config) => {
+    return saveConfig(config);
+  });
+
+  ipcMain.handle('app:load-config', (_, configPath) => {
+    return loadConfig(configPath);
+  });
+
+  ipcMain.handle('app:load-configs', () => {
+    return loadConfigs();
+  });
+
+  ipcMain.handle('app:delete-config', (_, configPath) => {
+    return deleteConfig(configPath);
   });
 
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {

@@ -1,6 +1,13 @@
 import React from 'react';
 import { ButtonProps } from './types';
-import { RedButton, GreenButton, BlueButton, YellowButton, GreyButton } from './styled';
+import {
+  RedButton,
+  GreenButton,
+  BlueButton,
+  YellowButton,
+  GreyButton,
+  TransparentButton,
+} from './styled';
 
 export const Button: React.FC<ButtonProps> = ({ variant, ...props }) =>
   ({
@@ -9,4 +16,5 @@ export const Button: React.FC<ButtonProps> = ({ variant, ...props }) =>
     yellow: <YellowButton {...props} />,
     red: <RedButton {...props} />,
     grey: <GreyButton {...props} />,
+    transparent: <TransparentButton {...props} />,
   }[variant]);

@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
       color: ${styles.colors.font.white};
       box-shadow: none;
     }
-  
+
     &:disabled:hover {
       background-color: ${styles.colors.disabled.button};
       color: ${styles.colors.font.white};
@@ -59,6 +59,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${styles.colors.transparent.light3};
     color: ${styles.colors.font.black};
     transition: ${styles.transition.background}, ${styles.transition.boxShadow};
+  }
+
+  input[type=checkbox] {
+    cursor: pointer;
   }
 
   ::-webkit-scrollbar {

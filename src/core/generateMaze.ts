@@ -1,5 +1,6 @@
-import { Area, AreaType, AreaTypes, Maze } from 'src/types/maze';
+import { Area, AreaType, Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
+import { AreaTypes } from 'src/const/areaTypes';
 import { mazeUtils } from 'src/utils/mazeUtils';
 import { random } from 'src/utils/random';
 import { toBottom, toLeft, toRight, toTop, updatePoint } from 'src/utils/pointUtils';

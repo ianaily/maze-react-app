@@ -1,7 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { styles } from 'src/styles/styles';
 
-export const GreenButton = styled.button`
+const Button = styled.button<{ fullWidth?: boolean }>`
+  ${({ fullWidth }) =>
+    fullWidth &&
+    css`
+      width: 100%;
+    `}
+`;
+
+export const GreenButton = styled(Button)`
   background-color: ${styles.colors.general.green};
 
   &:hover {
@@ -9,7 +17,7 @@ export const GreenButton = styled.button`
   }
 `;
 
-export const BlueButton = styled.button`
+export const BlueButton = styled(Button)`
   background-color: ${styles.colors.general.blue};
 
   &:hover {
@@ -17,7 +25,7 @@ export const BlueButton = styled.button`
   }
 `;
 
-export const YellowButton = styled.button`
+export const YellowButton = styled(Button)`
   background-color: ${styles.colors.general.yellow};
 
   &:hover {
@@ -25,7 +33,7 @@ export const YellowButton = styled.button`
   }
 `;
 
-export const RedButton = styled.button`
+export const RedButton = styled(Button)`
   background-color: ${styles.colors.general.red};
 
   &:hover {
@@ -33,10 +41,19 @@ export const RedButton = styled.button`
   }
 `;
 
-export const GreyButton = styled.button`
+export const GreyButton = styled(Button)`
   background-color: ${styles.colors.disabled.light};
 
   &:hover {
     background-color: ${styles.colors.disabled.dark};
+  }
+`;
+
+export const TransparentButton = styled(Button)`
+  background-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    background-color: transparent;
   }
 `;

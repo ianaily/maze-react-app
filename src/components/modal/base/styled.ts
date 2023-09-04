@@ -45,6 +45,7 @@ export const ModalBody = styled.div`
   min-height: 56px;
   max-height: 75vh;
   padding: ${styles.offsets.m};
+  overflow: auto;
   background-color: ${styles.colors.transparent.light5};
 `;
 

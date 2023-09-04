@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain, shell } from 'electron';
 import { electronApp, is, optimizer } from '@electron-toolkit/utils';
 import { join } from 'path';
+import appIcon from '../public/favicon.ico?asset';
 import { deleteConfig, loadConfig, loadConfigs, saveConfig } from './io';
 
 function createWindow() {
@@ -9,6 +10,7 @@ function createWindow() {
     height: 800,
     show: false,
     autoHideMenuBar: true,
+    icon: appIcon,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       webSecurity: false,

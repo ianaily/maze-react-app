@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
+import { observer } from 'mobx-react-lite';
 import { appLinks } from 'src/router/const';
 import { Button } from 'src/components/button';
 import { Modal } from 'src/components/modal';
 import { useStore } from './store';
 import { Container, MenuPanel, MenuTitle, Title } from './styled';
 
-const MainMenu: React.FC = () => {
+const MainMenu: React.FC = observer(() => {
   const navigate = useNavigate();
   const { mazeStore } = useStore();
   const [showLoadModal, setShowLoadModal] = React.useState(false);
@@ -54,6 +55,6 @@ const MainMenu: React.FC = () => {
       )}
     </Container>
   );
-};
+});
 
 export default MainMenu;

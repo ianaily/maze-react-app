@@ -14,8 +14,6 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
   gap: ${styles.offsets.s};
-  max-height: 75vh;
-  overflow: auto;
 `;
 
 export const ConfigNameInput = styled(Input)`

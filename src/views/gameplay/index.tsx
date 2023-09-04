@@ -8,10 +8,9 @@ import { Renderer } from 'src/components/renderer';
 import { Modal } from 'src/components/modal';
 import { Container } from './styled';
 import { useStore } from './store';
-import configStore from '../../stores/configStore';
 
 const Gameplay: React.FC = observer(() => {
-  const { mazeStore, playerStore, cameraStore } = useStore();
+  const { mazeStore, gameStore, playerStore, cameraStore, configStore } = useStore();
   const [showPauseModal, setShowPauseModal] = React.useState(false);
   const { width = 0, height = 0 } = useWindowSize();
   const navigate = useNavigate();
@@ -35,6 +34,11 @@ const Gameplay: React.FC = observer(() => {
   };
 
   const handleKeyDown = (key: string) => {
+    if (gameStore.isFinished || !gameStore.isLeftMoves) {
+      navigate(appLinks.mainMenu, { replace: true });
+      return;
+    }
+
     key === 'Escape' && setShowPauseModal((show) => !show);
 
     if (showPauseModal) {
@@ -54,6 +58,7 @@ const Gameplay: React.FC = observer(() => {
     cameraStore.setMaze(mazeStore.maze, configStore.config);
     cameraStore.setCameraSize(cameraSize);
     playerStore.setMaze(mazeStore.maze);
+    gameStore.setMaze(mazeStore.maze);
   };
 
   useKeyboard(handleKeyDown);
@@ -63,6 +68,7 @@ const Gameplay: React.FC = observer(() => {
   }, [cameraSize]);
 
   React.useEffect(() => {
+    gameStore.setPlayer(playerStore.player);
     cameraStore.setCameraPoint(playerStore.player.point);
   }, [playerStore.player.point]);
 
@@ -79,6 +85,8 @@ const Gameplay: React.FC = observer(() => {
       {showPauseModal && (
         <Modal.Pause onMainMenu={handleMainMenu} onCancel={() => setShowPauseModal(false)} />
       )}
+      {gameStore.isFinished && <Modal.GameMessage>You Win!</Modal.GameMessage>}
+      {!gameStore.isLeftMoves && <Modal.GameMessage>You Lose</Modal.GameMessage>}
     </Container>
   );
 });

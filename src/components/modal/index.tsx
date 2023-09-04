@@ -1,5 +1,6 @@
 import React from 'react';
 import { ModalVariants, VariantPropsMap } from './types';
+import { GameMessageModal } from './gameMessage';
 import { SelectConfig } from './selectConfig';
 import { LoadMazeModal } from './loadMaze';
 import { ConfigModal } from './config';
@@ -10,4 +11,5 @@ export const Modal: { [key in ModalVariants]: React.FC<VariantPropsMap[key]> } =
   LoadMaze: LoadMazeModal,
   Config: ConfigModal,
   Pause: PauseModal,
+  GameMessage: GameMessageModal,
 };

@@ -56,6 +56,14 @@ export const getAreaDifficult = ({ width, height }: Size): Difficult => {
     : Difficult.hard;
 };
 
+export const getSizeByDifficult = (difficult: Difficult): Size => {
+  return {
+    [Difficult.easy]: { width: 16, height: 16 },
+    [Difficult.normal]: { width: 32, height: 32 },
+    [Difficult.hard]: { width: 64, height: 64 },
+  }[difficult];
+};
+
 export const stringifyMaze = (maze: Maze): string => {
   const infoParsed = `${encodeURIComponent(maze.name)}:${encodeURIComponent(maze.configName)}`;
   const sizeParsed = `${maze.size.width}:${maze.size.height}`;

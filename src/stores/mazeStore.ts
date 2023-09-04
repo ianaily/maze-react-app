@@ -1,17 +1,18 @@
 import { action, computed, makeObservable, observable, toJS } from 'mobx';
 import localforage from 'localforage';
-import { buildMazePots } from 'src/core/buildMazePots';
-import { generateMaze } from 'src/core/generateMaze';
-import { getAreaDifficult, mazeUtils, parseMaze } from 'src/utils/mazeUtils';
-import { random, randomId } from 'src/utils/random';
-import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze';
-import { initialWallType } from 'src/const/config';
 import { Difficult } from 'src/types/game';
 import { AreaConfig } from 'src/types/config';
 import { Maze } from 'src/types/maze';
 import { Point } from 'src/types/point';
 import { Size } from 'src/types/size';
 import { Import, Save } from 'src/types/save';
+import { buildMazePots } from 'src/core/buildMazePots';
+import { generateMaze } from 'src/core/generateMaze';
+import { checkMazePassable } from 'src/core/checkMazePassable';
+import { getAreaDifficult, getSizeByDifficult, mazeUtils, parseMaze } from 'src/utils/mazeUtils';
+import { random, randomId } from 'src/utils/random';
+import { defaultMazeSize, mazeSaveKeyPrefix, mazeSavesKey } from 'src/const/maze';
+import { initialWallType } from 'src/const/config';
 import * as dump from 'src/assets/presets.json';
 
 export class MazeStore {
@@ -96,6 +97,13 @@ export class MazeStore {
   getRandomSavedMazeByDifficult = async (difficult: Difficult) => {
     const saves = await this.loadMazeList();
     const filtered = saves.filter((save) => getAreaDifficult(save.mazeSize) === difficult);
+
+    if (!filtered.length) {
+      do {
+        const size = getSizeByDifficult(difficult);
+        this.generate(size);
+      } while (!checkMazePassable(this.maze));
+    }
 
     return await this.getRandomSavedMaze(filtered);
   };

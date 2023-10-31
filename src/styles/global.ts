@@ -19,6 +19,13 @@ export const GlobalStyle = createGlobalStyle`
     overflow-y: hidden;
   }
 
+  #root {
+    width: 100%;
+    height: 100vh;
+    background: url("/src/assets/sprites/background.svg");
+    background-size: cover;
+  }
+
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -38,10 +45,14 @@ export const GlobalStyle = createGlobalStyle`
 
     &:hover {
       box-shadow: none;
+      background-image: url("/src/assets/sprites/button-backdrop.svg");
+      background-blend-mode: color-burn;
+      background-size: cover;
     }
 
     &:disabled {
       background-color: ${styles.colors.disabled.button};
+      background-image: none;
       color: ${styles.colors.font.white};
       box-shadow: none;
     }
@@ -56,7 +67,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: ${styles.offsets.button};
     border: none;
     border-radius: ${styles.borderRadius.m};
-    background-color: ${styles.colors.transparent.light3};
+    background-color: ${styles.colors.transparent.light4};
     color: ${styles.colors.font.black};
     transition: ${styles.transition.background}, ${styles.transition.boxShadow};
   }

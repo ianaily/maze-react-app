@@ -1,0 +1,1363 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    width="1084" height="322" preserveAspectRatio="xMidYMid" viewBox="0 0 1084 322">
+    <defs>
+        <pattern id="pid-0.3989109799925188" x="0" y="0" width="266.24" height="266.24"
+            patternUnits="userSpaceOnUse">
+            <g transform="scale(1.04)">
+                <path
+                    d="M 0 0 L 19.692307692307693 0 L 19.692307692307693 19.692307692307693 L 0 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.9354558055634048s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 19.692307692307693 L 19.692307692307693 19.692307692307693 L 19.692307692307693 39.38461538461539 L 0 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.609004292684963s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 39.38461538461539 L 19.692307692307693 39.38461538461539 L 19.692307692307693 59.07692307692308 L 0 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.001978284522252s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 59.07692307692308 L 19.692307692307693 59.07692307692308 L 19.692307692307693 78.76923076923077 L 0 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.6005768970375228s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 78.76923076923077 L 19.692307692307693 78.76923076923077 L 19.692307692307693 98.46153846153847 L 0 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.7935491821166238s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 98.46153846153847 L 19.692307692307693 98.46153846153847 L 19.692307692307693 118.15384615384616 L 0 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.466855593039408s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 118.15384615384616 L 19.692307692307693 118.15384615384616 L 19.692307692307693 137.84615384615387 L 0 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.326484890467385s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 137.84615384615387 L 19.692307692307693 137.84615384615387 L 19.692307692307693 157.53846153846155 L 0 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.3798958392942804s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 157.53846153846155 L 19.692307692307693 157.53846153846155 L 19.692307692307693 177.23076923076923 L 0 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5261347220602175s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 177.23076923076923 L 19.692307692307693 177.23076923076923 L 19.692307692307693 196.92307692307693 L 0 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.9937722340795021s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 196.92307692307693 L 19.692307692307693 196.92307692307693 L 19.692307692307693 216.61538461538464 L 0 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.3475167023446355s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 216.61538461538464 L 19.692307692307693 216.61538461538464 L 19.692307692307693 236.30769230769232 L 0 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.07350627570121467s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 0 236.30769230769232 L 19.692307692307693 236.30769230769232 L 19.692307692307693 256 L 0 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.42096309199975174s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 0 L 39.38461538461539 0 L 39.38461538461539 19.692307692307693 L 19.692307692307693 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.14621355055409s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 19.692307692307693 L 39.38461538461539 19.692307692307693 L 39.38461538461539 39.38461538461539 L 19.692307692307693 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.9672803107666413s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 39.38461538461539 L 39.38461538461539 39.38461538461539 L 39.38461538461539 59.07692307692308 L 19.692307692307693 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.360969871736456s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 59.07692307692308 L 39.38461538461539 59.07692307692308 L 39.38461538461539 78.76923076923077 L 19.692307692307693 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.369574664140245s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 78.76923076923077 L 39.38461538461539 78.76923076923077 L 39.38461538461539 98.46153846153847 L 19.692307692307693 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.20265503296737053s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 98.46153846153847 L 39.38461538461539 98.46153846153847 L 39.38461538461539 118.15384615384616 L 19.692307692307693 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7874760828888456s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 118.15384615384616 L 39.38461538461539 118.15384615384616 L 39.38461538461539 137.84615384615387 L 19.692307692307693 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.8895291374721898s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 137.84615384615387 L 39.38461538461539 137.84615384615387 L 39.38461538461539 157.53846153846155 L 19.692307692307693 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.1781619454941654s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 157.53846153846155 L 39.38461538461539 157.53846153846155 L 39.38461538461539 177.23076923076923 L 19.692307692307693 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.6511105847267658s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 177.23076923076923 L 39.38461538461539 177.23076923076923 L 39.38461538461539 196.92307692307693 L 19.692307692307693 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.3390071430615156s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 196.92307692307693 L 39.38461538461539 196.92307692307693 L 39.38461538461539 216.61538461538464 L 19.692307692307693 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.898796791344152s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 216.61538461538464 L 39.38461538461539 216.61538461538464 L 39.38461538461539 236.30769230769232 L 19.692307692307693 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.16773338290240253s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 19.692307692307693 236.30769230769232 L 39.38461538461539 236.30769230769232 L 39.38461538461539 256 L 19.692307692307693 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.055183517617717205s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 0 L 59.07692307692308 0 L 59.07692307692308 19.692307692307693 L 39.38461538461539 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.361987308454366s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 19.692307692307693 L 59.07692307692308 19.692307692307693 L 59.07692307692308 39.38461538461539 L 39.38461538461539 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.05794626185267418s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 39.38461538461539 L 59.07692307692308 39.38461538461539 L 59.07692307692308 59.07692307692308 L 39.38461538461539 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5217321831446002s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 59.07692307692308 L 59.07692307692308 59.07692307692308 L 59.07692307692308 78.76923076923077 L 39.38461538461539 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.7674469848733034s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 78.76923076923077 L 59.07692307692308 78.76923076923077 L 59.07692307692308 98.46153846153847 L 39.38461538461539 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5401242962848516s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 98.46153846153847 L 59.07692307692308 98.46153846153847 L 59.07692307692308 118.15384615384616 L 39.38461538461539 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.496824259652564s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 118.15384615384616 L 59.07692307692308 118.15384615384616 L 59.07692307692308 137.84615384615387 L 39.38461538461539 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.7078879684528763s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 137.84615384615387 L 59.07692307692308 137.84615384615387 L 59.07692307692308 157.53846153846155 L 39.38461538461539 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.7862673847361132s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 157.53846153846155 L 59.07692307692308 157.53846153846155 L 59.07692307692308 177.23076923076923 L 39.38461538461539 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.7163027179259134s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 177.23076923076923 L 59.07692307692308 177.23076923076923 L 59.07692307692308 196.92307692307693 L 39.38461538461539 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0757086508358153s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 196.92307692307693 L 59.07692307692308 196.92307692307693 L 59.07692307692308 216.61538461538464 L 39.38461538461539 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.4587722622506772s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 216.61538461538464 L 59.07692307692308 216.61538461538464 L 59.07692307692308 236.30769230769232 L 39.38461538461539 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.234060599461822s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 39.38461538461539 236.30769230769232 L 59.07692307692308 236.30769230769232 L 59.07692307692308 256 L 39.38461538461539 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.4618642870126964s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 0 L 78.76923076923077 0 L 78.76923076923077 19.692307692307693 L 59.07692307692308 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.5816543871801649s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 19.692307692307693 L 78.76923076923077 19.692307692307693 L 78.76923076923077 39.38461538461539 L 59.07692307692308 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.581532610055302s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 39.38461538461539 L 78.76923076923077 39.38461538461539 L 78.76923076923077 59.07692307692308 L 59.07692307692308 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.767239890647334s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 59.07692307692308 L 78.76923076923077 59.07692307692308 L 78.76923076923077 78.76923076923077 L 59.07692307692308 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.3047286783506026s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 78.76923076923077 L 78.76923076923077 78.76923076923077 L 78.76923076923077 98.46153846153847 L 59.07692307692308 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.2271540648057562s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 98.46153846153847 L 78.76923076923077 98.46153846153847 L 78.76923076923077 118.15384615384616 L 59.07692307692308 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5475596073569808s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 118.15384615384616 L 78.76923076923077 118.15384615384616 L 78.76923076923077 137.84615384615387 L 59.07692307692308 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.1837005503975495s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 137.84615384615387 L 78.76923076923077 137.84615384615387 L 78.76923076923077 157.53846153846155 L 59.07692307692308 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.9852467159218485s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 157.53846153846155 L 78.76923076923077 157.53846153846155 L 78.76923076923077 177.23076923076923 L 59.07692307692308 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0616010186975424s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 177.23076923076923 L 78.76923076923077 177.23076923076923 L 78.76923076923077 196.92307692307693 L 59.07692307692308 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.3148934078198993s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 196.92307692307693 L 78.76923076923077 196.92307692307693 L 78.76923076923077 216.61538461538464 L 59.07692307692308 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7072150573672096s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 216.61538461538464 L 78.76923076923077 216.61538461538464 L 78.76923076923077 236.30769230769232 L 59.07692307692308 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.1819556305621024s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 59.07692307692308 236.30769230769232 L 78.76923076923077 236.30769230769232 L 78.76923076923077 256 L 59.07692307692308 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5985313743629441s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 0 L 98.46153846153847 0 L 98.46153846153847 19.692307692307693 L 78.76923076923077 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.9192049623965963s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 19.692307692307693 L 98.46153846153847 19.692307692307693 L 98.46153846153847 39.38461538461539 L 78.76923076923077 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.17704705482922625s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 39.38461538461539 L 98.46153846153847 39.38461538461539 L 98.46153846153847 59.07692307692308 L 78.76923076923077 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.3289878286550432s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 59.07692307692308 L 98.46153846153847 59.07692307692308 L 98.46153846153847 78.76923076923077 L 78.76923076923077 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.5103370448206177s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 78.76923076923077 L 98.46153846153847 78.76923076923077 L 98.46153846153847 98.46153846153847 L 78.76923076923077 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.6711939567268588s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 98.46153846153847 L 98.46153846153847 98.46153846153847 L 98.46153846153847 118.15384615384616 L 78.76923076923077 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.4593232649344174s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 118.15384615384616 L 98.46153846153847 118.15384615384616 L 98.46153846153847 137.84615384615387 L 78.76923076923077 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.7576881781293183s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 137.84615384615387 L 98.46153846153847 137.84615384615387 L 98.46153846153847 157.53846153846155 L 78.76923076923077 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0734489464745638s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 157.53846153846155 L 98.46153846153847 157.53846153846155 L 98.46153846153847 177.23076923076923 L 78.76923076923077 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.8258874347777976s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 177.23076923076923 L 98.46153846153847 177.23076923076923 L 98.46153846153847 196.92307692307693 L 78.76923076923077 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.809482251098554s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 196.92307692307693 L 98.46153846153847 196.92307692307693 L 98.46153846153847 216.61538461538464 L 78.76923076923077 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.48837600111332813s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 216.61538461538464 L 98.46153846153847 216.61538461538464 L 98.46153846153847 236.30769230769232 L 78.76923076923077 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.3249753139765221s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 78.76923076923077 236.30769230769232 L 98.46153846153847 236.30769230769232 L 98.46153846153847 256 L 78.76923076923077 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.474966180102506s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 0 L 118.15384615384616 0 L 118.15384615384616 19.692307692307693 L 98.46153846153847 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.4426539741471998s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 19.692307692307693 L 118.15384615384616 19.692307692307693 L 118.15384615384616 39.38461538461539 L 98.46153846153847 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.024249475838177s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 39.38461538461539 L 118.15384615384616 39.38461538461539 L 118.15384615384616 59.07692307692308 L 98.46153846153847 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.738678865359603s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 59.07692307692308 L 118.15384615384616 59.07692307692308 L 118.15384615384616 78.76923076923077 L 98.46153846153847 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.583492485861683s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 78.76923076923077 L 118.15384615384616 78.76923076923077 L 118.15384615384616 98.46153846153847 L 98.46153846153847 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.0956219628821615s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 98.46153846153847 L 118.15384615384616 98.46153846153847 L 118.15384615384616 118.15384615384616 L 98.46153846153847 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.29321121707872s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 118.15384615384616 L 118.15384615384616 118.15384615384616 L 118.15384615384616 137.84615384615387 L 98.46153846153847 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.407869634036385s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 137.84615384615387 L 118.15384615384616 137.84615384615387 L 118.15384615384616 157.53846153846155 L 98.46153846153847 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.0292436778251095s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 157.53846153846155 L 118.15384615384616 157.53846153846155 L 118.15384615384616 177.23076923076923 L 98.46153846153847 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.1389527238479598s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 177.23076923076923 L 118.15384615384616 177.23076923076923 L 118.15384615384616 196.92307692307693 L 98.46153846153847 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.2847145815015986s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 196.92307692307693 L 118.15384615384616 196.92307692307693 L 118.15384615384616 216.61538461538464 L 98.46153846153847 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5288310624963044s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 216.61538461538464 L 118.15384615384616 216.61538461538464 L 118.15384615384616 236.30769230769232 L 98.46153846153847 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7811020148950452s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 98.46153846153847 236.30769230769232 L 118.15384615384616 236.30769230769232 L 118.15384615384616 256 L 98.46153846153847 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.3072473144175119s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 0 L 137.84615384615387 0 L 137.84615384615387 19.692307692307693 L 118.15384615384616 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.605920636395848s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 19.692307692307693 L 137.84615384615387 19.692307692307693 L 137.84615384615387 39.38461538461539 L 118.15384615384616 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.431999287857443s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 39.38461538461539 L 137.84615384615387 39.38461538461539 L 137.84615384615387 59.07692307692308 L 118.15384615384616 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.3259001271882568s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 59.07692307692308 L 137.84615384615387 59.07692307692308 L 137.84615384615387 78.76923076923077 L 118.15384615384616 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.593991309137004s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 78.76923076923077 L 137.84615384615387 78.76923076923077 L 137.84615384615387 98.46153846153847 L 118.15384615384616 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.054627835188921s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 98.46153846153847 L 137.84615384615387 98.46153846153847 L 137.84615384615387 118.15384615384616 L 118.15384615384616 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5805319831008182s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 118.15384615384616 L 137.84615384615387 118.15384615384616 L 137.84615384615387 137.84615384615387 L 118.15384615384616 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.3405814243012513s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 137.84615384615387 L 137.84615384615387 137.84615384615387 L 137.84615384615387 157.53846153846155 L 118.15384615384616 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.8935732049058508s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 157.53846153846155 L 137.84615384615387 157.53846153846155 L 137.84615384615387 177.23076923076923 L 118.15384615384616 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7535919296724412s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 177.23076923076923 L 137.84615384615387 177.23076923076923 L 137.84615384615387 196.92307692307693 L 118.15384615384616 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.9145507460488287s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 196.92307692307693 L 137.84615384615387 196.92307692307693 L 137.84615384615387 216.61538461538464 L 118.15384615384616 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.118361066381313s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 216.61538461538464 L 137.84615384615387 216.61538461538464 L 137.84615384615387 236.30769230769232 L 118.15384615384616 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.8474579253222375s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 118.15384615384616 236.30769230769232 L 137.84615384615387 236.30769230769232 L 137.84615384615387 256 L 118.15384615384616 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.05651034632393839s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 0 L 157.53846153846155 0 L 157.53846153846155 19.692307692307693 L 137.84615384615387 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.5340350586018148s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 19.692307692307693 L 157.53846153846155 19.692307692307693 L 157.53846153846155 39.38461538461539 L 137.84615384615387 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.738619203632533s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 39.38461538461539 L 157.53846153846155 39.38461538461539 L 157.53846153846155 59.07692307692308 L 137.84615384615387 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.709148464248356s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 59.07692307692308 L 157.53846153846155 59.07692307692308 L 157.53846153846155 78.76923076923077 L 137.84615384615387 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.496307686393356s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 78.76923076923077 L 157.53846153846155 78.76923076923077 L 157.53846153846155 98.46153846153847 L 137.84615384615387 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.10784768911514252s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 98.46153846153847 L 157.53846153846155 98.46153846153847 L 157.53846153846155 118.15384615384616 L 137.84615384615387 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.2289467595317816s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 118.15384615384616 L 157.53846153846155 118.15384615384616 L 157.53846153846155 137.84615384615387 L 137.84615384615387 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.4368885052754772s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 137.84615384615387 L 157.53846153846155 137.84615384615387 L 157.53846153846155 157.53846153846155 L 137.84615384615387 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.09002917004421092s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 157.53846153846155 L 157.53846153846155 157.53846153846155 L 157.53846153846155 177.23076923076923 L 137.84615384615387 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.5673450290695934s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 177.23076923076923 L 157.53846153846155 177.23076923076923 L 157.53846153846155 196.92307692307693 L 137.84615384615387 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.0786412413067312s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 196.92307692307693 L 157.53846153846155 196.92307692307693 L 157.53846153846155 216.61538461538464 L 137.84615384615387 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.8892039496400044s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 216.61538461538464 L 157.53846153846155 216.61538461538464 L 157.53846153846155 236.30769230769232 L 137.84615384615387 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.0313194504579792s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 137.84615384615387 236.30769230769232 L 157.53846153846155 236.30769230769232 L 157.53846153846155 256 L 137.84615384615387 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.9141805252230065s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 0 L 177.23076923076923 0 L 177.23076923076923 19.692307692307693 L 157.53846153846155 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5081814251512915s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 19.692307692307693 L 177.23076923076923 19.692307692307693 L 177.23076923076923 39.38461538461539 L 157.53846153846155 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.9872183311361404s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 39.38461538461539 L 177.23076923076923 39.38461538461539 L 177.23076923076923 59.07692307692308 L 157.53846153846155 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.337608707225039s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 59.07692307692308 L 177.23076923076923 59.07692307692308 L 177.23076923076923 78.76923076923077 L 157.53846153846155 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.29647664257587997s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 78.76923076923077 L 177.23076923076923 78.76923076923077 L 177.23076923076923 98.46153846153847 L 157.53846153846155 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0687277319437996s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 98.46153846153847 L 177.23076923076923 98.46153846153847 L 177.23076923076923 118.15384615384616 L 157.53846153846155 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5679975061945688s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 118.15384615384616 L 177.23076923076923 118.15384615384616 L 177.23076923076923 137.84615384615387 L 157.53846153846155 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.5339670006787087s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 137.84615384615387 L 177.23076923076923 137.84615384615387 L 177.23076923076923 157.53846153846155 L 157.53846153846155 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7374403311896938s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 157.53846153846155 L 177.23076923076923 157.53846153846155 L 177.23076923076923 177.23076923076923 L 157.53846153846155 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.381884294315045s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 177.23076923076923 L 177.23076923076923 177.23076923076923 L 177.23076923076923 196.92307692307693 L 157.53846153846155 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.2764728823628468s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 196.92307692307693 L 177.23076923076923 196.92307692307693 L 177.23076923076923 216.61538461538464 L 157.53846153846155 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.1097553708684285s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 216.61538461538464 L 177.23076923076923 216.61538461538464 L 177.23076923076923 236.30769230769232 L 157.53846153846155 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.6345474953800581s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 157.53846153846155 236.30769230769232 L 177.23076923076923 236.30769230769232 L 177.23076923076923 256 L 157.53846153846155 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.5563114866445524s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 0 L 196.92307692307693 0 L 196.92307692307693 19.692307692307693 L 177.23076923076923 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5507405104237209s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 19.692307692307693 L 196.92307692307693 19.692307692307693 L 196.92307692307693 39.38461538461539 L 177.23076923076923 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.000673288330747s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 39.38461538461539 L 196.92307692307693 39.38461538461539 L 196.92307692307693 59.07692307692308 L 177.23076923076923 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0710912707985334s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 59.07692307692308 L 196.92307692307693 59.07692307692308 L 196.92307692307693 78.76923076923077 L 177.23076923076923 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.04636732717965s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 78.76923076923077 L 196.92307692307693 78.76923076923077 L 196.92307692307693 98.46153846153847 L 177.23076923076923 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.104479175065054s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 98.46153846153847 L 196.92307692307693 98.46153846153847 L 196.92307692307693 118.15384615384616 L 177.23076923076923 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.1918497601989022s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 118.15384615384616 L 196.92307692307693 118.15384615384616 L 196.92307692307693 137.84615384615387 L 177.23076923076923 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0320613616313805s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 137.84615384615387 L 196.92307692307693 137.84615384615387 L 196.92307692307693 157.53846153846155 L 177.23076923076923 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.7699105616817064s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 157.53846153846155 L 196.92307692307693 157.53846153846155 L 196.92307692307693 177.23076923076923 L 177.23076923076923 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.232965396584021s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 177.23076923076923 L 196.92307692307693 177.23076923076923 L 196.92307692307693 196.92307692307693 L 177.23076923076923 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.0116094804038833s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 196.92307692307693 L 196.92307692307693 196.92307692307693 L 196.92307692307693 216.61538461538464 L 177.23076923076923 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.5072603293089604s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 216.61538461538464 L 196.92307692307693 216.61538461538464 L 196.92307692307693 236.30769230769232 L 177.23076923076923 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.7142481405063592s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 177.23076923076923 236.30769230769232 L 196.92307692307693 236.30769230769232 L 196.92307692307693 256 L 177.23076923076923 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.8893621913507762s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 0 L 216.61538461538464 0 L 216.61538461538464 19.692307692307693 L 196.92307692307693 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.5384213363263871s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 19.692307692307693 L 216.61538461538464 19.692307692307693 L 216.61538461538464 39.38461538461539 L 196.92307692307693 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.8529547795349232s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 39.38461538461539 L 216.61538461538464 39.38461538461539 L 216.61538461538464 59.07692307692308 L 196.92307692307693 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.11937103443795084s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 59.07692307692308 L 216.61538461538464 59.07692307692308 L 216.61538461538464 78.76923076923077 L 196.92307692307693 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.186145067000887s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 78.76923076923077 L 216.61538461538464 78.76923076923077 L 216.61538461538464 98.46153846153847 L 196.92307692307693 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7996020009169731s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 98.46153846153847 L 216.61538461538464 98.46153846153847 L 216.61538461538464 118.15384615384616 L 196.92307692307693 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.2039337083550015s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 118.15384615384616 L 216.61538461538464 118.15384615384616 L 216.61538461538464 137.84615384615387 L 196.92307692307693 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0320176237135281s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 137.84615384615387 L 216.61538461538464 137.84615384615387 L 216.61538461538464 157.53846153846155 L 196.92307692307693 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.6931072047700171s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 157.53846153846155 L 216.61538461538464 157.53846153846155 L 216.61538461538464 177.23076923076923 L 196.92307692307693 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.519603505948498s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 177.23076923076923 L 216.61538461538464 177.23076923076923 L 216.61538461538464 196.92307692307693 L 196.92307692307693 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.4562234219845923s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 196.92307692307693 L 216.61538461538464 196.92307692307693 L 216.61538461538464 216.61538461538464 L 196.92307692307693 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7779385916457239s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 216.61538461538464 L 216.61538461538464 216.61538461538464 L 216.61538461538464 236.30769230769232 L 196.92307692307693 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.41485140553768796s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 196.92307692307693 236.30769230769232 L 216.61538461538464 236.30769230769232 L 216.61538461538464 256 L 196.92307692307693 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.373819792163147s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 0 L 236.30769230769232 0 L 236.30769230769232 19.692307692307693 L 216.61538461538464 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.6103238425588033s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 19.692307692307693 L 236.30769230769232 19.692307692307693 L 236.30769230769232 39.38461538461539 L 216.61538461538464 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.688349242201182s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 39.38461538461539 L 236.30769230769232 39.38461538461539 L 236.30769230769232 59.07692307692308 L 216.61538461538464 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.11995899952133322s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 59.07692307692308 L 236.30769230769232 59.07692307692308 L 236.30769230769232 78.76923076923077 L 216.61538461538464 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.07897184378479687s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 78.76923076923077 L 236.30769230769232 78.76923076923077 L 236.30769230769232 98.46153846153847 L 216.61538461538464 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.1284657388122472s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 98.46153846153847 L 236.30769230769232 98.46153846153847 L 236.30769230769232 118.15384615384616 L 216.61538461538464 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.2695779684078143s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 118.15384615384616 L 236.30769230769232 118.15384615384616 L 236.30769230769232 137.84615384615387 L 216.61538461538464 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.5803898417533877s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 137.84615384615387 L 236.30769230769232 137.84615384615387 L 236.30769230769232 157.53846153846155 L 216.61538461538464 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.257470357992714s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 157.53846153846155 L 236.30769230769232 157.53846153846155 L 236.30769230769232 177.23076923076923 L 216.61538461538464 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.13665070193405768s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 177.23076923076923 L 236.30769230769232 177.23076923076923 L 236.30769230769232 196.92307692307693 L 216.61538461538464 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.1554996909364714s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 196.92307692307693 L 236.30769230769232 196.92307692307693 L 236.30769230769232 216.61538461538464 L 216.61538461538464 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.095612566743782s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 216.61538461538464 L 236.30769230769232 216.61538461538464 L 236.30769230769232 236.30769230769232 L 216.61538461538464 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.20079019404918355s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 216.61538461538464 236.30769230769232 L 236.30769230769232 236.30769230769232 L 236.30769230769232 256 L 216.61538461538464 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.2515548963900165s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 0 L 256 0 L 256 19.692307692307693 L 236.30769230769232 19.692307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.5919386678625657s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 19.692307692307693 L 256 19.692307692307693 L 256 39.38461538461539 L 236.30769230769232 39.38461538461539 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.184740102556542s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 39.38461538461539 L 256 39.38461538461539 L 256 59.07692307692308 L 236.30769230769232 59.07692307692308 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.2883654225288113s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 59.07692307692308 L 256 59.07692307692308 L 256 78.76923076923077 L 236.30769230769232 78.76923076923077 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.2476902574820492s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 78.76923076923077 L 256 78.76923076923077 L 256 98.46153846153847 L 236.30769230769232 98.46153846153847 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.45697276431225964s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 98.46153846153847 L 256 98.46153846153847 L 256 118.15384615384616 L 236.30769230769232 118.15384615384616 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.498432072419445s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 118.15384615384616 L 256 118.15384615384616 L 256 137.84615384615387 L 236.30769230769232 137.84615384615387 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.4909019229266743s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 137.84615384615387 L 256 137.84615384615387 L 256 157.53846153846155 L 236.30769230769232 157.53846153846155 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.34717623451323065s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 157.53846153846155 L 256 157.53846153846155 L 256 177.23076923076923 L 236.30769230769232 177.23076923076923 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.772766948383313s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 177.23076923076923 L 256 177.23076923076923 L 256 196.92307692307693 L 236.30769230769232 196.92307692307693 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-1.0836149302877338s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 196.92307692307693 L 256 196.92307692307693 L 256 216.61538461538464 L 236.30769230769232 216.61538461538464 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-2.1622198673516078s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 216.61538461538464 L 256 216.61538461538464 L 256 236.30769230769232 L 236.30769230769232 236.30769230769232 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.5140303062118797s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+                <path
+                    d="M 236.30769230769232 236.30769230769232 L 256 236.30769230769232 L 256 256 L 236.30769230769232 256 Z"
+                    fill="#ffffff">
+                    <animate attributeName="fill" begin="-0.7675706288025169s"
+                        values="#ffffff;#f8f8f8;#f0f0f0;#ebebeb;#e7e7e7;#ffffff"
+                        keyTimes="0;0.2;0.4;0.6;0.8;1" dur="2.7777777777777772s"
+                        repeatCount="indefinite" />
+                </path>
+            </g>
+        </pattern>
+    </defs>
+    <rect x="0" y="0" width="1084" height="322" fill="url(#pid-0.3989109799925188)"/>
+</svg>

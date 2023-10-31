@@ -37,7 +37,9 @@ export const GameplayRenderer: React.FC<GameplayRendererProps> = ({
       x: player.point.x - firstPoint.x,
       y: player.point.y - firstPoint.y,
     };
-    drawPoint(point, { image: getSpite(sprites.char) });
+    const sprite = player.direction === 'left' ? sprites.charLeft : sprites.charRight;
+
+    drawPoint(point, { image: getSpite(sprite) });
   };
 
   const drawCamera = () => {

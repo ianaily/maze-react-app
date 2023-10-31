@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { Direction } from 'src/types/direction';
 import { Player } from 'src/types/player';
 import { Point } from 'src/types/point';
 import { Maze } from 'src/types/maze';
@@ -14,6 +15,8 @@ export class PlayerStore {
 
   player: Player = {
     point: { x: 0, y: 0 },
+    prevPoint: { x: 0, y: 0 },
+    direction: 'right',
   };
 
   private get x(): number {
@@ -36,7 +39,26 @@ export class PlayerStore {
   }
 
   setPosition(position: Point) {
+    this.player.prevPoint = { ...this.player.point };
     this.player.point = position;
+    this.player.direction = this.direction;
+  }
+
+  private get direction(): Direction {
+    const point = this.player.point;
+    const prev = this.player.prevPoint;
+
+    if (prev.x < point.x) {
+      return 'right';
+    } else if (prev.x > point.x) {
+      return 'left';
+    } else if (prev.y < point.y) {
+      return this.player.direction;
+    } else if (prev.y > point.y) {
+      return this.player.direction;
+    }
+
+    return this.player.direction;
   }
 
   private throughPassable(point: Point): boolean {

@@ -19,6 +19,7 @@ import NM from 'src/assets/sprites/walls/narrow.png';
 import Way from 'src/assets/sprites/way.png';
 import Door from 'src/assets/sprites/door.png';
 import CharRight from 'src/assets/sprites/char-r.png';
+import CharLeft from 'src/assets/sprites/char-l.png';
 
 export const walls = {
   [WallDirections.topLeft]: TL as string,
@@ -40,7 +41,7 @@ export const walls = {
 };
 
 export const chars = {
-  left: CharRight as string,
+  left: CharLeft as string,
   top: CharRight as string,
   right: CharRight as string,
   bottom: CharRight as string,
@@ -51,6 +52,8 @@ export const sprites = {
   way: Way,
   door: Door,
   char: CharRight,
+  charRight: CharRight,
+  charLeft: CharLeft,
 };
 
 export const spritesMap: { [key: string]: string } = {

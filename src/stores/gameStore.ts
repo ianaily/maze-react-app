@@ -20,6 +20,8 @@ export class GameStore {
   maze: Maze = buildMazePots(defaultMazeSize);
   player: Player = {
     point: { x: 0, y: 0 },
+    prevPoint: { x: 0, y: 0 },
+    direction: 'right',
   };
   leftMoves = -1;
 

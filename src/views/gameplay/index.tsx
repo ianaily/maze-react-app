@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
 import { appLinks } from 'src/router/const';
 import { Modal } from 'src/components/modal';
+import { Button } from 'src/components/button';
 import { useKeyboard } from 'src/hooks/useKeyboard';
 import { startGameRunner, type GameRunner, type GameRunnerStats } from 'src/game/runner';
 import {
@@ -12,6 +13,10 @@ import {
   HudHint,
   LoadingLabel,
   Viewport,
+  WinActions,
+  WinPanel,
+  WinStats,
+  WinTitle,
 } from './styled';
 import { useStore } from './store';
 
@@ -120,7 +125,25 @@ const Gameplay: React.FC = observer(() => {
       {showPauseModal && (
         <Modal.Pause onMainMenu={handleMainMenu} onCancel={() => setShowPauseModal(false)} />
       )}
-      {won && <Modal.GameMessage>You Win!</Modal.GameMessage>}
+      {won && (
+        <Modal.GameMessage>
+          <WinPanel>
+            <WinTitle>You Win!</WinTitle>
+            <WinStats>
+              Time {formatElapsed(stats.elapsedMs)} · Coins {stats.coinsCollected} /{' '}
+              {stats.totalCoins}
+            </WinStats>
+            <WinActions>
+              <Button variant="green" onClick={() => void restart()}>
+                Play again
+              </Button>
+              <Button variant="blue" onClick={handleMainMenu}>
+                Main menu
+              </Button>
+            </WinActions>
+          </WinPanel>
+        </Modal.GameMessage>
+      )}
     </Container>
   );
 });

@@ -59,6 +59,34 @@ export const HudCell = styled.div`
   }
 `;
 
+export const WinPanel = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 4px 4px;
+`;
+
+export const WinTitle = styled.div`
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  color: #f5d164;
+`;
+
+export const WinStats = styled.div`
+  font: 13px/1.4 ui-monospace, Consolas, monospace;
+  color: #cfd9e2;
+  text-transform: none;
+  letter-spacing: normal;
+`;
+
+export const WinActions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+`;
+
 export const HudHint = styled.div`
   position: absolute;
   bottom: 12px;

@@ -2,91 +2,125 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { observer } from 'mobx-react-lite';
 import { appLinks } from 'src/router/const';
-import { useKeyboard } from 'src/hooks/useKeyboard';
-import { useWindowSize } from 'src/hooks/useWindowSize';
-import { Renderer } from 'src/components/renderer';
 import { Modal } from 'src/components/modal';
-import { Container } from './styled';
+import { useKeyboard } from 'src/hooks/useKeyboard';
+import { startGameRunner, type GameRunner, type GameRunnerStats } from 'src/game/runner';
+import {
+  Container,
+  HudCell,
+  HudFrame,
+  HudHint,
+  LoadingLabel,
+  Viewport,
+} from './styled';
 import { useStore } from './store';
 
-const Gameplay: React.FC = observer(() => {
-  const { mazeStore, gameStore, playerStore, cameraStore, configStore } = useStore();
-  const [showPauseModal, setShowPauseModal] = React.useState(false);
-  const { width = 0, height = 0 } = useWindowSize();
-  const navigate = useNavigate();
-  // todo add difficult condition
-  const cameraSize = React.useMemo(
-    () =>
-      height < width
-        ? { height: 5, width: Math.floor(width / (height / 5)) }
-        : { width: 5, height: Math.floor(height / (width / 5)) },
-    [width, height],
-  );
+const formatElapsed = (ms: number): string => {
+  const totalSeconds = Math.floor(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+};
 
-  const commands: { [key: string]: VoidFunction } = {
-    keyR: () => {
-      initMaze().then();
-    },
-  };
+const Gameplay: React.FC = observer(() => {
+  const { mazeStore } = useStore();
+  const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
+  const runnerRef = React.useRef<GameRunner | null>(null);
+  const [showPauseModal, setShowPauseModal] = React.useState(false);
+  const [won, setWon] = React.useState(false);
+  const [ready, setReady] = React.useState(false);
+  const [runKey, setRunKey] = React.useState(0);
+  const [stats, setStats] = React.useState<GameRunnerStats>({
+    elapsedMs: 0,
+    coinsCollected: 0,
+    totalCoins: 0,
+  });
+  const navigate = useNavigate();
 
   const handleMainMenu = () => {
     navigate(appLinks.mainMenu, { replace: true });
   };
 
-  const handleKeyDown = (key: string) => {
-    if (gameStore.isFinished || !gameStore.isLeftMoves) {
-      navigate(appLinks.mainMenu, { replace: true });
+  const restart = React.useCallback(async () => {
+    runnerRef.current?.dispose();
+    runnerRef.current = null;
+    setReady(false);
+    setWon(false);
+    await mazeStore.getRandomSavedMaze();
+    setRunKey((key) => key + 1);
+  }, [mazeStore]);
+
+  useKeyboard((key) => {
+    if (key === 'Escape') {
+      setShowPauseModal((show) => !show);
       return;
     }
-
-    key === 'Escape' && setShowPauseModal((show) => !show);
-
-    if (showPauseModal) {
-      return;
+    if (key === 'KeyR') {
+      void restart();
     }
-
-    commands[key]?.();
-
-    ['ArrowUp', 'KeyW'].includes(key) && playerStore.moveUp();
-    ['ArrowRight', 'KeyD'].includes(key) && playerStore.moveRight();
-    ['ArrowDown', 'KeyS'].includes(key) && playerStore.moveDown();
-    ['ArrowLeft', 'KeyA'].includes(key) && playerStore.moveLeft();
-  };
-
-  const initMaze = async () => {
-    mazeStore.isEmpty && (await mazeStore.getRandomSavedMaze());
-    cameraStore.setMaze(mazeStore.maze, configStore.config);
-    cameraStore.setCameraSize(cameraSize);
-    playerStore.setMaze(mazeStore.maze);
-    gameStore.setMaze(mazeStore.maze);
-  };
-
-  useKeyboard(handleKeyDown);
+  });
 
   React.useEffect(() => {
-    initMaze().then();
-  }, [cameraSize]);
+    let cancelled = false;
 
-  React.useEffect(() => {
-    gameStore.setPlayer(playerStore.player);
-    cameraStore.setCameraPoint(playerStore.player.point);
-  }, [playerStore.player.point]);
+    const init = async () => {
+      if (mazeStore.isEmpty) {
+        await mazeStore.getRandomSavedMaze();
+      }
+
+      const canvas = canvasRef.current;
+      if (!canvas || cancelled) {
+        return;
+      }
+
+      const runner = await startGameRunner({
+        canvas,
+        maze: mazeStore.maze,
+        onWin: () => setWon(true),
+        onStats: (next) => setStats(next),
+      });
+
+      if (cancelled) {
+        runner.dispose();
+        return;
+      }
+
+      runnerRef.current = runner;
+      setReady(true);
+    };
+
+    void init();
+
+    return () => {
+      cancelled = true;
+      runnerRef.current?.dispose();
+      runnerRef.current = null;
+    };
+  }, [mazeStore, runKey]);
 
   return (
     <Container>
-      <Renderer.Gameplay
-        maze={mazeStore.maze}
-        maxCanvasWidth={width}
-        maxCanvasHeight={height}
-        camera={cameraStore.camera}
-        player={playerStore.player}
-        config={configStore.config}
-      />
+      <Viewport ref={canvasRef} />
+      {!ready && <LoadingLabel>Loading…</LoadingLabel>}
+      {ready && (
+        <HudFrame>
+          <HudCell>
+            <span>Time</span>
+            <span>{formatElapsed(stats.elapsedMs)}</span>
+          </HudCell>
+          <HudCell>
+            <span>Coins</span>
+            <span>
+              {stats.coinsCollected} / {stats.totalCoins}
+            </span>
+          </HudCell>
+        </HudFrame>
+      )}
+      {ready && <HudHint>WASD / Arrows to move · R to restart · Esc to pause</HudHint>}
       {showPauseModal && (
         <Modal.Pause onMainMenu={handleMainMenu} onCancel={() => setShowPauseModal(false)} />
       )}
-      {gameStore.isFinished && <Modal.GameMessage>You Win!</Modal.GameMessage>}
-      {!gameStore.isLeftMoves && <Modal.GameMessage>You Lose</Modal.GameMessage>}
+      {won && <Modal.GameMessage>You Win!</Modal.GameMessage>}
     </Container>
   );
 });

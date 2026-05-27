@@ -15,7 +15,8 @@
     "paths": {
       "src/*": [
         "src/*"
-      ]
+      ],
+      "engine-*": ["vendor/packages/engine-*/src/index.ts"]
     }
   }
 }

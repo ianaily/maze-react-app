@@ -3,6 +3,13 @@ import { defineConfig } from 'electron-vite';
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
 
+const enginePackages = path.resolve(__dirname, 'vendor/packages');
+
+const engineAlias = {
+  find: /^engine-([a-z-]+)$/,
+  replacement: path.join(enginePackages, 'engine-$1', 'src/index.ts'),
+};
+
 export default defineConfig({
   main: {
     build: {
@@ -38,6 +45,7 @@ export default defineConfig({
           find: 'src',
           replacement: path.resolve(__dirname, 'src'),
         },
+        engineAlias,
       ],
     },
   },

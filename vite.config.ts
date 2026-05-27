@@ -5,6 +5,8 @@ import viteSvgr from 'vite-plugin-svgr';
 import viteCompression from 'vite-plugin-compression';
 import * as path from 'path';
 
+const enginePackages = path.resolve(__dirname, 'vendor/packages');
+
 export default defineConfig({
   define: {
     process: process,
@@ -22,6 +24,10 @@ export default defineConfig({
       {
         find: 'src',
         replacement: path.resolve(__dirname, 'src'),
+      },
+      {
+        find: /^engine-([a-z-]+)$/,
+        replacement: path.join(enginePackages, 'engine-$1', 'src/index.ts'),
       },
     ],
   },
